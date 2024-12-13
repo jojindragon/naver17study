@@ -1,5 +1,6 @@
 package privateTest;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 public class Cloack {
@@ -38,7 +39,19 @@ public class Cloack {
 			Integer minute = newC.get(Calendar.MINUTE);
 			Integer sec = newC.get(Calendar.SECOND);
 			
-
+			// 사용자 입력으로 종료
+			Thread input = new Thread(()->{
+				try {
+					System.in.read();
+					System.out.println("프로그램 종료");
+					System.exit(0);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}); 
+			
+			input.start(); // 입력 쓰레드
+			
 			// 시간 출력
 			System.out.println("현재 시간: " + hour + ":" + minute + ":" + sec);
 			
@@ -54,7 +67,7 @@ public class Cloack {
 
 			// 출력 주기
 			try {
-				Thread.sleep(30000); // 30초
+				Thread.sleep(1000); // 30초
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
