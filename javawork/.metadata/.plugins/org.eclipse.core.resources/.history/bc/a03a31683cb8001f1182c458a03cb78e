@@ -1,0 +1,10 @@
+package day1212;
+
+public class Ex7Scanner {
+
+	public static void main(String[] args) {
+		// 사용자 입력 - 키보드 입력 읽어오기
+
+	}
+
+}

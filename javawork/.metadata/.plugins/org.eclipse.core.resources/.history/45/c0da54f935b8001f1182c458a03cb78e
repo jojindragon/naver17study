@@ -1,0 +1,23 @@
+package day1212;
+
+import java.util.Date;
+
+public class Ex6Date {
+
+	public static void main(String[] args) {
+		// 현재 날짜와 시간을 얻어보기
+		// Date 클래스 - jdk1.1 이후 deprecate 됨 - Calendar 권장
+		Date today = new Date();
+		
+		int curYear=today.getYear()+1900; // 기본적으로 1900 뺸 값이 나옴
+		int curMonth=today.getMonth()+1; // 기본적으로 1 뺸 값이 나옴
+		int curDay=today.getDay(); // 기본적으로 1 뺸 값이 나옴
+		
+		System.out.println("현재년도: "+curYear);
+		System.out.println("현재월 : "+curMonth);
+		System.out.println("현재 : "+curDay);
+		
+
+	}
+
+}

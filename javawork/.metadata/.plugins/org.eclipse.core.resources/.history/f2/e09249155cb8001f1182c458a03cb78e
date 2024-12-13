@@ -1,0 +1,18 @@
+package day1212;
+
+import java.util.Scanner;
+
+public class Ex14If {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+
+		int score;
+		String grade;
+		System.out.println("점수 입력");
+		score = sc.nextInt();
+
+	}
+
+}

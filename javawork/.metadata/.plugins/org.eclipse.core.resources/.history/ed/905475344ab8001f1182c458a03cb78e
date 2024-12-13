@@ -1,0 +1,13 @@
+package day1212;
+
+public class Ex9Exam {
+
+	public static void main(String[] args) {
+		// 상품(sang), 수량(su), 단가(dan)을 입력받은 후 총금액(total)을 출력하시오
+		// 단, 수량이 5개 이상이면 총금액의 10프로를 할인된 금액으로 출력해주세요
+		
+		
+
+	}
+
+}
