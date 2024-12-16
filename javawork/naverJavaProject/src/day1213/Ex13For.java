@@ -13,8 +13,16 @@ public class Ex13For {
 
 		System.out.println("5명의 나이를 각각 입력해주세요.");
 		for (int i = 0; i < 5; i++) {
+			System.out.println(i + "번째 나이 입력");
 			age = sc.nextLine();
 			tmp = Integer.parseInt(age);
+
+			// 0~100 밖 범위 제외
+			if (tmp <= 0 || tmp > 100) {
+				i--;
+				System.out.println("범위 밖 값이다. 다시 입력.");
+				continue;
+			}
 
 			if (tmp < 40)
 				cnt1++;
