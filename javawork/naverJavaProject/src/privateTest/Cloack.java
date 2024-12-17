@@ -29,7 +29,7 @@ public class Cloack {
 		System.out.println("현재 날짜: " + formatDate(c));
 
 		while (true) {
-			Calendar newC  = Calendar.getInstance(); // 정보 새로 업데이트
+			Calendar newC = Calendar.getInstance(); // 정보 새로 업데이트
 			Integer curYear = newC.get(Calendar.YEAR);
 			Integer curMonth = newC.get(Calendar.MONTH);
 			Integer curDay = newC.get(Calendar.DAY_OF_MONTH);
@@ -38,9 +38,9 @@ public class Cloack {
 			Integer hour = newC.get(Calendar.HOUR_OF_DAY);
 			Integer minute = newC.get(Calendar.MINUTE);
 			Integer sec = newC.get(Calendar.SECOND);
-			
+
 			// 사용자 입력으로 종료
-			Thread input = new Thread(()->{
+			Thread input = new Thread(() -> {
 				try {
 					System.in.read();
 					System.out.println("프로그램 종료");
@@ -48,13 +48,13 @@ public class Cloack {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}); 
-			
+			});
+
 			input.start(); // 입력 쓰레드
-			
+
 			// 시간 출력
 			System.out.println("현재 시간: " + hour + ":" + minute + ":" + sec);
-			
+
 			// 날짜 확인
 			if (curYear == prevYear || curMonth != prevMonth || curDay != prevDay) {
 				prevYear = curYear;
@@ -63,7 +63,6 @@ public class Cloack {
 				prevDayOfWeek = curDayOfWeek;
 				System.out.println("현재 날짜: " + formatDate(newC));
 			}
-
 
 			// 출력 주기
 			try {
