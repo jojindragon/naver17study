@@ -1,0 +1,61 @@
+package day1218;
+
+import java.util.Random;
+import java.util.Scanner;
+
+import Sort.SelectionSort;
+
+public class Ex2Lotto {
+
+	public static void main(String[] args) {
+		// 로또 만들기
+		Scanner sc = new Scanner(System.in);
+		int money;
+		int[] lotto = new int[6];
+		Random r = new Random();
+
+		// 금액 입력
+		System.out.print("금액 입력: ");
+		money = sc.nextInt();
+
+		// 1000원 미만 종료
+		if (money < 1000) {
+			System.out.println("** 금액 부족 **");
+			return;
+		}
+
+		// 금액만큼 로또 숫자 발생 후 출력(오름차순)
+		for (int n = 1; n <= money / 1000; n++) {
+			System.out.printf("%3d회: ", n);
+
+			// lotto 배열(1~45) 난수 발생(중복체크)
+			for (int i = 0; i < lotto.length; i++) {
+				lotto[i] = r.nextInt(45) + 1;
+				for (int j = i + 1; j < i; j++) {
+					if (lotto[i] == lotto[j]) {
+						i--;
+						break;
+					}
+				}
+			}
+
+			// 정렬
+			for (int i = 0; i < lotto.length - 1; i++) {
+				for (int j = i + 1; j < lotto.length; j++) {
+					if (lotto[i] > lotto[j]) {
+						int temp = lotto[i];
+						lotto[i] = lotto[j];
+						lotto[j] = temp;
+					}
+				}
+			}
+
+			// 출력
+			for (int i = 0; i < lotto.length; i++)
+				System.out.printf("%4d", lotto[i]);
+			System.out.println();
+		}
+
+	}
+
+}
