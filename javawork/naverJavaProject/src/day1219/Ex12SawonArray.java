@@ -1,5 +1,6 @@
 package day1219;
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 /*
@@ -19,17 +20,20 @@ import java.util.Scanner;
 public class Ex12SawonArray {
 
 	public static void showTitle() {
-		System.out.println("사원명\t직급\t기본급\t수당\t가족수당\t세금\t실수령액");
+		System.out.println("사원명\t직급\t     기본급\t수당\t가족수당\t세금\t실수령액");
 		System.out.println("=".repeat(60));
 	}
 
 	public static void writeSawon(Sawon s) {
-		System.out.println(s.getSawonName() + "\t" + s.getPosition() + "\t" + s.getGibonPay() + "\t" + s.getSudang()
-				+ "\t" + s.getFamSudang() + "\t" + s.getTax() + "\t" + s.getNetPay());
+		NumberFormat nf = NumberFormat.getInstance();
+
+		System.out.println(s.getSawonName() + "\t" + s.getPosition() + "\t" + nf.format(s.getGibonPay()) + "\t"
+				+ nf.format(s.getSudang()) + "\t" + nf.format(s.getFamSudang()) + "\t" + nf.format(s.getTax()) + "\t"
+				+ nf.format(s.getNetPay()));
 	}
 
 	public static void main(String[] args) {
-		// 12/19 총 정리 문제
+		// 12/19 총 정리 문제3
 		Scanner sc = new Scanner(System.in);
 		int inwon;
 		Sawon[] mySawon;
@@ -51,6 +55,11 @@ public class Ex12SawonArray {
 			int famSu = Integer.parseInt(sc.nextLine());
 
 			mySawon[i] = new Sawon(name, pos, famSu);
+//			mySawon[i] = new Sawon();
+//			mySawon[i].setSawonName(name);
+//			mySawon[i].setPosition(pos);
+//			mySawon[i].setFamSu(famSu);
+
 			System.out.println("-".repeat(15));
 		}
 

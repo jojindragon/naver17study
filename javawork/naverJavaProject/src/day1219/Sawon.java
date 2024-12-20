@@ -28,8 +28,9 @@ public class Sawon {
 	private int famSu;
 
 	public Sawon() {
-		sawonName = "아무개";
-		position = "사원";
+		super();
+//		sawonName = "아무개";
+//		position = "사원";
 	}
 
 	public Sawon(String sawonName, String position, int famSu) {
@@ -63,27 +64,23 @@ public class Sawon {
 	}
 
 	public int getGibonPay() {
-		if (position.equals("부장"))
-			return 450;
-		else if (position.equals("과장"))
-			return 300;
-		else if (position.equals("대리"))
-			return 250;
-		else if (position.equals("사원"))
-			return 150;
-		else
-			return 0;
+		return switch (position) {
+		case "부장" -> 4500000;
+		case "과장" -> 3000000;
+		case "대리" -> 2500000;
+		case "사원" -> 1500000;
+		default -> 0;
+		};
 	}
 
 	public int getSudang() {
-		int sudang = switch (position) {
-		case "부장", "과장" -> 70;
-		case "대리", "사원" -> 50;
+		return switch (position) {
+		case "부장", "과장" -> 700000;
+		case "대리", "사원" -> 500000;
 
 		default -> 0;
 		};
 
-		return sudang;
 	}
 
 	public int getTax() {
@@ -92,9 +89,9 @@ public class Sawon {
 
 	public int getFamSudang() {
 		if (famSu >= 5)
-			return 30;
+			return 300000;
 		else if (famSu >= 2)
-			return 10;
+			return 100000;
 		else
 			return 0;
 	}
