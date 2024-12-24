@@ -53,6 +53,11 @@ public class ServerChatGUI extends JFrame implements ActionListener, KeyListener
 	public void keyPressed(KeyEvent e) {
 		// Enter 키를 누르고, 입력값 1 이상만 전송
 		String message = chat.getText().trim();
+		if(e.getSource() == enter && message.length() >0) {
+			AppendMessage("서버: " + message + "\n");
+			sb.TransmitAll("서버: " + message + "\n");
+			chat.setText(null);
+		}
 	}
 
 	@Override
