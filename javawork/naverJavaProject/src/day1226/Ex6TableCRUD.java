@@ -1,5 +1,7 @@
 package day1226;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
@@ -55,13 +57,13 @@ public class Ex6TableCRUD extends JFrame {
 				if (stuInfo == null)
 					break;
 
-				String[] s = stuInfo.split("\\|");
-				Student student = new Student();
-				student.setName(s[0]);
-				student.setKor(Integer.parseInt(s[1]));
-				student.setEng(Integer.parseInt(s[2]));
+				String[] data = stuInfo.split("\\|");
+				Student stu = new Student();
+				stu.setName(data[0]);
+				stu.setKor(Integer.parseInt(data[1]));
+				stu.setEng(Integer.parseInt(data[2]));
 
-				list.add(student);
+				list.add(stu);
 			}
 
 			System.out.println("총 " + list.size() + "명 읽음");
@@ -81,10 +83,15 @@ public class Ex6TableCRUD extends JFrame {
 
 	public void initDesign() {
 		this.studentFileRead();
+
 		String[] title = { "이름", "국어", "영어", "총점", "평균" };
 		tableModel = new DefaultTableModel(title, 0); // 행갯수: 0 설정
 		table = new JTable(tableModel);
 
+		// 테이블 데이터 추가
+		this.displayStudents();
+
+		// frame에 추가
 		this.add("North", new JLabel("학생 성적", JLabel.CENTER));
 		this.add("Center", new JScrollPane(table));
 
@@ -95,6 +102,26 @@ public class Ex6TableCRUD extends JFrame {
 		tfEng = new JTextField(4);
 
 		addBtn = new JButton("추가");
+		addBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// 입력한 데이터를 읽어서 넣은 후 다시 list에 추가
+				String name = tfName.getText();
+				int kor = Integer.parseInt(tfKor.getText());
+				int eng = Integer.parseInt(tfEng.getText());
+
+				Student student = new Student(name, kor, eng);
+				list.add(student);
+
+				displayStudents();
+
+				// 입력 필드 초기화
+				tfName.setText("");
+				tfKor.setText("");
+				tfEng.setText("");
+			}
+		});
 
 		panel.add(new JLabel("이름"));
 		panel.add(tfName);
@@ -106,43 +133,41 @@ public class Ex6TableCRUD extends JFrame {
 
 		this.add("North", panel);
 
-		addBtn.addActionListener(e -> addStudent());
-		displayStudents();
 	}
 
-	public void addStudent() {
-		String name = tfName.getText();
-		int kor = Integer.parseInt(tfKor.getText());
-		int eng = Integer.parseInt(tfEng.getText());
-
-		Student student = new Student(name, kor, eng);
-		list.add(student);
-		displayStudents();
-		clearFields();
-	}
-
+	// 데이터 테이블 표시
 	public void displayStudents() {
-		// 데이터 테이블 표시
-		tableModel.setRowCount(0); // 테이블 초기화
-		for (Student s : list) {
-			int sum = s.getKor() + s.getEng();
-			double avg = sum / 2.0;
-			Object[] row = { s.getName(), s.getKor(), s.getEng(), sum, avg };
-			tableModel.addRow(row);
-		}
-	}
+		tableModel.setRowCount(0); // 테이블 초기화 후 다시 추가
 
-	public void clearFields() {
-		// 추가 필드 초기화
-		tfName.setText("");
-		tfKor.setText("");
-		tfEng.setText("");
+		for (Student stu : list) {
+			Vector<String> data = new Vector<String>();
+
+			int kor = stu.getKor();
+			int eng = stu.getKor();
+			int sum = kor + eng;
+			double avg = sum / 2.0;
+
+			data.add(stu.getName());
+			data.add(String.valueOf(kor));
+			data.add(String.valueOf(eng));
+			data.add(String.valueOf(sum));
+			data.add(String.valueOf(avg));
+
+			tableModel.addRow(data);
+
+//			int sum = stu.getKor() + stu.getEng();
+//			double avg = sum / 2.0;
+//			Object[] row = { stu.getName(), stu.getKor(), stu.getEng(), sum, avg };
+//			tableModel.addRow(row);
+		}
 	}
 
 	public void saveFile() { // List 내용 파일에 저장
 		FileWriter fw = null;
+
 		try {
 			fw = new FileWriter(StuFILENAME);
+
 			for (Student stu : list) {
 				String s = stu.getName() + "|" + stu.getKor() + "|" + stu.getEng() + "\n";
 				fw.write(s);
