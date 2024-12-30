@@ -3,8 +3,8 @@
 수업 및 개인공부 정리
 -----
 
-### **1 ~ 3주차**
-#### *Java*
+### *Java*
+#### **1 ~ 3주차**
 |날짜|파일명|설명|
 |:---:|:---:|:---|
 | 1주차 | 화 ~ 금
@@ -34,11 +34,12 @@
 | Socket 파일 | 1대1 실시간 채팅 구현 |
 | MultiChat 파일 | 1대다 실시간 채팅 구현 - JFrame, Swing, 소켓 이용 |
 
-### 4주차
+### *DATABASE*
+#### 4주차
+##### + dbwork
 |날짜|파일명|설명|
 |:---:|:---:|:---|
-|  |
-| 월 일 | | |
+| 12월 30일 | system계정 연습.sql<br>scott_table.sql<br>scott_1230.sql<br>문제scott_1230.sql | Oracle DDL, DCL - 유저 생성/관리<br>연습용 유저 scott 테이블 생성<br>DML - SELECT문, Where & Group by & Having 절, 내장함수, 그룹함수 <br> 금일 복습 문제 |
 | 월 일 | | |
 | 월 일 | | |
 | 월 일 | | |
