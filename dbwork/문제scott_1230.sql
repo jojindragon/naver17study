@@ -1,7 +1,8 @@
 -- 12월 30일 Oracle 문제
 -- 이용 테이블: EMP
 -- 1. 어떤 종류의 직업이 있는지 job을 1번씩 출력 - 단, 오름차순 출력
-SELECT job FROM emp GROUP BY job ORDER BY job;
+-- SELECT job FROM emp GROUP BY job ORDER BY job;
+SELECT DISTINCT job FROM emp ORDER BY job;
 
 -- 2. ENAME에 대소문자 상관없이 's'를 포함하고 있는 데이터 출력
 --    => 출력 컬럼: ename, job, sal
@@ -19,11 +20,12 @@ SELECT ename, sal, comm FROM emp WHERE comm IS NOT NULL AND sal >= 1500;
 --    => 출력 컬럼: ename, hiredate, sal
 SELECT ename, to_char(hiredate, 'yyyy-mm-dd') 입사일, sal FROM emp
 WHERE to_char(hiredate, 'mm') = 5;
+-- WHERE to_char(hiredate, 'mm') = '05';
 
 -- 6. HIREDATE 입사일이 1985-01-01 이후에 입사한 사람 출력
 --    => 출력 컬럼: ename, hiredate, sal
 SELECT ename, to_char(hiredate, 'yyyy-mm-dd') 입사일, sal FROM emp
-WHERE to_char(hiredate, 'yyyy-mm-dd') > '1985-01-01';
+WHERE to_char(hiredate, 'yyyy-mm-dd') >= '1985-01-01';
 
 -- 7. sal이 1500~3000 사이인 사람 출력 - 단, 관계연산자와 and를 이용
 --    => 출력 컬럼: ename, sal, mgr
@@ -53,7 +55,9 @@ SELECT ename, job, sal FROM emp
 WHERE ename LIKE 'A%' OR ename LIKE 'S%' OR ename LIKE 'M%';
 
 -- 14. MGR을 GROUP으로 인원수와 평균 SAL을 구하시오 - 단, 평균은 무조건 올림으로
-SELECT mgr, CEIL(AVG(sal)) 평균 FROM emp
+-- SELECT mgr, CEIL(AVG(sal)) 평균 FROM emp GROUP BY mgr;
+SELECT mgr, COUNT(*) 인원수, ROUND(AVG(sal), -1) 평균급여 FROM emp 
+WHERE mgr IS NOT NULL
 GROUP BY mgr;
 
 -- 15. SCOTT의 SAL과 같은 SAL을 받는 사람 조회
@@ -71,7 +75,8 @@ SELECT ename, job FROM emp WHERE ename LIKE '__R%' OR ename LIKE '__A%';
 
 -- 18. JOB 직업 별로 인원수와 최고연봉 출력 - 단, 직업의 오름차순 출력
 SELECT job 직업, COUNT(*) 인원수, MAX(sal) 최고연봉 FROM emp
-GROUP BY job ORDER BY 직업;
+-- GROUP BY job ORDER BY 직업;
+GROUP BY job ORDER BY 1;
 
 -- 19. || 연산자를 이용해 다음과 같이 하나의 컬럼으로 출력 - 컬럼명: 자기소개
 --    => (예) SCOTT의 직업은 CLERK이며 입사년도는 1989년 05월입니다.
