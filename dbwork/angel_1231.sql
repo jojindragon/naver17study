@@ -237,3 +237,17 @@ DELETE FROM food WHERE foodnum = 200; -- 이영자가 예약주문 했고 설정
 DELETE FROM food WHERE foodnum = 300; -- 아무도 주문을 예약 안했으므로 삭제 가능
 DROP TABLE food; -- 자식 테이블이 있으므로 삭제 불가, 자식 먼저 삭제 시 가능
 
+
+-- booking을 먼저 제거 > food 제거
+drop table booking;
+drop table food;
+drop table sawon;
+
+-- 시퀀스 제거
+drop sequence seq_food;
+drop sequence seq1;
+
+
+
+
+

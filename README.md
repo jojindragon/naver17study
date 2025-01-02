@@ -30,21 +30,21 @@
 |패키지|파일명|설명|
 |:---:|:---:|:---|
 |private|AnalyzeAlpha<br>CalendarImple<br>Cloack<br>DirectorySearch|수업에 했었던 알파벳 분석 다듬은 버전<br>Calendar를 이용해 반응형 달력 출력<br>일정주기로 시간과 날짜를 알려주는 시계<br>디렉토리 검색 기능|
-| Sort | | 정렬 종류 별로 구현 |
+| Sort | | 정렬 구현 - 선택, 삽입, 퀵, 합병, 버블, 힙, 기수  |
 | Socket | | 1대1 실시간 채팅 구현 |
 | MultiChat | | 1대다 실시간 채팅 구현 - JFrame, Swing, 소켓 이용 |
 
 ### *DATABASE*
 #### 4주차
-##### + dbwork
+##### + dbwork (.sql)
 |날짜|파일명|설명|
 |:---:|:---:|:---|
-| 12월 30일 | system계정 연습.sql<br>scott_table.sql<br>scott_1230.sql<br>문제scott_1230.sql | Oracle DDL, DCL - 유저 생성/관리, 권한부여<br>연습용 유저 scott 테이블 생성<br>DML - SELECT문, Where & Group by & Having 절, 내장함수, 그룹함수 <br> 금일 복습 문제 |
-| 12월 31일 | scott_1231.sql<br><br><br>angel_1231.sql<br> | JOIN - 동등 조인(INNER JOIN)<br>내장함수 - DECODE<br><br>Sequence(시퀀스) / DDL - 테이블 생성, DROP / 제약조건  <br>DML - INSERT, UPDATE, DELETE / JOIN - 동등 조인, 외부 조인 |
+| 12월 30일 | system계정 연습<br>scott_table<br>scott_1230<br>문제scott_1230 | Oracle DDL, DCL - 유저 생성/관리, 권한부여<br>연습용 유저 scott 테이블 생성<br>DML - SELECT문, Where & Group by & Having 절, 내장함수, 그룹함수 <br> 금일 복습 문제 |
+| 12월 31일 | scott_1231<br><br><br>angel_1231<br><br> | JOIN - 동등 조인(INNER JOIN)<br>내장함수 - DECODE<br><br>Sequence(시퀀스) / DDL - 테이블 생성, DROP / 제약조건  <br>DML - INSERT, UPDATE, DELETE / JOIN - 동등 조인, 외부 조인 |
 | 01월 01일 | 새해 | 휴일 |
-| 월 일 | | |
-| 월 일 | | |
+| 01월 02일 | angel_0102<br> angel_plsql<br>mysql_db생성<br>mysql_root_0102<br>mysql_root_테이블생성<br> | JOIN 절 연습 <br> PL/SQL - 구문, IF문, Cursor, SQL로 CRUD <br> 연습용 DB 설정(MySQL 시작) <br>기초 명령어 및 함수<br>데이터 타입, 테이블 생성, DML, 조회 연습|
+| 01월 03일 | | |
 
-
+#### *개인 공부*
 
 
