@@ -43,7 +43,12 @@
 | 12월 31일 | scott_1231<br><br><br>angel_1231<br><br> | JOIN - 동등 조인(INNER JOIN)<br>내장함수 - DECODE<br><br>Sequence(시퀀스) / DDL - 테이블 생성, DROP / 제약조건  <br>DML - INSERT, UPDATE, DELETE / JOIN - 동등 조인, 외부 조인 |
 | 01월 01일 | 새해 | 휴일 |
 | 01월 02일 | angel_0102<br> angel_plsql<br>mysql_db생성<br>mysql_root_0102<br>mysql_root_테이블생성<br> | JOIN 절 연습 <br> PL/SQL - 구문, IF문, Cursor, SQL로 CRUD <br> 연습용 DB 설정(MySQL 시작) <br>기초 명령어 및 함수<br>데이터 타입, 테이블 생성, DML, 조회 연습|
-| 01월 03일 | | |
+| 01월 03일 | mysql_0103<br><br> | DDL - alter<br>JOIN 절 연습 |
+
+##### + javawork
+|날짜|패키지|설명|
+|:---:|:---:|:---|
+| 01월 03일 | day0103db | DB와 연결 - Oracle & MySQL<br>DB 데이터 출력 - select, join, delete |
 
 #### *개인 공부*
 

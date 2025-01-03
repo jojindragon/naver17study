@@ -1,7 +1,6 @@
 package privateTest;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class Test {
 
@@ -18,6 +17,7 @@ public class Test {
 		int wom = today.get(Calendar.WEEK_OF_MONTH);
 		System.out.println("금년의 " + woy + "주차, 금월의 " + wom + "주차");
 
+		
 	}
 
 }
