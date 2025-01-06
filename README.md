@@ -35,7 +35,7 @@
 | MultiChat | | 1대다 실시간 채팅 구현 - JFrame, Swing, 소켓 이용 |
 
 ### *DATABASE*
-#### 4주차
+#### 4~5주차
 ##### + dbwork (.sql)
 |날짜|파일명|설명|
 |:---:|:---:|:---|
@@ -49,7 +49,8 @@
 |날짜|패키지|설명|
 |:---:|:---:|:---|
 | 01월 03일 | day0103db | DB와 연결 - Oracle & MySQL<br>DB 데이터 출력 - select, join, delete |
-
+| 01월 06일 | day0106db<br><br>db.connect | PreparedStatement를 이용한 DB 관리<br>Swing을 이용한 CRUD 예시<br>DB 연결 클래스 |
+| 01월 07일 | | |
 #### *개인 공부*
 
 

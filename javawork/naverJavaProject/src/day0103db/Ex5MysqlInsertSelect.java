@@ -161,7 +161,7 @@ public class Ex5MysqlInsertSelect {
 			int cnt = stmt.executeUpdate(sql);
 
 			if (cnt == 0) {
-				System.out.println(name + "님은 존재하지 않습니다.");
+				System.out.println("\"" + name + "\" 님은 존재하지 않습니다.");
 			} else {
 				System.out.println(cnt + "명의 데이터가 삭제되었습니다.");
 			}

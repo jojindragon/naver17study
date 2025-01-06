@@ -75,5 +75,12 @@ select pow(3, 2), mod(10, 3) from dual;
 -- least(num1, num2...): 최솟값 구하기
 select greatest(100, 32, 49, 56, 70), least(100, 32, 49, 56, 70) from dual; -- oracle에도 존재
 
-
+-- 연습용 테이블(0106)
+create table shop (
+	idx smallint auto_increment primary key,
+    sangpum varchar(30),
+    su smallint default 1,
+    danga int,
+    ipgoday datetime
+);
 
