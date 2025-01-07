@@ -50,7 +50,14 @@
 |:---:|:---:|:---|
 | 01월 03일 | day0103db | DB와 연결 - Oracle & MySQL<br>DB 데이터 출력 - select, join, delete |
 | 01월 06일 | day0106db<br><br>db.connect | PreparedStatement를 이용한 DB 관리<br>Swing을 이용한 CRUD 예시<br>DB 연결 클래스 |
-| 01월 07일 | | |
+| 01월 07일 | day0107db<br> | 메뉴등록&예약 시스템 |
+
+#### + webwork
+|날짜|폴더|설명|
+|:---:|:---:|:---|
+| 01월 07일 | day0107 | HTML - 기본 구조 및 태그<br>CSS - 속성 및 스타일 주기 |
+| 01월 08일 |  |  |
+
 #### *개인 공부*
 
 
