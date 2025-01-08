@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>격자모양 테이블</title>
+    <style>
+        table {
+            width: 400px;            
+        }
+        table td {
+            border-collapse: collapse;
+            border: inset 2px gray;
+            box-shadow: 2px 2px 2px gray;
+        }
+        table tr {
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 강의자료 Table 모양 그대로 만들기 -->
+    <table>
+        <tr>
+            <td rowspan="3" valign="top" bgcolor="cyan">일</td>
+            <td colspan="3" bgcolor="pink">이</td>
+        </tr>
+        <tr>
+            <td colspan="2" bgcolor="pink">삼</td>
+            <td rowspan="3" bgcolor="cyan" valign="bottom">사</td>
+        </tr>
+        <tr>
+            <td>오</td>
+            <td>육</td>
+        </tr>
+        <tr>
+            <td colspan="3" bgcolor="pink">칠</td>
+        </tr>
+    </table>
+</body>
+</html>

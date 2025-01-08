@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&display=swap" rel="stylesheet">
+    <title>가로메뉴 구현</title>
+</head>
+<style>
+    h3 {
+        color: palevioletred;
+        background-color: aqua;
+        font-size: 30px;
+        margin-left: 60px;
+        width: 500px;
+        text-align: center;
+        font-family: 'Nanum Brush Script';
+    }
+    /* hover - 커서가 위로 올라갔을 때의 스타일 적용 */
+    h3:hover {
+        color: blue;
+        background-color: pink;
+        text-shadow: 3px 3px 3px gray;
+        cursor: pointer; /* 커서 모양 디자인, pointer - 손가락 모양*/
+    }
+    /* active - 클릭 시 반응 */
+    h3:active {
+        background-color: black;
+        border: groove 5px gold;
+        cursor: crosshair; /* crosshair - 십자가*/
+    }
+
+    /* 가로방향으로 메뉴가 나오도록 스타일 적용 */
+    div.menu>ul>li {
+        list-style: none; /* li 표식 지우기 */
+        float: left; /* 모든 요소 가로 방향 나열(왼쪽 오른쪽 선택 가능) */
+
+        /* 각 요소 디자인 */
+        width: 100px; height: 40px;
+        border: solid 1px gray;
+        margin-left: 5px;  /* margin - 바깥쪽 여백 */
+        font-size: 20px;
+        text-align: center;
+        line-height: 40px;  /* 1줄의 경우: 행높이와 같으면 세로방향 정렬 */
+        border-radius: 20px;
+        background-color: #afeeee;
+        font-family: 'Nanum Pen Script';
+    }
+    div.menu>ul>li:hover {
+        color: white;
+        background-color: black;
+        box-shadow: 5px 5px 5px gray;
+    }
+
+    h1.one {
+        font-family: 'Playwrite AU SA';
+    }
+
+</style>
+
+<body>    
+    <h3>UL을 이용한 간단한 가로메뉴</h3>
+    <div class="menu">
+        <ul>
+            <li>Home</li>
+            <li>샵 소개</li>
+            <li>방명록</li>
+            <li>게시판</li>
+            <li>오시는 길</li>
+        </ul>
+    </div>
+    <br><br>
+    <h1 class="one">Have a Good Day</h1>
+</body>
+</html>

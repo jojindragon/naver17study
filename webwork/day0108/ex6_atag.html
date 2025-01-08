@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+    <title>a 태그</title>
+    <style>
+        /* body 내의 모든 태그 적용 */
+        body * {
+            font-family: 'Jua';
+        }
+
+        a:link {
+            color: black; /* 링크색 */
+            text-decoration: none; /* 링크 밑줄 없애기 */
+        }
+        /* visited -  방문했던 것 - herf를 기준으로 하기에 아무 naver나 들어가면 둘 다 바뀜 */
+        a:visited {
+            color: gray;
+            text-decoration: none;
+        }
+
+        a:hover {
+            font-family: 'Single Day';
+            color: blue;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>A Tag Study!</h2>
+    <div style="font-size: 20px;">
+        <!-- 클릭 시 주소로 이동동 -->
+        <a href="http://www.naver.com">Naver</a><br><br>
+        <!-- target 지정-->
+         <!-- _blank, _new: 신규 탭으로 이동 -->
+        <a href="http://www.naver.com" target="_blank">Naver</a><br><br>
+        <a href="http://m.nate.com" target="_new">Nate</a><br><br>
+
+        <a href="http://www.google.com">Google</a><br><br>
+    </div>
+    <div style="margin-top: 20px;">
+        <ul>
+            <li><h3>2024-12-11(화) 수업</h3></li>
+            <ol>
+                <li><a href="../day1211/ex1_test.html">예제</a></li>
+                <li><a href="../day1211/ex2_test.html">예제</a></li>
+            </ol>
+            <li><h3>2025-01-07(화) 수업</h3></li>
+            <ol>
+                <li><a href="../day0107/ex1_Tag.html">예제</a></li>
+                <li><a href="../day0107/ex2_style.html">예제</a></li>
+            </ol>
+            <li><h3>2025-01-08(수) 수업</h3></li>
+            <ol>
+                <li><a href="./ex1_classStyle.html">예제</a></li>
+                <li><a href="./ex2_image.html">예제</a></li>
+                <li><a href="./ex3_imagepre.html">예제</a></li>
+                <li><a href="./ex4_olul.html">예제</a></li>
+                <li><a href="./ex5_ul가로메뉴.html">예제</a></li>
+                <li><a href="./ex7_atageimg.html">예제</a></li>
+            </ol>
+        </ul>
+    </div>
+</body>
+</html>

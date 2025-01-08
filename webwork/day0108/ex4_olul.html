@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ol&ul 태그</title>
+</head>
+<body>
+    <h2>OL, UL Study</h2>
+    <h5>OL 태그: 순서있는 목록</h5>
+    <ol> <!-- 기본 값 1(타입이 1이면 1,2,3,4 목록 출력)-->
+        <li>Java</li>
+        <li>Spring</li>
+        <li>HTML</li>
+        <li>JavaScript</li>
+    </ol>
+    <hr>
+    <ol type="A"> <!-- 타입: A ABCD 출력(소문자는 abcd)-->
+        <li>Java</li>
+        <li>Spring</li>
+        <li>HTML</li>
+        <li>JavaScript</li>
+    </ol>
+    <hr>
+    <ol type="i"> <!-- 타입: I 그리스 숫자(소문자도 적용)-->
+        <li>Java</li>
+        <li>Spring</li>
+        <li>HTML</li>
+        <li>JavaScript</li>
+    </ol>
+    <hr>
+    <h5>UL 태그: 순서없는 목록</h5>
+    <ul> <!-- 기본 값 disc (채운 동그라미)-->
+        <li>장미꽃</li>
+        <li>안개꽃</li>
+        <li>국화</li>        
+    </ul>
+    <hr>
+    <ul type="square"> <!-- square: 채운 사각형-->
+        <li>장미꽃</li>
+        <li>안개꽃</li>
+        <li>국화</li>        
+    </ul>
+    <hr>
+    <ul type="circle"> <!-- circle (빈 동그라미)-->
+        <li>장미꽃</li>
+        <li>안개꽃</li>
+        <li>국화</li>        
+    </ul>
+    <hr>
+    <h5>큰제목&소제목</h5>    
+    <ol>
+        <li><h3>Java</h3></li>
+        <ol type="a">
+            <li>자료형</li>
+            <li>연산자</li>
+            <li>제어문</li>
+        </ol>
+    </ol>
+    <hr>
+    <ol>
+        <li><h3>HTML</h3></li>
+        <ul> <!-- 소제목 default: circle -->
+            <li>h태그</li>
+            <li>img태그</li>
+            <li>table태그</li>
+        </ul>
+    </ol>
+</body>
+</html>

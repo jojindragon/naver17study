@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Style</title>
+    <style>
+        /*범용 클래스 - 모든 태그에 적용: .클래스명*/
+        .happy {
+            font-size: 20px;
+            background-color: pink;
+            border: solid 5px green;
+        }
+
+        /*특정 태그만 사용 가능한 클래스*/
+        div.hello {
+            color: orange;
+            background-color: cyan;
+            font-size: 2em;
+            width: 300px;
+        }
+
+        /*id: #으로 표현, 고유이름이므로 앞에 태그는 필요 없다.*/
+        #one {
+            border: dotted 2px gray; /* dotted: 점점이 */
+            background-color: #fef;
+        }
+
+        #two {
+            border: dashed 2px green; /* dashed: 점선이 */
+            color: blue;
+            background-color: #ccf;
+        }
+
+        /* > : 바로 아래 태그, 공백: 모든 자식태그  */
+        div.java > div {
+            font-family: 'Impact';
+            color: red;
+        }
+
+        div.java > b {
+            font-size: 2em;
+            font-style: italic;
+        }
+
+    </style>
+
+</head>
+<body>
+    <span style="color: blueviolet;" class="happy">5주차 수요일 수업</span>
+    <br><br>
+    <b class="happy">Happy Day!</b>
+    <br><br>
+    <u class="happy">Under Line</u>
+    <br><br>
+
+    <div class="hello">Hello!</div>
+    <b class="hello">Hello!</b> <!-- hello 클래스 적용 X -->
+    <div class="hello happy">안녕.</div> <!-- 여러 클래스 적용 시 공백 구분-->
+    <div>HTML study!!</div>
+    <hr>
+
+    <div id="one">Div Class ID One</div> <!-- ID - 하나에만 주는 것이 바람직, for문 등에 넣으면 이상한 결과 -->
+    <div class="java">
+        Div Class Java
+        <div id="two"> <!-- 아이디가 있어서 우선 적용 -->
+            Div ID Two
+        </div>
+        <div>
+            div class java인 아래태그 div
+        </div>
+        <b> div class java의 아래태그 b </b>
+    </div>    
+    <br>
+
+
+
+</body>
+</html>

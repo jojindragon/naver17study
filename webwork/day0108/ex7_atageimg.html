@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+    <title>이미지로 페이지 이동</title>
+    <style>
+        body {
+            font-family: 'Single Day';
+        }
+        img {
+            width: 100px; height: 100px;
+            border-radius: 100px;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        /* figure 클래스 내의 figure 태그와 그 내부의 figcaption */
+        div.figure>marquee>figure {
+            float: left;
+            width: 100px;
+        }
+        div.figure figure>figcaption {
+            text-align: center;
+        } 
+
+    </style>
+
+</head>
+<body>
+    <marquee behavior="slide">Have a <mark>Nice</mark> Day!!</marquee><!-- html4에서 많이 쓰던 태그 - 지금은 안 쓴다. -->
+    <!-- behavior - default: scroll, 이외: slide, alternate 
+         direction - default: left
+     -->
+    <marquee width="400">Hey! it's me. Goku!</marquee>
+    <marquee width="400" behavior="alternate">Hey! it's me. Goku!</marquee>
+    <marquee width="400" direction="right">Hey! it's me. Goku!</marquee>
+    <hr>
+    <div>
+        <a href="http://www.naver.com" target="_blank">
+            <img src="../photo/K-052.png"><b>Naver</b>
+        </a>
+    </div>
+
+    <div>
+        <!-- 위와 다르게 글과 사진을 한 몸으로 만들 수 있다. - figure, figcaption -->
+        <a href="http://www.nate.com" target="_blank">
+            <figure>
+                <img src="../photo/K-042.png">
+                <figcaption style="padding-left: 40px;">
+                    <b>Nate</b>
+                </figcaption>
+            </figure>
+        </a>
+        <a href="../photo/K-049.png">
+            <figure>
+                <img src="../photo/K-049.png">
+                <figcaption>
+                    <b>예쁜 유리잔</b>
+                </figcaption>
+            </figure>
+        </a>
+    </div>
+
+    <hr>
+    <div class="figure">
+        <marquee>
+            <figure>
+                <img src="../photo/17.jpg">
+                <figcaption>
+                    <b>신민아</b>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../photo/18.jpg">
+                <figcaption>
+                    <b>신세경</b>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="../photo/15.jpg">
+                <figcaption>
+                    <b>설현</b>
+                </figcaption>
+            </figure>
+        </marquee>
+    </div>
+</body>
+</html>

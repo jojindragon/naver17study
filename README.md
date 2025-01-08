@@ -56,8 +56,9 @@
 |날짜|폴더|설명|
 |:---:|:---:|:---|
 | 01월 07일 | day0107 | HTML - 기본 구조 및 태그<br>CSS - 속성 및 스타일 주기 |
-| 01월 08일 |  |  |
+| 01월 08일 | day0108 | HTML&CSS - Class&Id<br>태그: img, ul&ol, a, figure&figcaption, marquee, iframe <br>Google 폰트 가져오기<br> 테이블(table) |
 
 #### *개인 공부*
-
-
+|위치|폴더|설명|
+|:---:|:---:|:---|
+| webwork | Tailwindcss 공부 | 당일 수업 tailwindcss를 적용해 구현 |
