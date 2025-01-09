@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition - 메뉴 만들기</title>
+
+    <style>
+        body * {
+            font-family: 'Comic Sans MS';
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        nav {
+            display: block;
+        }
+
+        /* menu1 - 효과지정 포함 */
+        .menu1 li {
+            background-color: #999;
+            color: #fff;
+            width: 85px; height: 33px;
+            display: block;
+            margin-bottom: 3px;
+            padding: 8px;
+            transition: width 1.5s; /* width에 1.5초 효과 지정 */
+        }
+        .menu1 li:hover {
+            color: #990;
+            letter-spacing: 3px; /* 글자 간 간격 */
+            width: 400px;
+        }
+
+        /* menu2 */
+        .menu2 {height: 100px;}
+        .menu2 li {
+            float: left;
+            color: yellow;
+            background-color: #cf1234;
+            margin-right: 3px;
+            width: 85px; height: 35px;
+            line-height: 35px;
+            text-align: center;
+            transition: height 1.2s;
+        }
+        .menu2 li:hover {
+            background-color: aquamarine;
+            height: 100px;
+            color: white;
+        }
+
+
+        /* menu3 */
+        .menu3 {height: 100px;}
+        .menu3 li {
+            float: left;
+            color: yellow;
+            background-color: mediumaquamarine;
+            margin-right: 3px;
+            width: 85px; height: 35px;
+            line-height: 35px;
+            text-align: center;
+            transform: rotate(0deg);
+            transition: all 1.2s;
+        }
+        .menu3 li:hover {
+            background-color: pink;
+            color: black;
+            transform: rotate(45deg);
+        }
+
+
+        /* menu4 */
+        #main_menu .menu4 li{
+            color: #333;
+            background-color: #9c0;
+            display: block;
+            width: 150px;
+            text-align: center;
+            padding: 5px;
+            transition: all 0.6s;
+        }
+        #main_menu .menu4 li:hover {
+            color: #cf1234;
+            background-color: burlywood;
+            /* bg 이미지 no-repeat: 반복 X*/
+            background: url(../mycar/mycar1.png) no-repeat right center;
+            background-size: 30px 30px; 
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+<body>
+    <ul class="menu1">
+        <li>Menu01</li>
+        <li>Menu02</li>
+        <li>Menu03</li>
+        <li>Menu04</li>
+        <li>Menu05</li>
+    </ul>
+    <!-- float: left 속성 해제 -->
+    <div style="clear: both;"></div>
+    <ul class="menu2">
+        <li>Menu01</li>
+        <li>Menu02</li>
+        <li>Menu03</li>
+        <li>Menu04</li>
+        <li>Menu05</li>
+    </ul>
+    <!-- float: left 속성 해제 -->
+    <div style="clear: both;"></div>
+    <ul class="menu3">
+        <li>Menu01</li>
+        <li>Menu02</li>
+        <li>Menu03</li>
+        <li>Menu04</li>
+        <li>Menu05</li>
+    </ul>
+    <!-- float: left 속성 해제 -->
+    <div style="clear: both;"></div>
+    <nav id="main_menu">
+        <ul class="menu4">
+            <li>Menu01</li>
+            <li>Menu02</li>
+            <li>Menu03</li>
+            <li>Menu04</li>
+            <li>Menu05</li>
+        </ul>
+    </nav>
+</body>
+</html>

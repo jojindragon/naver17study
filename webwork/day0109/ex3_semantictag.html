@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+    <title>시맨틱 태그 연습</title>
+
+    <style>
+        * {
+            /* 크기 안에 margin, padding을 포함해서 계산 
+                일관된 크기로 지정할 경우 많이 사용하는 속성
+            */
+            
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #222;
+            height: 100%; margin: 0;
+        }
+
+        #container {
+            position: absolute;
+            left: 50%;
+            margin-left: -450px;
+            width: 900px; height: 100%;
+            background-color: #fff;
+        }
+
+        aside {
+            float: left; /* 사이드바가 왼쪽 */
+            width: 250px;
+            padding: 20px 50px;
+            height: 100%;
+            background-color: rgb(204, 204, 204);
+        }
+        aside>div>img {
+            width: 120px; height: 120px;
+            border: 1px solid gray;
+            border-radius: 100px;
+        }
+
+        #main {
+            float: right; /* 메인이 오른쪽 */
+            padding: 20px;
+            margin: 10px;
+        }
+
+        table {
+            width: 70%;
+            border: solid 1px #222;
+            border-collapse: collapse;
+        }
+        thead {
+            background: #eee;
+        }
+        th, td {
+            border: solid 1px #ccc;
+            padding: 5px;
+            font-size: 0.9em;
+            font-family: 'Gaegu';
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- 시맨틱 태그를 이용해 이력서(자기소개) 만들기 -->
+    <div id="container">
+        <!-- 사이드바 -->
+        <aside>
+            <div id="namecard">
+                <img src="../photo/11.jpg">
+                <h3>Kyeonghee Kim</h3>
+                <p>오늘을 즐겁게 살자</p>
+            </div>
+
+            <div id="detail">
+                <p>Seoul, Korea</p>
+                <p>khee111@gmail.com</p>
+            </div>
+
+            <div id="sns">
+                <h2>SNS</h2>
+                <ul>
+                    <li><a href="https://www.facebook.com">facebook</a></li>
+                    <li><a href="https://www.twitter.com">twitter</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 메인 -->
+        <div id="main">
+            <!-- 자기소개 -->
+            <section>
+                <h3 class="subtitle">Profile</h3>
+                <p><mark>프런트 앤드 웹 기술(Front-end WebTech)</mark>에 관심이 많아 프로젝트 개발중입니다<br> 
+                    현재는 스타트업에서 백앤드 웹개발 중입니다</p>
+            </section>
+
+            <!-- 경력 -->
+            <section>
+                <h3 class="subtitle">Employment History</h3>
+                <ul>
+                    <li>백앤드 개발
+                         <ul>
+                            <li>자바 프로젝트</li>
+                            <li>오라클 DataBase</li>
+                            <li>스프링 프로젝트 진행중</li>
+                         </ul>
+
+                    </li>
+                    <li>앱디자인
+                        <ul>
+                            <li>Css</li>
+                            <li>Html</li>
+                            <li>앱디자인 프로젝트 참여중</li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 학력 -->
+            <section>
+                <h3 class="subtitle">Education</h3>
+                <table>
+                    <caption><b>학력사항</b></caption>
+                     <thead>
+                        <tr>
+                            <th>출신학교</th>
+                            <th>전공</th>
+                            <th>기간</th>
+                            <th>구분</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                            <td>**대학교</td>
+                            <td>영어영문학과</td>
+                            <td>2015.3~2018.2</td>
+                            <td>졸업</td>
+                        </tr>
+                        <tr>
+                            <td>***고등학교</td>
+                            <td>_</td>
+                            <td>2012.03~2000.02</td>
+                            <td>졸업</td>
+                        </tr>
+                     </tbody>
+                </table>
+            </section>
+        </div>
+
+    </div>
+
+</body>
+</html>

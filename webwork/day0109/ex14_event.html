@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body *{
+                font-family: 'Jua';
+            }
+        </style>
+    </head>
+    <body>
+        <h3 class="alert alert-danger">태그 내 직접 이벤트 설정</h3>
+        <!-- onmouseover == onmouseenter: 마우스 들어온 것
+             onmouseout == onmouseleaeve: 마우스 나가기
+          -->
+        <img src="../photo/K-038.png" width="200" border="2"
+        onmouseover="this.src='../photo/K-041.png'"
+        onmouseout="this.src='../photo/K-038.png'" />
+
+        &nbsp;&nbsp;
+        <img src="../photo/11.jpg" style="width: 150px; border: solid 5px orange;"
+        onmouseenter="this.style.borderColor='green'"
+        onmouseleave="this.style.borderColor='orange'" />
+        <br><br>
+        <button type="button" class="btn btn-success btn-sm"
+        onclick="alert('Click')">데이터 추가</button>
+        &nbsp;&nbsp;
+        <input type="button" value="데이터 삭제" class="btn btn-danger btn-sm"
+        onclick="alert(this.value)" />
+        <input type="button" value="데이터 수정" class="btn btn-info btn-sm"
+        onclick="hello('Hey it\'s me. Goku!')" />
+
+        <input type="button" value="기본버튼" onclick="change(this)" />
+
+        <!-- 손풀기 문제: '5+7은 12입니다'를 출력 -->
+        <input type="button" value="수학계산" onclick="add(5, 7)" />
+
+        <hr>
+        <script>
+            function hello(msg) {
+                alert(msg);
+            }
+
+            function change(inputButton) {
+                inputButton.style.backgroundColor = 'orange';
+                inputButton.style.color = 'blue';
+            }
+
+            function add(a, b) {
+                // es5
+                // alert(a+"+"+b+"은 "+(a+b)+"입니다.");
+
+                // es6 template literal - 템플릿 리터럴(`) - $로 계산 가능
+                alert(`${a}+${b}은 ${a+b} 입니다`);
+
+                // 변수 타입 알아보기
+                console.log(typeof(a), typeof(b));
+
+            }
+
+            for(var i=1; i<=10; i++) {
+                document.write(`<b>${i}</b>&nbsp;`);
+            }
+            document.write("<br>");
+            // 오늘 마지막 작업 - 여기서 number 폴더의 사진 출력
+            for(var i=0;i<10;i++) {
+                document.write(`<img src="../number/${i}.gif" />`);
+            }
+
+            document.write(`<h4 class="alert alert-danger">mycar도 width 으로 모두 출력</h4>`);
+            for(var i=1;i<=15;i++) {
+                document.write(
+                    `<img src="../mycar/mycar${i}.png" width="100" height="70"
+                    style="border: solid 3px green; margin: 3px;">`
+                );
+            }
+        </script>
+    </body>
+</html>

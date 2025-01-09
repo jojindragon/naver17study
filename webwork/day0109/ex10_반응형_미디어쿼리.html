@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일 시트로 반응형</title>
+
+    <!-- screen 너비에 따라 서로 다른 css 파일 가져오기 -->
+    <link rel="stylesheet" type="text/css" href="./style1.css"
+        media="all and (min-width:1024px)" />
+    <link rel="stylesheet" type="text/css" href="./style2.css"
+        media="all and (min-width:700px) and (max-width:1023px)" />
+    <link rel="stylesheet" type="text/css" href="./style3.css"
+        media="all and (max-width:699px)" />
+</head>
+<body>
+    <h1>Hello</h1>
+</body>
+</html>

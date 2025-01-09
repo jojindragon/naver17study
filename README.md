@@ -57,6 +57,7 @@
 |:---:|:---:|:---|
 | 01월 07일 | day0107 | HTML - 기본 구조 및 태그<br>CSS - 속성 및 스타일 주기 |
 | 01월 08일 | day0108 | HTML&CSS - Class&Id<br>태그: img, ul&ol, a, figure&figcaption, marquee, iframe <br>Google 폰트 가져오기<br> 테이블(table) |
+| 01월 09일 | day0109 | * HTML&CSS<br> - border 스타일, resize&overflow, transform, transition<br> - 반응형: 미디어 쿼리 만들기<br>- 시맨틱(Semantic) 태그, HTML5의 기본 폼 태그. Bootstrap5 태그 사용<br>* JavaScript<br> - 이벤트&이벤트 핸들러(onmouse, onclick)<br> JS 기본 - alert prompt confirm / console.log / document.write |
 
 #### *개인 공부*
 |위치|폴더|설명|

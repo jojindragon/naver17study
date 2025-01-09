@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<!--
+트랜지션(transition)은 자바스크립트를 사용하지 않고 CSS만 이용하여 애니메이션을 구현하는 방법 중 하나로, 
+특정 CSS 속성 값을 일정 시간 동안 변경되도록 할 수 있는 속성이다.
+
+transition-property은 트랜지션 이벤트를 적용할 CSS 속성을 지정하기 위해 사용되는 속성이다.
+기본값은 all으로, 모든 속성에 트랜지션 이벤트가 적용된다.
+
+transition-duration은 트랜지션 이벤트를 실행할 시간을 지정하기 위해 사용되는 속성이다.
+transition-delay는 트랜지션 이벤트를 바로 실행시키지 않고 지연시키고자 하는 경우에 사용하는 속성이다.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransForm</title>
+
+    <style>
+        div {
+            border: solid 1px #000;
+            width: 200px; height: 200px;
+            float: left;
+            margin: 20x;
+        }
+        div img {
+            width: 100px; height: 100px;
+        }
+
+        #img1 img {
+            transform: translate(50px, 30px); /* x,y 좌표만큼 이동 */
+        }
+
+        #img2 img {
+            transform: rotate(45deg); /* 45도만큼 회전 */
+        }
+
+        #img3 img {
+            transform: scale(2); /* n배 확대 */
+        }
+
+        #img4 img {
+            transform: skew(30deg, 40deg); /* x, y 방향으로 경사변형 주기 - x 30도, y 40도 */
+        }
+        /* 16진수나 color 지정 외 색 주기 */
+        #img1 {
+            background: rgb(10, 189, 9);
+        }
+        #img2 {
+            background: rgba(10, 189, 9, 0.5); /* alpha: 0~1의 실수 */
+        }
+        #img3 {
+            background: rgba(10, 189, 9, 0.2);
+        }
+        #img4 {
+            background: rgba(171, 104, 189, 0.5);
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="img1">
+        <img src="../photo/12.jpg">
+    </div>
+    <div id="img2">
+        <img src="../photo/12.jpg">
+    </div>
+    <div id="img3">
+        <img src="../photo/12.jpg">
+    </div>
+    <div id="img4">
+        <img src="../photo/12.jpg">
+    </div>
+</body>
+</html>

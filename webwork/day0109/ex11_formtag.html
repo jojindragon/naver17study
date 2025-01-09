@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FormTag</title>
+    <style>
+      table {
+        width: 400px;
+        border: groove 5px gray;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        border: solid 1px gray;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>HTML5 FormTage 들</h2>
+    <table>
+      <tr>
+        <th widh="100">text</th>
+        <td>
+          <!-- input: 사용자 입력칸 -->
+          <input type="text" value="Hello" />
+        </td>
+      </tr>
+      <tr>
+        <th>password</th>
+        <td>
+          <input type="password" value="Hello" />
+        </td>
+      </tr>
+      <tr>
+        <th>checkbox</th>
+        <td>
+          <!-- label 내에 넣으면 글자에도 반응 -->
+          <label><input type="checkbox" />운전면허</label>
+          &nbsp;&nbsp;&nbsp;
+          <label><input type="checkbox" checked />운전면허</label>
+        </td>
+      </tr>
+      <tr>
+        <!-- radio: 같은 그룹 - name이 같음 -->
+        <th>radio</th>
+        <td>
+          <label>
+            <input type="radio" value="man" name="gender" checked />남자
+          </label>
+          <label>
+            <input type="radio" value="woman" name="gender" />여자
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <!-- 문자입력 금지 - 숫자만 -->
+        <th>number</th>
+        <td>
+          <input type="number" value="10" min="5" max="20" step="2" />
+        </td>
+      </tr>
+      <tr>
+        <!-- 색상 선택 -->
+        <th>color</th>
+        <td>
+          <input type="color" value="#ccffff" />
+        </td>
+      </tr>
+      <tr>
+        <th>date</th>
+        <td>
+          <input type="date" value="2025-01-09" />
+          &nbsp;
+          <input type="datetime-local" value="2025-01-09 13:00" />
+        </td>
+      </tr>
+      <tr>
+        <th>button</th>
+        <td>
+          <input type="button" value="OK" />
+          &nbsp;&nbsp;
+          <button type="button">Cancel</button>
+        </td>
+      </tr>
+      <tr>
+        <th>submit(폼단위 전송)</th>
+        <td>
+          <input type="submit" value="전송" />
+          &nbsp;
+          <button type="button">전송</button>
+          &nbsp;
+          <!-- submit과 같은 기능 이미지로 -->
+          <input type="image" src="../mycar/mycar12.png" width="70px">
+        </td>
+      </tr>
+      <tr>
+        <th>select</th>
+        <td>
+          <select>
+            <option>java</option>
+            <option selected>html5</option>
+            <option>javascript</option>
+            <option>springboot</option>
+            <option>oracle</option>
+          </select>
+          &nbsp;
+          <select>
+            <option selected disabled hidden>도시선택</option> <!-- 제목 선택 안되게 -->
+            <option>서울</option>
+            <option>성남</option>
+            <option>용인시</option>
+            <option>제주도</option>
+            <option>부산</option>
+          </select>
+          &nbsp;
+          <select size="3"> <!-- 선택지 1번에 보이는 정도 -->
+            <option>Java</option>
+            <option>Mysql</option>
+            <option>Spring</option>            
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>progress</th>
+        <td>
+          <progress value="50" max="100"></progress>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

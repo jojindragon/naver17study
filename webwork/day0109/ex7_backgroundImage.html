@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뒷배경이미지(background-image)</title>
+    <style>
+        div {
+            width: 300px; height: 300px;
+            border: solid 1px black;
+            margin: 10px;
+            float: left;
+        }
+
+        #one {
+            background-image: url(../mycar/mycar13.png);
+            background-size: 50px 50px;
+            background-repeat: no-repeat; /* 기본값: repeat */
+            background-position: right bottom;
+        }
+
+        #two {
+            background: url(../mycar/mycar7.png);
+            background-size: 200px 170px;
+        }
+
+        #three {
+            background: url(../mycar/mycar7.png) center center;
+            background-size: cover; /* cover에 맞게 들어감 - 일부분 잘림 */
+            /* 이미지가 더 커도 주어진 영역을 전부 덮히도록 맞춰준다 */
+        }
+
+        #four {
+            background: url(../mycar/mycar7.png) no-repeat center center;
+            background-size: contain; 
+            /* 빈 공간이 생겨도 이미지 전체가 나오게 해주기 - 비율 유지 */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+</body>
+</html>
