@@ -4,37 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
-    <title>수업 정리본</title>
+    <title>Web 수업 목록</title>
     <style>
-        div.content {
+        body * {
             font-family: 'Caveat';
+            
+        }
+        @media all and (max-width: 699px) {            
+            h2 {
+                margin-left: 150px;
+            }
+        }
+
+        @media (min-width: 700px) and (max-width: 959px) {
+            h2 {
+                margin-left: 200px;
+            }
+        }
+        div.content>ul>div {
+            width: 30%; height: 180px;
+            float: left;
+            margin-top: 10px;
+            margin-right: 30px;
+            background-color: lightcyan;
+            overflow-y: scroll;
+            
+        }
+        div.content>ul>div::-webkit-scrollbar {
+            width: 1px;
+            display: none;
+        }
+        div.content a {
+            color: black;
+            text-decoration: none;
+            font-size: 0.8em;
+        }
+        div.content>ul>div>li {
+            text-align: center;
+        }
+        div.content>ul>div>ol{
+            padding-inline-start: 28px;
+                        
         }
     </style>
 </head>
 <body>
+    <h2>HTML & CSS & JavaScript</h2>
     <div class="content">
         <ul>
+        <div>
             <li><h3>2024-12-11(화) 수업</h3></li>
             <ol>
-                <li><a href="./day1211/ex1_test.html">예제</a></li>
-                <li><a href="./day1211/ex2_test.html">예제</a></li>
+                <li><a href="./day1211/ex1_test.html">html 시험I</a></li>
+                <li><a href="./day1211/ex2_test.html">html 시험II</a></li>
             </ol>
+        </div>
+        <div>
             <li><h3>2025-01-07(화) 수업</h3></li>
             <ol>
-                <li><a href="./day0107/ex1_Tag.html">예제</a></li>
-                <li><a href="./day0107/ex2_style.html">예제</a></li>
+                <li><a href="./day0107/ex1_Tag.html">Tag 예제</a></li>
+                <li><a href="./day0107/ex2_style.html">CSS style 예제</a></li>
             </ol>
+        </div>
+        <div>
             <li><h3>2025-01-08(수) 수업</h3></li>
             <ol>
-                <li><a href="./day0108/ex1_classStyle.html">예제</a></li>
-                <li><a href="./day0108/ex2_image.html">예제</a></li>
-                <li><a href="./day0108/ex3_imagepre.html">예제</a></li>
-                <li><a href="./day0108/ex4_olul.html">예제</a></li>
-                <li><a href="./day0108/ex6_atag.html">예제</a></li>
-                <li><a href="./day0108/ex7_atageimg.html">예제</a></li>
-                <li><a href="./day0108/ex8_iframe.html">예제</a></li>
-                <li><a href="./day0108/ex9_table.html">예제</a></li>
+                <li><a href="./day0108/ex1_classStyle.html">class 예제</a></li>
+                <li><a href="./day0108/ex2_image.html">img 예제</a></li>
+                <li><a href="./day0108/ex3_imagepre.html">imgaepre</a></li>
+                <li><a href="./day0108/ex4_olul.html">ol & ul</a></li>
+                <li><a href="./day0108/ex5_ul가로메뉴.html">ul Menu</a></li>
+                <li><a href="./day0108/ex6_atag.html">a tag</a></li>
+                <li><a href="./day0108/ex7_atageimg.html">a & img</a></li>
+                <li><a href="./day0108/ex8_iframe.html">iframe</a></li>
+                <li><a href="./day0108/ex9_table.html">Table I</a></li>
+                <li><a href="./day0108/ex10_table.html">Table II</a></li>
+                <li><a href="./day0108/ex11_table.html">Table III</a></li>
+                <li><a href="./day0108/ex12_table.html">Table IV</a></li>
             </ol>
+        </div>
+        <div>
+            <li><h3>2025-01-09(목) 수업</h3></li>
+            <ol>
+                <li><a href="./day0109/ex1_borderstyle.html">border</a></li>
+                <li><a href="./day0109/ex2_resize.html">resize</a></li>
+                <li><a href="./day0109/ex3_semantictag.html">Semantic Tag</a></li>
+                <li><a href="./day0109/ex4_transform.html">transform 예제</a></li>
+                <li><a href="./day0109/ex5_transition.html">transition 예제</a></li>
+                <li><a href="./day0109/ex6_transitionmenu.html">transition Menu</a></li>
+                <li><a href="./day0109/ex7_backgroundImage.html">배경 이미지</a></li>
+                <li><a href="./day0109/ex8_반응형_가변.html">반응형 - 최대크기</a></li>
+                <li><a href="./day0109/ex9_반응형_미디어쿼리.html">반응형 예제I</a></li>
+                <li><a href="./day0109/ex10_반응형_미디어쿼리.html">반응형 예제II</a></li>
+                <li><a href="./day0109/ex11_formtag.html">Form Tag</a></li>
+                <li><a href="./day0109/ex12_bootstrap.html">bootstrap 디자인I</a></li>
+                <li><a href="./day0109/ex13_bootstrap.html">bootstrap 디자인II</a></li>
+                <li><a href="./day0109/ex14_event.html">JS 맛보기I</a></li>
+                <li><a href="./day0109/ex15_alertconfirm.html">JS 맛보기II</a></li>
+            </ol>
+        </div>
+        <div>
+            <li><h3>2025-01-10(금) 수업</h3></li>
+            <ol>
+                <li><a href="./day0110/ex1_var_let.html">JS 변수</a></li>
+                <li><a href="./day0110/ex2_for.html">JS for 반복문</a></li>
+                <li><a href="./day0110/ex3_type.html">JS 변수 타입</a></li>
+                <li><a href="./day0110/ex4_속성변경.html">속성 변경 I</a></li>
+                <li><a href="./day0110/ex5_속성변경.html">속성 변경 II</a></li>
+                <li><a href="./day0110/ex6_글자속성변경.html">속성 변경 III</a></li>
+                <li><a href="./day0110/ex7_selectevent.html">select Event I</a></li>
+                <li><a href="./day0110/ex8.innerHTML.html">innerHTML</a></li>
+                <li><a href="./day0110/ex9_class적용.html">JS로 class 적용</a></li>
+                <li><a href="./day0110/ex10_array.html">배열(Array)</a></li>
+                <li><a href="./day0110/ex11_전체구구단출력문제.html">구구단출력</a></li>
+            </ol>
+        </div>
+        <div>
+            <li><h3>2025-01-13(월) 수업</h3></li>
+            <ol>
+                <li><a href="./day0113/ex1_querySelector.html">querySelector()</a></li>
+                <li><a href="./day0113/ex2_selectevent.html">select Event II</a></li>
+                <li><a href="./day0113/ex3_inputTag.html">input 값 가져오기</a></li>
+                <li><a href="./day0113/ex4_숫자맞추기.html">숫자 맞추기 문제</a></li>
+                <li><a href="./day0113/ex5_querySelectorAll.html">querySelectorAll()</a></li>
+                <li><a href="./day0113/ex6_elements.html">Elements</a></li>
+                <li><a href="./day0113/ex7_js파일분리.html">JS 파일 분리 예제</a></li>
+                <li><a href="./day0113/ex8_이차원배열.html">JS 이차원 배열</a></li>
+                <li><a href="./day0113/ex9_timer.html">setTimeout()</a></li>
+                <li><a href="./day0113/ex10_디지털시계.html">setTimeout()</a>디지털 시계</li>
+                <li><a href="./day0113/ex11_로또.html">setTimeout()</a>로또</li>
+            </ol>
+        </div>
         </ul>
     </div>    
 </body>

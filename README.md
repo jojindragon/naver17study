@@ -59,6 +59,7 @@
 | 01월 08일 | day0108 | HTML&CSS - Class&Id<br>태그: img, ul&ol, a, figure&figcaption, marquee, iframe <br>Google 폰트 가져오기<br> 테이블(table) |
 | 01월 09일 | day0109 | * HTML&CSS<br> - border 스타일, resize&overflow, transform, transition<br> - 반응형: 미디어 쿼리 만들기<br>- 시맨틱(Semantic) 태그, HTML5의 기본 폼 태그. Bootstrap5 태그 사용<br>* JavaScript<br> - 이벤트&이벤트 핸들러(onmouse, onclick)<br> JS 기본 - alert prompt confirm / console.log / document.write |
 | 01월 10일 | day0110  | 블록 범위 변수 - let var const<br>반복문<br>변수 타입(type)<br>이벤트를 통한 여러 속성 변경<br>select이벤트 - onchange<br>innerHTML<br>클래스(class) 적용 연습<br>배열(array)<br>구구단 출력 |
+| 01월 10일 | day0113  | querySelect() & querySelecAll()<br>select 이벤트, input 값 가져오기 <br>랜덤 값, 이차원 배열 <br> elements 요소 가져오기<br> time 내장함수<br> 디지털 시계 및 로또 구현 |
 
 #### *개인 공부*
 |위치|폴더|설명|

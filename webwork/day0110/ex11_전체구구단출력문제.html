@@ -14,7 +14,40 @@
     </head>
     <body>
         <h4 class="alert alert-danger">문제: table을 이용해서 2~9단 전체 구구단 출력</h4>
-        <script>            
+        <table class="table table-bordered" style="width: 95%;">
+            <caption align="top"><h5>[구구단]</h5></caption>
+            <thead>
+                <tr align="center">
+                    <script>
+                        for(let dan=2; dan<=9;dan++) {
+                        document.write(`
+                            <td style="background-color: orange;" align="center">
+                                <b>${dan}단</b>
+                            </td>`
+                        );
+                        }                        
+                    </script>
+                </tr>
+            </thead>
+            <tbody>
+                <script>
+                    let s= "";
+                    for(let i=1;i<=9;i++) {
+                        s+=`<tr align="center">`;
+                        for(let dan = 2; dan<=9; dan++) {
+                            s+=`
+                            <td>
+                            ${dan}*${i} = ${dan*i}
+                            </td>
+                            `;
+                        }
+                        s+=`</tr>`;
+                    }
+                    document.write(s);
+                </script>
+            </tbody>
+        </table>
+        <!-- <script>            
             let s = `<table class="table table-bordered" style="width: 900px;"><thead><tr>`;
             
             for(let dan=2; dan<=9;dan++) {
@@ -40,6 +73,6 @@
 
             s+="</tbody></table>";
             document.write(s);
-        </script>
+        </script> -->
     </body>
 </html>
