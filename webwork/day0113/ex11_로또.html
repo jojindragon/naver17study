@@ -16,7 +16,7 @@
                 border: solid 3px gray;
                 border-radius: 30px;
                 padding: 17px 20px;
-                width: 650px; height: 150px;
+                width: 620px; height: 120px;
             }
             .mylotto>.lotto {
                 float: left;
@@ -31,7 +31,16 @@
             }
 
             .mylotto>.bonus {
-                margin-left: 50px;
+                margin-left: 25px;
+            }
+
+            .mylotto>.text >.txt {
+                float: left;
+                width: 60px; height: 60px;
+                line-height: 60px;
+                text-align: center;
+                margin-right: 35px;
+                margin-left: 190px;
             }
         </style>
 
@@ -45,8 +54,10 @@
                 lotto[5].style.backgroundColor = "mediumaquamarine";
                 lotto[6].style.backgroundColor = "white";
 
+                let cnt = 0;
                 // 버튼 이벤트
                 document.querySelector("#btnlotto").onclick=()=> {
+                    cnt++;
                     // 배열 선언
                     let num = new Array(7);
 
@@ -76,13 +87,15 @@
                     for(let i=0; i<lotto.length;i++) {
                         lotto[i].innerHTML = num[i];
                     }
+
+                    document.querySelector("div.mydate>h5>b.num").innerHTML = `${cnt}`;
                 };
             };
         </script>
     </head>
     <body>
         <div style="margin: 30px 100px;" class="mydate">
-            <h5><b style="color: red;">1234</b>회 로또 당첨</h5>
+            <h5><b style="color: red;" class="num">0</b>회 로또 당첨</h5>
             <script>
                 let date = new Date();
                 let a = date.getDay();
@@ -96,17 +109,18 @@
             </script>
         </div>
         <div class="mylotto">
-            <div>당첨</div>
+            
             <div class="lotto">?</div>
             <div class="lotto">?</div>
             <div class="lotto">?</div>
             <div class="lotto">?</div>
             <div class="lotto">?</div>            
-            <div class="lotto">?</div>
-            <div>보너스</div>
+            <div class="lotto">?</div>            
             <div class="lotto bonus">?</div>
-            
-            
+            <div class="text">
+                <div class="txt">당첨</div>
+                <div class="txt">보너스</div>    
+            </div>
         </div>
         <button type="button" class="btn btn-success" id="btnlotto"
             style="margin: 20px 200px;">로또 숫자 구하기</button>
