@@ -35,7 +35,7 @@
 | MultiChat | | 1대다 실시간 채팅 구현 - JFrame, Swing, 소켓 이용 |
 
 ### *DATABASE*
-#### 4~5주차
+#### 4~6주차
 ##### + dbwork (.sql)
 |날짜|파일명|설명|
 |:---:|:---:|:---|
@@ -61,7 +61,8 @@
 | 01월 10일 | day0110  | 블록 범위 변수 - let var const<br>반복문<br>변수 타입(type)<br>이벤트를 통한 여러 속성 변경<br>select이벤트 - onchange<br>innerHTML<br>클래스(class) 적용 연습<br>배열(array)<br>구구단 출력 |
 | 01월 13일 | day0113  | querySelect() & querySelecAll()<br>select 이벤트, input 값 가져오기 <br>랜덤 값, 이차원 배열 <br> elements 요소 가져오기<br> time 내장함수<br> 디지털 시계 및 로또 구현 |
 | 01월 14일 | day0114  | JavaScript - Node 값과 요소 가져오기=> 사진선택 예제<br>달력 및 간단한 계산기 구현 <br> 이미지 갯수별로 테이블에 출력문제<br>CSS 배치 속성: flex, flex-direction, justify-content |
-| 01월 15일 | day0115  |  |
+| 01월 15일 | day0115  | HTML5 추가 기능: canvas 그리기 <br>localstorage<br>JS - slice, splice, map<br>+***jQuery***<br>- css & attr<br>- text(), html(), append(), after(), before()<br> - Event 주기 |
+| 01월 16일 | day0116  |  |
 
 #### *개인 공부*
 |위치|폴더|설명|
