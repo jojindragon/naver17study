@@ -30,35 +30,35 @@
     </caption>
 </div>
 <script>
-    /* 문제1
-        - .largephoto의 위치를 left:100px, top: 300px, border: inset 10px gold 로 변경
-     */
-    $("img.largephoto").css({
-       "position": "absolute",
-       "left": "100px",
-       "top": "300px",
-       "border": "inset 10px gold"
-    });
-    
-    /* 문제2
-        - .shop에 마우스를 올리면 사진을 추출해 .largephoto의 사진을 변경
-     */
-    $(".shop").bind({
-        mouseover:function() {
-            $(".largephoto").attr("src", $(this).attr("src"));
-        },
-        mouseout:function() {
-            $(".largephoto").attr("src", "");
-        },
-    });
-    
-    /* 문제3
-        - .largephoto에 마우스를 올리면 해당 이미지 아래에 "안녕하세요!!"라는 메시지를 추가
-     */
-    $(document).on("mouseover", ".largephoto", function() {
-        let s = `<b>안녕하세요!!!</b>`;
-        $(".largephoto").after(s);
-    });
+/* 문제1
+    - .largephoto의 위치를 left:100px, top: 300px, border: inset 10px gold 로 변경
+ */
+$("img.largephoto").css({
+   position: "absolute",
+   left: "100px",
+   top: "300px",
+   border: "inset 10px gold"
+});
+
+/* 문제2
+    - .shop에 마우스를 올리면 사진을 추출해 .largephoto의 사진을 변경
+ */
+$(".shop").bind({
+    mouseover:function() {
+        $(".largephoto").attr("src", $(this).attr("src"));
+    },
+    mouseout:function() {
+        $(".largephoto").attr("src", "");
+    },
+});
+
+/* 문제3
+    - .largephoto에 마우스를 올리면 해당 이미지 아래에 "안녕하세요!!"라는 메시지를 추가
+ */
+$(document).on("mouseover", ".largephoto", function() {
+    let s = `<h6><b>안녕하세요!!!</b></h6>`;
+    $(".largephoto").after(s);
+});
 </script>
 </body>
 </html>
