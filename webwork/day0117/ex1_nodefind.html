@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcamp17-502 study</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<style>
+body *{
+    font-family: 'Jua';
+}
+</style>
+</head>
+<body>
+<div class="a">
+    <h5>Hello #1</h5>
+    <img src="../mycar/mycar10.png" width="100" />
+</div>
+<div class="a">
+    <h5>Hello #2</h5>
+    <img src="../mycar/mycar3.png" width="100" />
+</div>
+<div class="a">
+    <h5>Hello #3</h5>
+    <img src="../mycar/mycar7.png" width="100" />
+</div>
+<hr>
+<h5 class="title">111</h5>
+<img src="" alt="사진 없음" class="mainphoto"
+ onerror="this.src='../food/11.jpg'" width="250" />
+</body>
+
+<script>
+$("div.a").css({
+    width: "200px",
+    height: "100px",
+    border: "solid 1px gray",
+    margin: "20px"
+});
+
+/* each() - 반복문: selector가 여러 개(배열)일 때 그 갯수만큼 반복 */
+$("div.a").each(function(idx, ele) {
+    let r=parseInt(Math.random()*256);
+    let g=parseInt(Math.random()*256);
+    let b=parseInt(Math.random()*256);
+
+    let color = `rgb(${r}, ${g}, ${b})`;
+    // $(this).css("background-color", color);
+    
+    /* ele 파라미터 - element 약자 이 selector의 요소를 가리킴 */
+    $(ele).css("background-color", color);
+});
+
+/* jQuery: 노드 찾기
+    next(): 다음 노드
+    prev(): 이전 노드
+    find 또는 children: 자식 노드
+    parent: 부모 노드
+    parents: 최상위 부모노드
+    siblings: 형제 노드
+ */
+
+/* div.a에서 mouseover 이벤트 구현 */
+$("div.a").mouseover(function() {
+    // 1. 배경색 얻어 h5.title 배경색을 넣기
+    let bcolor = $(this).css("background-color");    
+    $("h5.title").css("background-color", bcolor);
+
+    // 2. 하위 태그 중 h5의 text를 얻어서 h5.title에 넣기
+    // let msg = $(this).find("h5").text();
+    let msg = $(this).children("h5").text();
+    $("h5.title").text(msg);
+
+    // 3. 하위 태그 중 img의 src를 얻어서 img.mainphoto에 넣기
+    let imgsrc = $(this).find("img").attr("src");
+    $("img.mainphoto").attr("src", imgsrc);
+});
+
+/* 위 주석과 같은 동작을 div.a>img에서 구현 */
+$("div.a>img").mouseover(function(){
+    // 1. 부모의 배경색을 얻어 h5.title의 배경색으로 넣기
+    let bcolor = $(this).parent().css("background-color");
+    $("h5.title").css("background-color", bcolor);
+
+    // 2. 형제노드인 h5의 text를 얻어서 h5.title에 넣기
+    let msg = $(this).siblings().text();
+    $("h5.title").text(msg);
+
+    // 3. src를 얻어서 img.mainphoto에 넣기
+    let imgsrc = $(this).attr("src");
+    $("img.mainphoto").attr("src", imgsrc);
+});
+
+/* 이번에는 div.a>h5 기준 */
+$("div.a>h5").mouseover(function(){
+    // 1. 부모의 배경색을 얻어 h5.title의 배경색으로 넣기
+    let bcolor = $(this).parent().css("background-color");
+    $("h5.title").css("background-color", bcolor);
+
+    // 2. text를 얻어서 h5.title에 넣기
+    let msg = $(this).text();
+    $("h5.title").text(msg);
+
+    // 3. 형제노드인 img의 src를 얻어서 img.mainphoto에 넣기
+    let imgsrc = $(this).siblings().attr("src");
+    $("img.mainphoto").attr("src", imgsrc);
+});
+
+</script>
+</html>

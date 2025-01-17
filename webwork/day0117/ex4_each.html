@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcamp17-502 study</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<style>
+body *{
+    font-family: 'Jua';
+}
+
+div {
+    width: 300px; height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.line_0 {
+    border: solid 5px orange;
+    background-color: antiquewhite;
+}
+.line_1 {
+    border: dotted 5px magenta;
+    background-color: aquamarine;
+}
+.line_2 {
+    border: dashed 5px blueviolet;
+    background-color: chartreuse;
+}
+.line_3 {
+    border: double 5px palevioletred;
+    background-color: thistle;
+}
+.line_4 {
+    border: inset 5px blue;
+    background-color: rosybrown;
+}
+.line_5 {
+    border: groove 5px cornflowerblue;
+    background-color: mediumspringgreen;
+}
+</style>
+</head>
+<body>
+<h5 class="alert alert-info">selector 반복문 - each</h5>
+<div class="one"></div>
+<div class="one"></div>
+<div class="one"></div>
+<div class="one"></div>
+<div class="one"></div>
+<div class="one"></div>
+<hr>
+<div class="two"></div>
+<div class="two"></div>
+<div class="two"></div>
+<div class="two"></div>
+<div class="two"></div>
+<div class="two"></div>
+</body>
+
+<script>
+/* 첫번째 파라미터 idx - index 값 */
+$("div.one").each(function(idx, ele) {
+    $(this).html(`<b>${idx + 1}</b>`);
+    $(this).addClass(`line_${idx}`);
+});
+
+/* 두번째 파라미터 ele - element
+    arrow function 적용 => this를 못 쓴다.
+ */
+$("div.two").each((idx, ele) => {
+    // $(this).html(`<b>${idx + 1}</b>`); - 이건 arrow function인 경우 this가 없다.
+    $(ele).html(`<b>${idx + 1}</b>`);
+    $(ele).addClass("line_"+idx);
+});
+</script>
+</html>
