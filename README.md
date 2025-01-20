@@ -63,7 +63,10 @@
 | 01월 14일 | day0114  | JavaScript - Node 값과 요소 가져오기=> 사진선택 예제<br>달력 및 간단한 계산기 구현 <br> 이미지 갯수별로 테이블에 출력문제<br>CSS 배치 속성: flex, flex-direction, justify-content |
 | 01월 15일 | day0115  | HTML5 추가 기능: canvas 그리기 <br>localstorage<br>JS - slice, splice, map<br>+***jQuery***<br>- css & attr<br>- text(), html(), append(), after(), before()<br> - Event 주기 |
 | 01월 16일 | day0116  | +***jQuery***<br>class 삽입/제거<br>on() 사용 예제<br>select & input 박스 여러타입 이벤트 예제<br><br>+***BootStrap***<br>- OffCanvas<br> - Modal: 이미지 클릭 시 띄우기 |
-| 01월 17일 | day0117  |  |
+| 01월 17일 | day0117  | +***jQuery***<br>- node 찾기<br> - each 반복문, checkbox 값 체크된 것 반복<br> - 배열에 each문, JSON 형태의 배열 적용<br><br>+***BootStrap***<br>- icon  |
+| 01월 20일 | day0120  | +***jQuery***<br> - each 복습<br>- select값 val(), text()로 가져오기<br>- .animate()<br>- Effect: Basic&Sliding&Fading<br>- 응용 예제들 |
+| 01월 21일 | day0121  |  |
+| 01월 22일 | day0122  |  |
 
 #### *개인 공부*
 |위치|폴더|설명|

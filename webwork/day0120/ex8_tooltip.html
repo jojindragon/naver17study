@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitcamp17-502 study</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<style>
+body *{
+    font-family: 'Jua';
+}
+
+div.mytooltip {
+    position: absolute;
+    line-height: 1.5;
+    color: black;
+    width: 200px;
+    background-color: #f90;
+    border: solid 2px white;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 30px;
+    opacity: 0.8;
+    display: none;
+}
+
+ol.today li {
+    width: 80px;
+}
+
+</style>
+<script>
+$(function() {
+    /* 이벤트 1 */
+    $("a").bind({
+        mousemove: function(e) {
+            $("div.mytooltip").css({
+                left: e.pageX+"px",
+                top: e.pageY+"px"
+            });
+        },
+        mouseover: function(e) {
+            $("div.mytooltip").fadeIn('fast');
+            $("div.mytooltip").html(`
+                Java<br>HTML5<br>SpringBoot<br>MySQL<br>
+            `).css("background-color", "#f90");
+        },
+        mouseout: function(e) {
+            $("div.mytooltip").fadeOut('fast');
+        },
+    });
+
+    /* 이벤트 2 */
+    $("b.view").bind({
+        mousemove: function(e) {
+            $("div.mytooltip").css({
+                left: e.pageX+"px",
+                top: e.pageY+"px"
+            });
+        },
+        mouseover: function(e) {
+            let text = $(this).text();
+            let color = $(this).attr("color");
+            $("div.mytooltip").text(text).css("background-color", color);
+            $("div.mytooltip").fadeIn('slow');
+        },
+        mouseout: function(e) {
+            $("div.mytooltip").fadeOut('slow');
+        },
+    });
+
+    /* 이벤트 3 */
+    $("ol.today li").bind({
+        mousemove: function(e) {
+            $("div.mytooltip").css({
+                left: e.pageX+"px",
+                top: e.pageY+"px"
+            });
+        },
+        mouseover: function(e) {
+            let title = $(this).text();
+            let photo = $(this).attr("photo");
+            let s = `<h6>${title}</h6><img src="${photo}" width=100 border=1 />`;
+            $("div.mytooltip").html(s).css("text-align", "center");
+            $("div.mytooltip").show();
+        },
+        mouseout: function(e) {
+            $("div.mytooltip").hide();
+        },
+    });
+});
+</script>
+</head>
+<body>
+<div class="mytooltip">
+    Java<br>
+    HTML5<br>
+    SpringBoot<br>
+    MySQL<br>
+</div>
+<a style="font-size: 25px;cursor: pointer;">
+    [공식발표] 제주 유인수↔강원 원희도 맞트레이드 성사       
+</a>
+<hr>
+<pre style="font-size: 15px;">
+     제주SK가 강원FC에서 활약했던 <b class="view" color="red">'멀티 플레이어'</b> 유인수를 영입했고, 
+    강원FC는 제주가 보유했던 유망한 자원인 원희도를 품었다.
+
+     유인수는 광운대를 거쳐 2016년 <b class="view" color="yellow">FC도쿄(J1리그)</b>에서 프로 무대에 입성했다. 
+    2018년에는 J2리그의 아비스파 후쿠오카로 임대를 떠났다.
+    유인수는 2020시즌부터 2022시즌까지 성남FC와 김천상무에서 3시즌 동안 활약했다.
+    2022시즌에는 사이드백으로 변신해 새로운 성장 가능성까지 보여줬다.
+
+     발전을 거듭한 유인수는 2023시즌을 앞두고 강원에 합류했다.
+    강원에서도 윙백뿐만 아니라 2선 및 측면 지원까지 나서며 
+    K리그의 대표적인 <b class="view" color="lightgray">'유틸리티 플레이어'</b>로 자리매김했다.
+</pre>
+<hr>
+<ol class="today">
+    <li photo="../food/1.jpg">에그샌드위치</li>
+    <li photo="../food/11.jpg">맹고빙수</li>
+    <li photo="../food/2.jpg">닭꼬치</li>
+    <li photo="../mycar/mycar13.png">핑크자동차</li>
+    <li photo="../mycar/mycar11.png">노랑자동차</li>
+</ol>
+</body>
+</html>
