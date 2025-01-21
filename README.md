@@ -35,7 +35,7 @@
 | MultiChat | | 1대다 실시간 채팅 구현 - JFrame, Swing, 소켓 이용 |
 
 ### *DATABASE*
-#### 4~6주차
+#### 4~5주차
 ##### + dbwork (.sql)
 |날짜|파일명|설명|
 |:---:|:---:|:---|
@@ -52,7 +52,10 @@
 | 01월 06일 | day0106db<br><br>db.connect | PreparedStatement를 이용한 DB 관리<br>Swing을 이용한 CRUD 예시<br>DB 연결 클래스 |
 | 01월 07일 | day0107db<br> | 메뉴등록&예약 시스템 |
 
-#### + webwork
+
+### *HTML&CSS&JavaScript*
+#### 5~7주차
+##### + webwork
 |날짜|폴더|설명|
 |:---:|:---:|:---|
 | 01월 07일 | day0107 | HTML - 기본 구조 및 태그<br>CSS - 속성 및 스타일 주기 |
@@ -65,8 +68,19 @@
 | 01월 16일 | day0116  | +***jQuery***<br>class 삽입/제거<br>on() 사용 예제<br>select & input 박스 여러타입 이벤트 예제<br><br>+***BootStrap***<br>- OffCanvas<br> - Modal: 이미지 클릭 시 띄우기 |
 | 01월 17일 | day0117  | +***jQuery***<br>- node 찾기<br> - each 반복문, checkbox 값 체크된 것 반복<br> - 배열에 each문, JSON 형태의 배열 적용<br><br>+***BootStrap***<br>- icon  |
 | 01월 20일 | day0120  | +***jQuery***<br> - each 복습<br>- select값 val(), text()로 가져오기<br>- .animate()<br>- Effect: Basic&Sliding&Fading<br>- 응용 예제들 |
-| 01월 21일 | day0121  |  |
-| 01월 22일 | day0122  |  |
+| 01월 21일 | day0121  | +***jQuery 예제***<br>- 총게임, 가로메뉴 |
+
+
+### *JSP*
+#### 7주차
+##### + jspwork
+|날짜|패키지|설명|
+|:---:|:---:|:---|
+| 01월 21일 | day0121 | ***JSP 시작***<br>- 기본 구조 & 주석 종류 <br>- 스크립트 요소: 선언문&스크립틀릿&표현식 |
+| 01월 22일 |  |  |
+| 01월 23일 |  |  |
+| 01월 24일 |  |  |
+
 
 #### *개인 공부*
 |위치|폴더|설명|
