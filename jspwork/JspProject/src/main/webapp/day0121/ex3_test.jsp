@@ -36,6 +36,7 @@ body * {
 	List<ShopDto> list = new Vector<>();
 	/* list.add(new ShopDto("사과", 3, 2000)); */%>
 <%
+/* 선언문으로 변수가 선언됐기에 계속 list가 추가됨 */
 list.add(new ShopDto("사과", 3, 2000));
 list.add(new ShopDto("바나나", 1, 1000));
 list.add(new ShopDto("오렌지", 5, 900));
