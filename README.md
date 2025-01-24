@@ -79,7 +79,7 @@
 | 01월 21일 | day0121 | - 기본 구조 & 주석 종류 <br>- 스크립트 요소: 선언문&스크립틀릿&표현식 |
 | 01월 22일 | day0122<br>day0102_cookie<br>day0102_session | - 컬렉션 정보 불러오기 복습<br>- 내장 객체와 액션<br> - session & cookie => 응용해서 로그인 기능 구현 |
 | 01월 23일 | db.connect<br>sawon.data<br>day0123_sawon | - Mysql DB 연결<br>- sawon 테이블 DTO & DAO <br>- 사원정보 등록&수정&삭제&검색 |
-| 01월 24일 |  | - 간단한 게시판 |
+| 01월 24일 | simpleboard.data<br>day0124_board | + 간단한 게시판 만들기<br>글 목록&상세글&글 등록/삭제/갱신& 댓글 기능 |
 
 
 #### *개인 공부*
