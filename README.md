@@ -71,8 +71,8 @@
 | 01월 21일 | day0121  | +***jQuery 예제***<br>- 총게임, 가로메뉴 |
 
 
-### *JSP*
-#### 7주차
+### *JSP & ajax*
+#### 7 ~ 9주차
 ##### + jspwork
 |날짜|패키지|설명|
 |:---:|:---:|:---|
@@ -80,7 +80,8 @@
 | 01월 22일 | day0122<br>day0102_cookie<br>day0102_session | - 컬렉션 정보 불러오기 복습<br>- 내장 객체와 액션<br> - session & cookie => 응용해서 로그인 기능 구현 |
 | 01월 23일 | db.connect<br>sawon.data<br>day0123_sawon | - Mysql DB 연결<br>- sawon 테이블 DTO & DAO <br>- 사원정보 등록&수정&삭제&검색 |
 | 01월 24일 | simpleboard.data<br>day0124_board | + 간단한 게시판 만들기<br>글 목록&상세글&글 등록/삭제/갱신& 댓글 기능 |
-
+| 01월 31일 | day0131_ajax | json및xml 생성<br>ajax 활용해 데이터읽어오기 |
+| 02월 03일 | day0203_ajax<br>day0203_ajaxmemo | ajax 복습<br>ajax 이용해서 CRUD 작업 |
 
 #### *개인 공부*
 |위치|폴더|설명|
