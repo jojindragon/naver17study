@@ -5,10 +5,11 @@
 <%@page import="java.util.List"%>
 <%@page import="memo.data.MemoDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
+String nickname = request.getParameter("nickname");
 MemoDao dao = new MemoDao();
-List<MemoDto> list = dao.getAllMemos();
+List<MemoDto> list = dao.getSearchMemos(nickname);
 
 JSONArray arr = new JSONArray();
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");

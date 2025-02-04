@@ -20,7 +20,7 @@ public class MemoDao {
 				values (?, ?, ?, now());
 				""";
 		
-		conn = db.getConnection();
+		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getNickname());
@@ -42,7 +42,7 @@ public class MemoDao {
 				delete from ajaxmemo where idx=?
 				""";
 		
-		conn = db.getConnection();
+		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
@@ -64,7 +64,7 @@ public class MemoDao {
 				where idx = ?
 				""";
 		
-		conn = db.getConnection();
+		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getNickname());
@@ -90,7 +90,7 @@ public class MemoDao {
 				select * from ajaxmemo order by idx desc
 				""";
 		
-		conn = db.getConnection();
+		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -126,7 +126,7 @@ public class MemoDao {
 				order by idx desc
 				""";
 		
-		conn = db.getConnection();
+		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+nickname+"%");
@@ -162,9 +162,10 @@ public class MemoDao {
 				select * from ajaxmemo where idx = ?
 				""";
 		
-		conn = db.getConnection();
+		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {				
 				dto.setIdx(rs.getInt("idx"));

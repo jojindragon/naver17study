@@ -82,6 +82,7 @@
 | 01월 24일 | simpleboard.data<br>day0124_board | + 간단한 게시판 만들기<br>글 목록&상세글&글 등록/삭제/갱신& 댓글 기능 |
 | 01월 31일 | day0131_ajax | json및xml 생성<br>ajax 활용해 데이터읽어오기 |
 | 02월 03일 | day0203_ajax<br>day0203_ajaxmemo | ajax 복습<br>ajax 이용해서 CRUD 작업 |
+| 02월 04일 | day0203_ajaxmemo<br>day0204_ajaxshop | ***네이버 클라우드 서버와 연동***<br>ajaxmemo CRUD 기능 완성<br>상품목록 등록/리스트 구현 |
 
 #### *개인 공부*
 |위치|폴더|설명|

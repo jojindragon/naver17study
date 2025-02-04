@@ -12,6 +12,11 @@ public class MysqlConnect {
 	String username = "root";
 	String pwd = "1234";
 	
+	//네이버 클라우드 Mysql 서버
+	String url2 = "jdbc:mysql://[Public domain]:3306/[DB명]?serverTimezone=Asia/Seoul";
+	String username2 = "User_ID";
+	String pwd2 = "비밀번호";
+	
 	public MysqlConnect() {
 		try {
 			Class.forName(MYSQL_DRIVER);
@@ -27,6 +32,16 @@ public class MysqlConnect {
 			conn = DriverManager.getConnection(url, username, pwd);
 		} catch (SQLException e) {
 			System.out.println("Mysql 서버 접속 실패: "+e.getMessage());
+		}
+		return conn;
+	}
+	
+	public Connection getNaverCloudConnection() {
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url2, username2, pwd2);
+		} catch (SQLException e) {
+			System.out.println("NCP Mysql 서버 접속 실패: "+e.getMessage());
 		}
 		return conn;
 	}

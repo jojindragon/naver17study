@@ -44,3 +44,17 @@ create table ajaxmemo (
     message varchar(1000),
     writeday datetime
 );
+
+# 02월 04일 화 생성
+create table shop(
+	num smallint auto_increment primary key,
+    sangpum varchar(50),
+    scolor varchar(20),
+    sprice int,
+    sphoto varchar(50),
+    ipgoday varchar(20),
+    scnt smallint,
+    writeday datetime
+);
+
+drop table shop;

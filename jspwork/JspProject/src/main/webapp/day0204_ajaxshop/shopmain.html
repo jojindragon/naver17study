@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>502 html study</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Gaegu&family=Jua&family=Nanum+Pen+Script&family=Playwrite+AU+SA:wght@100..400&family=Single+Day&display=swap"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+body * {
+	font-family: 'Jua';
+}
+</style>
+<script type="text/javascript">
+$(function() {
+	list();
+	
+	$("#addshop").submit(function(e) {
+		e.preventDefault();
+		
+		$.ajax({
+			type: "get",
+			dataType: "html",
+			data: $(this).serialize(),
+			url: "./insertshop.jsp",
+			success: function(res) {
+				alert("상품이 추가되었다.");
+				list();
+			}
+		});
+	});
+	
+	$("#selorder").change(function() {
+		list();
+	});
+	
+});
+
+function list() {
+	let order = $("#selorder").val();
+	$.ajax({
+		type: "get",
+		dataType: "json",
+		data: "order="+order,
+		url: "./listshop.jsp",
+		success: function(res) {
+			let s="";
+			s=`
+			<b>총 ${res.length}개의 상품</b><br>
+			<table class="table table-bordered" style="width: 700px;">
+				<thead>
+					<th>상품사진</th>
+					<th>상품명</th>
+					<th>상품색</th>
+					<th>상품가격</th>
+					<th>상품갯수</th>
+					<th>입고일</th>
+					<th>등록일자</th>
+				</thead>
+				<tbody>
+			`;
+			
+			$.each(res, function(idx, ele) {
+				s+=`
+				<tr>
+					<td>
+						<img src="${ele.sphoto}" width="50" />
+					</td>
+					<td>${ele.sangpum}</td>
+					<td style="color: ${ele.scolor};">색깔</td>
+					<td>${ele.sprice}원</td>
+					<td>${ele.scnt}개</td>
+					<td>${ele.ipgoday}</td>
+					<td>${ele.writeday}</td>
+				</tr>
+				`;
+			});
+			
+			s+="</tbody></table>";
+			
+			$(".result").html(s);
+		}
+	});
+}
+</script>
+
+</head>
+<body>
+<div style="margin: 20px;width: 500px;">
+	<h5 class="alert alert-success" style="text-align: center;">[전체 상품 목록]</h5>
+	
+	<div class="input-group">
+		<button type="button" class="btn btn-sm btn-outline-secondary"
+		 id="btnaddmodal" data-bs-toggle="modal"
+		 data-bs-target="#shopAddModal">상품등록</button>
+		 
+		<select id="selorder" style="width: 150px;margin-left: 200px"
+		 class="form-select">
+			<option value="1">등록순</option>
+			<option value="2">높은 가격순</option>
+			<option value="3">낮은 가격순</option>
+			<option value="4">상품명순</option>
+		</select>
+	</div>
+		
+</div>
+<div style="margin: 20px;" class="result">
+		111
+</div>
+
+<!-- Modal -->
+<div class="modal" id="shopAddModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h4 class="modal-title">상품 등록</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">       	
+      	<form id="addshop">
+      		<h6>상품사진</h6>  		      	
+      		<select id="addsphoto" name="sphoto" class="form-select">
+      		<script type="text/javascript">
+				let s="";
+				let img="";
+				for(let i=1; i<=34; i++) {
+					img=`${i}.${i==24?"gif":"jpg"}`;
+					s+=`
+					<option value="../image/photo2/${img}">상품${i}</option>
+					`;
+				}
+				$("#addsphoto").html(s);
+			</script>
+			</select><br>
+			<img src="" class="sphoto" width="100" />
+			<hr>
+			<script type="text/javascript">
+			$(".sphoto").attr("src", $("#addsphoto").val());
+
+			$("#addsphoto").change(function() {
+				$(".sphoto").attr("src", $(this).val());
+			});
+			</script>
+			
+			<div stlye="margin-top: 50px;">
+				<h6>상품명</h6>
+				<input type="text" name="sangpum" class="form-control" /><br>
+				
+				<h6>상품색</h6>
+				<input type="color" name="scolor" width="10" /><hr>
+
+				<h6>상품가격</h6>
+				<input type="number" name="sprice" class="form-control" /><br>
+
+				<h6>개수</h6>
+				<input type="number" name="scnt" class="form-control" /><br>
+
+				<h6>입고일</h6>
+				<input type="date" name="ipgoday" class="form-control" /><br>
+			</div>
+			
+			
+        	<button type="submit" class="btn btn-success btn-sm"
+         	 data-bs-dismiss="modal">등록</button>
+      	</form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+         data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

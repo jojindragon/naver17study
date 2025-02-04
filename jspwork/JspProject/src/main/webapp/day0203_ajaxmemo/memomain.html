@@ -12,10 +12,22 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 body * {
 	font-family: 'Jua';
 }
+
+.imgavata {
+	width: 30px;
+	height: 40px;
+}
+
+.writeday {
+	font-size: 11px;
+	color: lightgray;
+}
+
 </style>
 <script type="text/javascript">
 $(function() {
@@ -42,18 +54,173 @@ $(function() {
 			}
 		});
 	});
+	
+	// 삭제 아이콘 이벤트
+	$(document).on("click", ".del", function() {
+		let ans = confirm("현재 메모를 삭제합니다");
+		let idx = $(this).attr("idx");
+		
+		if(ans) {
+			$.ajax({
+				type: "get",
+				dataType: "html",
+				data: {"idx":idx},
+				url: "./deletememo.jsp",
+				success: function(res) {
+					list(); // 삭제 후 목록 재출력
+				}
+			});
+		}
+		
+	});
+	
+	// 수정 아이콘 이벤트
+	$(document).on("click", ".mod", function() {
+		let idx = $(this).attr("idx");
+		
+		//backend에서 idx에 해당하는 dto를 json으로 획득 후 모달에 출력
+		$.ajax({
+			type: "get",
+			dataType: "json",
+			data: "idx="+idx,
+			url: "./getdatajson.jsp",
+			success: function(res) {
+				/* select avata */
+				$("#modavata").val(res.avata);
+				$(".modphotoavata").attr("src", res.avata);
+				
+				/* nickname */
+				$("#modnickname").val(res.nickname);
+				
+				/* message */
+				$("#modmessage").val(res.message);
+				
+				/* hidden에 idx 첨가 */
+				$("#modidx").val(idx);
+			}
+		});
+		
+	});
+	
+	// submit 이벤트
+	$("#modfrm").submit(function(e){
+		/* alert("submit"); */
+		e.preventDefault(); //기본 이벤트 무효화(action 호출 등)
+		
+		/* serialize(): form의 모든 폼탬그 name 값을 get방식으로 가져오기 */
+		//alert($(this).serialize());
+		$.ajax({
+			type: "get",
+			dataType: "html",
+			data: $(this).serialize(),
+			url: "./updatememo.jsp",
+			success: function() {
+				alert("수정되었다.");
+				list();
+			}
+		});
+		
+	});
+	
 });
 
 /* 목록 출력 */
 function list() {
-	
+	$.ajax({
+		type: "get",
+		dataType: "json",
+		url: "./listmemo.jsp",
+		success: function(res) {
+			writedata(res);
+		}
+	});
 }
+/* res(배열) 데이터를 목록에 출력해주는 함수 */
+function writedata(res) {
+	let s="";
+	s=`<b>총 ${res.length}개의 메모</b><br>`;
+	
+	// 반복문 - 메모 출력
+	$.each(res, function(idx, ele) {
+		s+=`
+		<img class="imgavata" src="${ele.avata}"
+		align="left" hspace="5" />
+		<span class="nickname">${ele.nickname}</span><br>
+		<span class="writeday">${ele.writeday}</span><br>
+		<span class="message">${ele.message}</span>
+		<span style="float:right;">
+			<i class="bi bi-pencil-square mod"
+			 style="cursor:pointer;" idx="${ele.idx}"
+			 data-bs-toggle="modal"
+			 data-bs-target="#myMemoModModal"></i>
+			<i class="bi bi-trash del"
+			 style="cursor:pointer;" idx="${ele.idx}"></i>
+		</span>
+		<hr>
+		`;
+	});
+	
+	$(".memolist").html(s);
+}
+
 </script>
 </head>
 <body>
+<!-- 메모 수정 다이얼로그 - Modal -->
+<div class="modal" id="myMemoModModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h4 class="modal-title">Memo 수정</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+       	<!-- 수정 - 폼 단위로 값 얻어보기 -->
+      	<form id="modfrm">
+      		<input type="hidden" name="idx" id="modidx" />
+      		<select id="modavata" name="avata">
+				<option value="../image/avata/s1.JPG">스웨터 소년</option>
+				<option value="../image/avata/s3.JPG">파란원피스 소녀</option>
+				<option value="../image/avata/s5.JPG">핑크원피스 소녀</option>
+				<option value="../image/avata/s10.JPG">피아노 소년</option>
+				<option value="../image/avata/s4.JPG">신난 스누피</option>
+			</select>&nbsp;
+			<img src="" class="modphotoavata" width="50" />
+			
+			<script type="text/javascript">
+			$(".modphotoavata").attr("src", $("#modavata").val());
+
+			$("#modavata").change(function() {
+				$(".modphotoavata").attr("src", $(this).val());
+			});
+			</script>
+			<br>
+			<div class="input-group">
+				닉네임:&nbsp;&nbsp;<input type="text" name="nickname"
+				id="modnickname" class="form-control" />
+			</div>			
+			<h6>메시지</h6>
+			<input type="text" name="message"
+				id="modmessage" class="form-control" />
+			<br>			
+        	<button type="submit" class="btn btn-success btn-sm"
+         	 data-bs-dismiss="modal">수정</button>
+      	</form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+         data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div style="margin: 20px;">
 	<h5 class="alert alert-danger">Memo Ajax CRUD</h5>
-	<div class="input-group" style="width: 350px;">
+	<div class="input-group" style="width: 450px;">
 		<select id="selavata">
 			<option value="../image/avata/s1.JPG">스웨터 소년</option>
 			<option value="../image/avata/s3.JPG">파란원피스 소녀</option>
@@ -74,7 +241,7 @@ function list() {
 		<input type="text" class="form-control" id="nickname"
 		placeholder="닉네임" />
 	</div>
-	<div class="input-group" style="width: 350px; margin-top: 10px;">
+	<div class="input-group" style="width: 450px; margin-top: 10px;">
 		<input type="text" class="form-control" id="message"
 		placeholder="메시지 입력" />
 		&nbsp;&nbsp;
@@ -83,8 +250,32 @@ function list() {
 	</div>
 	
 	<!-- 출력 위치  -->
+	<hr>
+	<div class="input-group" style="width: 400px;">
+		<h5>검색할 닉네임을 입력 후 엔터를 누르기</h5>&nbsp;&nbsp;&nbsp;
+		<input type="text" class="form-control"
+		 id="searchnickname" />
+	</div>
 	<div class="memolist alert alert-warning" 
-	style="margin-top: 10px;width: 350px;">111</div>
+	style="margin-top: 10px;width: 450px;">111</div>
 </div>
+
+<script type="text/javascript">
+/* Enter를 누르면 검색 이벤트 가져오기 */
+$("#searchnickname").keyup(function(e) {
+	let nickname = $("#searchnickname").val(); 
+	if(e.keyCode == 13) {
+		$.ajax({
+			type: "get",
+			dataType: "json",
+			data: "nickname="+nickname,
+			url: "./searchlistmemo.jsp",
+			success: function(res) {
+				writedata(res);
+			}
+		});
+	}
+});
+</script>
 </body>
 </html>
