@@ -57,4 +57,12 @@ create table shop(
     writeday datetime
 );
 
-drop table shop;
+# 02월 06일 목 수업용 table 미리 작성
+create table shopreple(
+	idx smallint auto_increment primary key,
+    num smallint,
+    star smallint,
+    message varchar(300),
+    writeday datetime,
+    foreign key(num) references shop(num) on delete cascade
+);

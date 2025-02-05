@@ -17,10 +17,78 @@
 body * {
 	font-family: 'Jua';
 }
+
+div.liststyle {
+	margin: 20px 200px;	
+}
+div.liststyle i {
+	font-size: 20px;
+	cursor: pointer;
+	margin-right: 10px;	
+}
+
+div.grid {
+	float: left;
+	width: 170px;
+	height: 250px;
+	border: solid 1px gray;
+	border-radius: 20px;
+	padding-top: 10px;
+	text-align: center;
+	margin: 5px;
+	background-color: #ffe4e1;
+}
+div.grid img {
+	width: 140px;
+	height: 160px;
+	border: solid 1px orange;
+	border-radius: 20px;
+}
+
+.tab1 thead th {
+	text-align: center;
+	font-size: 0.9em;
+	background-color: #ffe4e1;
+}
+.tab1 tbody td {
+	text-align: center;
+	font-size: 0.9em;
+	background-color: #f0fff0;
+}
+.tab1 img {
+	width: 30px;
+	height: 30px;
+	border: solid 1px gray;
+	margin-right: 5px;	
+}
+
+div.scolor {
+	width: 30px;
+	height: 30px; 
+	border: solid 1px black;
+	border-radius: 100px;
+}
+div.gridcolor {
+	position: relative;
+	left: 130px;
+	top: -50px;	
+}
 </style>
 <script type="text/javascript">
+let view = "list";
 $(function() {
 	list();
+	//list 모양 디폴트 값
+	$("div.liststyle i:eq(1)").css("color", "red");
+	
+	// 목록 모양 변경
+	$("div.liststyle i").click(function() {
+		view = $(this).attr("view");
+		
+		$(this).siblings().css("color", "black");
+		$(this).css("color", "red");
+		list();
+	});
 	
 	$("#addshop").submit(function(e) {
 		e.preventDefault();
@@ -37,63 +105,92 @@ $(function() {
 		});
 	});
 	
-	$("#selorder").change(function() {
-		list();
+	/* 상세보기 클릭 시 이벤트 */
+	$(document).on("click", "i.detail", function(){
+		let num = $(this).attr("num");
+		location.href="./shopdetail.jsp?num="+num;
 	});
-	
 });
 
 function list() {
 	let order = $("#selorder").val();
+	
 	$.ajax({
 		type: "get",
 		dataType: "json",
 		data: "order="+order,
 		url: "./listshop.jsp",
 		success: function(res) {
-			let s="";
-			s=`
-			<b>총 ${res.length}개의 상품</b><br>
-			<table class="table table-bordered" style="width: 700px;">
-				<thead>
-					<th>상품사진</th>
-					<th>상품명</th>
-					<th>상품색</th>
-					<th>상품가격</th>
-					<th>상품갯수</th>
-					<th>입고일</th>
-					<th>등록일자</th>
-				</thead>
-				<tbody>
-			`;
-			
-			$.each(res, function(idx, ele) {
-				s+=`
-				<tr>
-					<td>
-						<img src="${ele.sphoto}" width="50" />
-					</td>
-					<td>${ele.sangpum}</td>
-					<td style="color: ${ele.scolor};">색깔</td>
-					<td>${ele.sprice}원</td>
-					<td>${ele.scnt}개</td>
-					<td>${ele.ipgoday}</td>
-					<td>${ele.writeday}</td>
-				</tr>
-				`;
-			});
-			
-			s+="</tbody></table>";
-			
-			$(".result").html(s);
+			writedata(res);
 		}
 	});
 }
+
+function writedata(res) {
+	let s=`<b>총 ${res.length}개의 상품</b><br>`;
+	
+	if(view == 'list') {
+		s+= `
+		<table class="table table-bordered tab1">
+		<thead>
+			<th width="50">번호</th>
+			<th width="170">상품명</th>
+			<th width="50">색상</th>
+			<th width="50">수량</th>
+			<th width="110">단가</th>
+			<th>상세보기</th>
+		</thead>
+		<tbody>
+		`;
+		
+		$.each(res, function(idx, ele) {
+			s+=`
+			<tr>
+				<td>${idx+1}</td>
+				<td style="text-align:left;">
+					<img src="${ele.sphoto}" />
+					${ele.sangpum}
+				</td>
+				<td>
+					<div style="background-color:${ele.scolor};" class="scolor">
+					</div>
+				</td>
+				<td>${ele.scnt}</td>
+				<td style="text-align:right;">${ele.sprice}</td>
+				<td>
+					<i class="bi bi-person-lines-fill detail"
+					 style="font-size:1.5em;cursor:pointer;"
+					 num="${ele.num}"></i>
+				</td>
+			</tr>
+			`;
+		});
+		
+		s+="</tbody></table>";
+	} else {
+		$.each(res, function(idx, ele) {
+			s+=`
+			<div class="grid">
+				<img src="${ele.sphoto}" />
+				<br><br>
+				<h6>${ele.sangpum}</h6>
+				<h6>${ele.sprice}원</h6>
+				<div class="scolor gridcolor"
+				 style="background-color:${ele.scolor}"></div>
+			</div>
+			`;
+		});
+	}
+	
+	$(".result").html(s);
+		
+}
+
 </script>
 
 </head>
 <body>
-<div style="margin: 20px;width: 500px;">
+<div style="margin: 20px;width: 550px;">
 	<h5 class="alert alert-success" style="text-align: center;">[전체 상품 목록]</h5>
 	
 	<div class="input-group">
@@ -102,20 +199,26 @@ function list() {
 		 data-bs-target="#shopAddModal">상품등록</button>
 		 
 		<select id="selorder" style="width: 150px;margin-left: 200px"
-		 class="form-select">
+		 class="form-select" onchange="list()">
 			<option value="1">등록순</option>
 			<option value="2">높은 가격순</option>
 			<option value="3">낮은 가격순</option>
 			<option value="4">상품명순</option>
 		</select>
 	</div>
-		
-</div>
-<div style="margin: 20px;" class="result">
+	
+	<div class="liststyle">
+		<i class="bi bi-grid" view="grid"></i>
+		<i class="bi bi-card-list" view="list"></i>
+	</div>
+	
+	
+	<div style="margin-top: 20px;" class="result">
 		111
+	</div>
 </div>
 
-<!-- Modal -->
+<!-- Modal - 상품등록 -->
 <div class="modal" id="shopAddModal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">

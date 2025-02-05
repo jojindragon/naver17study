@@ -83,6 +83,8 @@
 | 01월 31일 | day0131_ajax | json및xml 생성<br>ajax 활용해 데이터읽어오기 |
 | 02월 03일 | day0203_ajax<br>day0203_ajaxmemo | ajax 복습<br>ajax 이용해서 CRUD 작업 |
 | 02월 04일 | day0203_ajaxmemo<br>day0204_ajaxshop | ***네이버 클라우드 서버와 연동***<br>ajaxmemo CRUD 기능 완성<br>상품목록 등록/리스트 구현 |
+| 02월 05일 | day0204_ajaxshop | 상품목록 리스트/상세보기/CRUD 구현 |
+| 02월 06일 | day0204_ajaxshop | 상품 리뷰 기능 구현 |
 
 #### *개인 공부*
 |위치|폴더|설명|
