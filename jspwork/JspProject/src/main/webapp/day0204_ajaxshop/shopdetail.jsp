@@ -38,9 +38,32 @@ button {
 .btn {
 	width: 100px;
 }
+.replelist i.close {
+	cursor: pointer;
+	margin-right: 10px;
+	float: right;
+	color: red;
+}
+.replelist b {
+	margin-left: 5px;
+}
+.replelist div {
+	font-size: 13px;
+	font-family: 'Gaegu';
+}
+.replelist .day {
+	font-size: 12px;
+	color: gray;
+}
 
+.star {
+	font-size: 13px;
+}
+.starfill {
+	font-size: 13px;
+	color: gold;
+}
 </style>
-</head>
 <%
 /* 1. num 읽기 */
 int num = Integer.parseInt(request.getParameter("num"));
@@ -50,6 +73,87 @@ ShopDAO2 dao = new ShopDAO2();
 ShopDTO2 dto = dao.getSangpum(num);
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
+<script type="text/javascript">
+$(function() {
+	list();
+	
+	$("#btnreple").click(function() {
+		let num=<%=num %>;
+		let star = $(".selstar").val();
+		let msg = $("#message").val();
+		
+		$.ajax({
+			type: "get",
+			dataType: "html",
+			data: {"num":num, "star":star, "message":msg},
+			url: "./insertreple.jsp",
+			success: function(res) {
+				list();
+
+				$(".selstar").val(5);
+				$("#message").val("");
+			}
+		});
+	});
+	
+	/* 상품평 삭제 */
+	$(document).on("click", ".close", function() {
+		let idx = $(this).attr("idx"); 
+			
+		$.ajax({
+			type: "get",
+			dataType: "html",
+			data: {"idx":idx},
+			url: "./deletereple.jsp",
+			success: function(res) {
+				list();				
+			}
+		});
+	});
+	
+	/* 상품평 나타내기&숨기기 */
+	$(".replelist>b").click(function() {
+		$(this).next().slideToggle('fast');
+	});
+});
+
+function list() {
+	$.ajax({
+		type: "get",
+		dataType: "json",
+		data: {"num":<%=num %>},
+		url: "./listreple.jsp",
+		success: function(res) {
+			let n=$(res).length;
+			$(".replelist>b").text("총 "+n+"개의 리뷰");
+			
+			// 상품평 목록 출력
+			let s="";
+			$.each(res, function(idx, ele) {
+				s+="<div style='width: 180px;'>";
+				
+				for(let i=1; i<=5; i++) {
+					if(i<=ele.star)
+						s+=`<i class="bi bi-star-fill starfill"></i>`;
+					else
+						s+=`<i class="bi bi-star star"></i>`;
+				}
+				
+				s+=`
+				<span class="day">\${ele.writeday}</span><br>
+				<b>\${ele.message}</b>
+				<i class="bi bi-x-lg close" idx="\${ele.idx}"></i>
+				`;
+
+				s+="</div><br>";
+			});
+			
+			$(".replelist>div").html(s);
+		}
+	});	
+}
+</script>
+</head>
 <body>
 <!-- table을 이용해서 상세 페이지 만들기, 맨 아래에 수정&삭제&목록 버튼 넣기 -->
 <div style="margin: 20px;width: 500px;">
@@ -73,6 +177,30 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 				 style="background-color: <%=dto.getScolor()%>"></div>
 			</td>
 		</tr>
+		<tr><!-- 리뷰 등록  -->
+			<td colspan="2">
+				<h6><b>상품평 등록</b></h6>
+				<div class="repleform input-group">
+					<select class="form-select selstar"
+					 style="width: 70px;">
+						<option value="5">별점 5</option>
+						<option value="4">별점 4</option>
+						<option value="3">별점 3</option>
+						<option value="2">별점 2</option>
+						<option value="1">별점 1</option>
+					</select>&nbsp;
+					<input type="text" id="message" class="form-control"
+					 placeholder="상품 평가" style="width: 200px;" />
+					 &nbsp;
+					<button type="button" class="btn btn-sm btn-info"
+					 id="btnreple">등록</button>
+				</div>
+				<div class="replelist" style="margin-top: 10px;">
+					<b style="cursor: pointer;">0</b>
+					<div style="margin-left: 10px;">1</div>
+				</div>
+			</td>
+		</tr>		
 		<tr>
 			<td colspan="2" align="center">
 				<button type="button"
@@ -91,6 +219,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			</td>
 		</tr>
 	</table>
+	
 <!-- 상품 수정 다이얼로그 -->
 <div class="modal" id="shopUpdateModal">
   <div class="modal-dialog modal-sm">

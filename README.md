@@ -86,7 +86,4 @@
 | 02월 05일 | day0204_ajaxshop | 상품목록 리스트/상세보기/CRUD 구현 |
 | 02월 06일 | day0204_ajaxshop | 상품 리뷰 기능 구현 |
 
-#### *개인 공부*
-|위치|폴더|설명|
-|:---:|:---:|:---|
-| webwork | Tailwindcss 공부 | 당일 수업 tailwindcss를 적용해 구현 |
+

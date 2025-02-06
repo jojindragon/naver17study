@@ -12,7 +12,7 @@ import db.connect.MysqlConnect;
 public class ShopRepleDAO {
 	MysqlConnect db = new MysqlConnect();
 	
-	public void insertShop(int num, ShopRepleDTO dto) {
+	public void insertReple(ShopRepleDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = """
@@ -24,7 +24,7 @@ public class ShopRepleDAO {
 		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, dto.getNum());
 			pstmt.setInt(2, dto.getStar());
 			pstmt.setString(3, dto.getMessage());
 			
@@ -36,7 +36,7 @@ public class ShopRepleDAO {
 		}
 	}
 	
-	public void deleteShop(int idx) {
+	public void deleteReple(int idx) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "delete from shopreple where idx=?";				
@@ -45,29 +45,6 @@ public class ShopRepleDAO {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
-			
-			pstmt.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			db.dbClose(pstmt, conn);
-		}
-	}
-	
-	public void updateShop(ShopRepleDTO dto) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = """
-				update shop set star=?, message=?
-				where idx=?
-				""";
-		
-		conn = db.getNaverCloudConnection();
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, dto.getStar());
-			pstmt.setString(2, dto.getMessage());
-			pstmt.setInt(3, dto.getIdx());
 			
 			pstmt.execute();
 		} catch (SQLException e) {
@@ -87,13 +64,14 @@ public class ShopRepleDAO {
 		String sql ="""
 				select * from shopreple
 				where num=?
+				order by idx desc
 				""";
-		
 		
 		conn = db.getNaverCloudConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ShopRepleDTO dto = new ShopRepleDTO();
@@ -115,34 +93,4 @@ public class ShopRepleDAO {
 		return list;
 	}
 	
-	public ShopRepleDTO getSangpum(int idx) {
-		ShopRepleDTO dto = new ShopRepleDTO();
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "select * from shopreple where idx=?";
-		
-		conn = db.getNaverCloudConnection();
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, idx);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				dto.setIdx(rs.getInt("idx"));
-				dto.setNum(rs.getInt("num"));
-				dto.setStar(rs.getInt("star"));
-				dto.setMessage(rs.getString("message"));
-				dto.setWriteday(rs.getTimestamp("writeday"));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			db.dbClose(rs, pstmt, conn);
-		}
-		
-		return dto;
-	}
 }
