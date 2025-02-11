@@ -1,0 +1,12 @@
+ListServlet (매핑: shop/list) ---- ( forward ) ---- shoplist.jsp
+AddFormServlet(/shop/addform) ---- ( forward ) ---- addform.jsp
+AddProcessServlet(/shop/insert) ---- (DB 처리 후 redirect ) ---- /shop/list
+ShopDetailServlet(/shop/detail) ---- (forward ) ---- shopdetail.jsp
+UpdateFormServlet(/shop/updateform) ---- (forward) ---- updateform.jsp
+UpdateProcessServlet(/shop/update) ---- (redirect)  ---- /shop/detail or /shop/list
+DeleteServlet(/shop/delete) ---- (redirect) ---- /shop/list
+
+
+호출 순서 - 이 순서대로 코딩하는 것을 추천
+sql - dao - servlet - jsp(출력)
+

@@ -62,16 +62,6 @@ body * {
  	<h2 style="color: red">${myname }님은 미성년자입니다</h2>
  </c:if>
 
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- db setting 정보를 가져오는 것 - properties -->
+	<properties resource="mybatis/db/db.properties"/>
+	<!-- 별칭 주는 것 -->
+	<typeAliases>
+		<typeAlias type="shop.data.ShopDto" alias="ShopDto"/>
+	</typeAliases>
+	<!-- 여러 환경 설정
+		default: 기본환경설정
+		id: development에 해당하는 환경설정
+		transactionManager - JDBC 트랜잭션 관리자 사용 -> DB와의 트랜잭션 관리하는 방법을 설정
+		dataSource - 데이터 소스 설정: POOLED(커넥션 풀링 방식) - 미리 만들어 놓고 DB 연결을 재사용하는 방식(튜브)		
+	 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${DRIVER}"/>
+				<property name="url" value="${URL}"/>
+				<property name="username" value="${USERNAME}"/>
+				<property name="password" value="${PASSWORD}"/>				
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- MyBatis의 매퍼 설정 정의
+		매퍼: SQL 쿼리를 실행하기 위한 XML 파일/인터페이스 지정
+		mappers: 여러 매퍼 설정 요소
+		경로에 있는 XML파일을 매퍼로 설정
+	  -->
+	<mappers>
+		<mapper resource="mybatis/db/ShopSql.xml"/>
+	</mappers>
+</configuration>

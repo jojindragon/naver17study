@@ -15,24 +15,32 @@
 body *{
 	font-family: 'Jua';
 }
+.tab thead th {
+	background-color: #ddd;
+	color: blue;
+}
 </style>
 </head>
 <body>
 <div style="margin: 10px;">
 	<h5 class="alert alert-info">JSTL 구구단</h5>
 	<table class="table table-bordered" style="text-align: center;">
-		<tr>
-		<c:forEach var="gugu" begin="2" end="9">
-			<td style="background-color: orange">${gugu }단</td>
-		</c:forEach>
-		</tr>
-		<c:forEach var="i" begin="1" end="9">
-		<tr>
-			<c:forEach var="gugu" begin="2" end="9">
-			<td>${gugu }X${i }=${gugu*i }</td>
-			</c:forEach>
-		</tr>
-		</c:forEach>
+		<thead>
+			<tr>
+				<c:forEach var="gugu" begin="2" end="9">
+					<td>${gugu }단</td>
+				</c:forEach>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="i" begin="1" end="9">
+			<tr>
+				<c:forEach var="gugu" begin="2" end="9">
+					<td align="center">${gugu }X${i }=${gugu*i }</td>
+				</c:forEach>
+			</tr>
+			</c:forEach>		
+		</tbody>
 	</table>
 </div>
 </body>
