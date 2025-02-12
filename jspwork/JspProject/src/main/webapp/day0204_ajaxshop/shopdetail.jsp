@@ -309,7 +309,7 @@ function list() {
 			<tr>
 				<td colspan="2" align="center">
 					<button type="submit"  data-bs-dismiss="modal"
-					style=width:120px;"
+					style="width:120px;"
 					class="btn btn-sm btn-success">수정하기</button>
 				</td>
 			</tr>			

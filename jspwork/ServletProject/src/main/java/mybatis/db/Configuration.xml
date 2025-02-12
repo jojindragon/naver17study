@@ -6,6 +6,7 @@
 	<!-- 별칭 주는 것 -->
 	<typeAliases>
 		<typeAlias type="shop.data.ShopDto" alias="ShopDto"/>
+		<typeAlias type="reboard.data.BoardDto" alias="BoardDto"/>
 	</typeAliases>
 	<!-- 여러 환경 설정
 		default: 기본환경설정
@@ -31,5 +32,6 @@
 	  -->
 	<mappers>
 		<mapper resource="mybatis/db/ShopSql.xml"/>
+		<mapper resource="mybatis/db/BoardSql.xml"/>
 	</mappers>
 </configuration>
