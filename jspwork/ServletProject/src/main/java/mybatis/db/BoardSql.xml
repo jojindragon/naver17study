@@ -37,4 +37,21 @@
 	<select id="selectOneByNum" parameterType="int" resultType="BoardDto">
 		select * from reboard where num=#{num}
 	</select>
+	
+	<!-- 비밀번호 확인 후 삭제 -->
+	<select id="checkPass" parameterType="Map" resultType="int">
+		select count(*) from reboard where num=#{num} and passwd=#{passwd}
+	</select>
+	<delete id="deleteBoard" parameterType="int">
+		delete from reboard where num=#{num}
+	</delete>
+	
+	<!-- 수정 -->
+	<update id="updateBoard" parameterType="BoardDto">
+		update reboard set subject=#{subject}, content=#{content}, passwd=#{passwd}
+		where num=#{num}
+	</update>
+		
 </mapper>
+
+

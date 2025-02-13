@@ -2,3 +2,13 @@ BoardListServlet(/board/list) --- 포워드 --- boardlist.jsp
 BoardFormServlet(/board/writeform) --- 포워드 --- writeform.jsp
 BoardInsertServlet(/board/insert) --- 리다이렉트 --- /board/list
 BoardDetailServlet(/board/detail) --- 포워드 --- content.jsp
+
+- 수정&삭제
+BoardDeletePassFormServlet(/board/deletepassform) --- 포워드 --- deletepassform.jsp
+BoardDeleteProcessServlet(/board/delete) --- 비번 틀린 경우(포워드) --- fail.jsp
+							--- 비번 맞을 경우(리다이렉트) --- /board/list (왔던 페이지)
+
+BoardUpdateFormServlet(/board/updateform) --- 포워드 --- updateform.jsp
+BoardUpdateProcessServlet(/board/update) --- 수정 후 리다이렉트 --- /board/detail
+
+

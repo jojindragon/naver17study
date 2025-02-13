@@ -18,6 +18,9 @@ body *{
 .tab1 thead th {
 	background-color: #fff0f5;
 }
+a.pagea:hover {
+	text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -52,11 +55,14 @@ body *{
 		<c:if test="${totalCount>0}">
 			<c:forEach var="dto" items="${list}" varStatus="i">
 				<tr>
-					<td align="center">${totalCount-i.index}</td>
+					<td align="center">
+						${no}
+						<c:set var="no" value="${no-1}"/>
+					</td>
 					<td>
 						<!-- 제목부분 -->
 						<a style="cursor: pointer;text-decoration: none;color: black;"
-						 href="./detail?num=${dto.num}">
+						 href="./detail?num=${dto.num}&pageNum=${pageNum}">
 						 	<!-- level 1당 3칸 정도 띄우기  -->
 						 	<c:forEach begin="1" end="${dto.relevel}">
 						 		&nbsp;&nbsp;&nbsp;
@@ -79,6 +85,32 @@ body *{
 		</c:if>
 		</tbody>
 	</table>
+	
+	<!-- 페이지 번호 출력 -->
+	<div style="text-align: center;">
+		<!-- 이전 -->
+		<c:if test="${startPage!=1}">
+			<a class="pagea" href="./list?pageNum=${startPage-1}">
+				&lt;&nbsp;이전
+			</a>
+		</c:if>
+		<c:forEach var="pp" begin="${startPage}" end="${endPage}">
+			<c:if test="${pp==pageNum}">
+				<a class="pagea" href="./list?pageNum=${pp}"
+				 style="color: green;">${pp}</a>&nbsp;
+			</c:if>
+			<c:if test="${pp!=pageNum}">
+			<a class="pagea" href="./list?pageNum=${pp}"
+				 style="color: black;">${pp}</a>&nbsp;
+			</c:if>
+		</c:forEach>
+		<!-- 다음: 블록 넘어가기 -->
+		<c:if test="${totalPage > endPage}">
+			<a class="pagea" href="./list?pageNum=${endPage+1}">
+				다음&nbsp;&gt;
+			</a>
+		</c:if>
+	</div>
 </div>
 </body>
 </html>

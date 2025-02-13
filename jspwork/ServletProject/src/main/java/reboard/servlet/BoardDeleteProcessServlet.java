@@ -7,32 +7,32 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import reboard.data.BoardDao;
-import reboard.data.BoardDto;
 
 import java.io.IOException;
 
-@WebServlet("/board/detail")
-public class BoardDetailServlet extends HttpServlet {
+@WebServlet("/board/delete")
+public class BoardDeleteProcessServlet extends HttpServlet {
 	BoardDao dao = new BoardDao();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// num 읽기
+		//num
 		int num = Integer.parseInt(request.getParameter("num"));
-		// pageNum 읽기
+		//pageNum
 		String pageNum = request.getParameter("pageNum");
-		// 조회수 증가
-		dao.updateReadCount(num);
-		// dto 얻기
-		BoardDto dto = dao.getData(num);
-		// request에 dto 저장
-		request.setAttribute("dto", dto);
-		request.setAttribute("pageNum", pageNum);
-		
-		//포워드
-		RequestDispatcher rd = request.getRequestDispatcher("./content.jsp");
-		rd.forward(request, response);
-	}
+		//passwd
+		String passwd = request.getParameter("passwd");
+		//비번이 맞는지 boolean 얻기
+		boolean b = dao.isCheckPass(num, passwd);
 
+		if(b) {//true - 삭제후 목록 이동(pageNum 전달)
+			dao.deleteBoard(num);
+			response.sendRedirect("./list?pageNum="+pageNum);
+		} else {// false - fail.jsp 포워드
+			RequestDispatcher rd = request.getRequestDispatcher("./fail.jsp");
+			rd.forward(request, response);
+		}
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

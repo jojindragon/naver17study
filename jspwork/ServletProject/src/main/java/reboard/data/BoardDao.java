@@ -103,4 +103,28 @@ public class BoardDao {
 		return dto;
 	}
 	
+	public boolean isCheckPass(int num, String passwd) {
+		boolean b;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("num", num);
+		map.put("passwd", passwd);
+		
+		session = getSession();
+		int n = session.selectOne(nameSpace+"checkPass", map);
+		session.close();
+		return n == 1?true:false; 
+	}
+	
+	public void deleteBoard(int num) {
+		session = getSession();
+		session.delete(nameSpace+"deleteBoard", num);
+		session.close();
+	}
+	
+	public void updateBoard(BoardDto dto) {
+		session = getSession();
+		session.update(nameSpace+"updateBoard", dto);
+		session.close();
+	}
+	
 }

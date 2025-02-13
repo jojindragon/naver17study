@@ -36,6 +36,7 @@ $(function() {
 </script>
 </head>
 <body>
+<jsp:include page="../kakao/kakaologin.jsp"/>
 <div style="margin: 20px;width: 600px;">
 	<h1><b>${dto.subject}</b></h1>
 	<div>
@@ -55,19 +56,28 @@ $(function() {
 		 onclick="location.href='./writeform'">글쓰기</button>
 		 
 		 <button type="button" class="btn"
-		  onclick="location.href='./list'">목록</button>
+		  onclick="location.href='./list?pageNum=${pageNum}'">목록</button>
 		 
 		<button type="button" class="btn"
 		 onclick="location.href='./writeform?num=${dto.num}&regroup=${dto.regroup}&restep=${dto.restep}&relevel=${dto.relevel}'">답글</button>
 		
+		<script type="text/javascript">
+			if("${dto.writer}"==localStorage.writer) {
+				document.write(`
+						<button type="button" class="btn up"
+						 onclick="location.href='./updateform?num=${dto.num}&pageNum=${pageNum}'">수정</button>
+						`);
+			}
+		</script>
+		 
 		<button type="button" class="btn"
-		 onclick="loction.href='./deletepassform?num=${dto.num}'">삭제</button>
+		 onclick="location.href='./deletepassform?num=${dto.num}&pageNum=${pageNum}'">삭제</button>
 	</div>
 </div>
 
 <!-- Modal - 상품등록 -->
 <div class="modal" id="photoModal">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">${dto.writer}님 프로필 사진</h4>
