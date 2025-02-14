@@ -96,4 +96,12 @@
 | 02월 11일 | mybatis.db<br>shop.data, shop.servlet<br>ShopSql.xml, shop | Servlet 구조 파악 및 DB 연결<br>예제: 상품목록 띄우기&등록&삭제&수정 |
 | 02월 12일 | BoardSql.xml<br>reboard.data, reboard.servlet<br>board, kakao | kakao 개발자 api로 로그인 작업<br>답글형 게시판 만들기<br> - 목록 띄우기, 글 작성, 답글 작성, 글 상세보기 |
 | 02월 13일 | reboard.data, reboard.servlet<br>board, kakao | 답변형 게시판 완성<br>- 페이징 처리, 게시글 삭제, 게시글 수정 |
+
+### *Spring Boot*
+#### 10주차
+##### + springwork
+|날짜|디렉토리|설명|
+|:---:|:---:|:---|
+| 02월 14일 | springMVC | spring Boot 기본 구조<br>annotation 공부<br>Controller와 jsp 연결 |
+| 02월 일 |  |  |
 | 02월 일 |  |  |
