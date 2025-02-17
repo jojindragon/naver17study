@@ -85,7 +85,7 @@
 | 02월 04일 | day0203_ajaxmemo<br>day0204_ajaxshop | ***네이버 클라우드 서버와 연동***<br>ajaxmemo CRUD 기능 완성<br>상품목록 등록/리스트 구현 |
 | 02월 05일 | day0204_ajaxshop | 상품목록 리스트/상세보기/CRUD 구현 |
 | 02월 06일 | day0204_ajaxshop | 상품 리뷰 기능 구현 |
-| 02월 07일 | **Mini Project 작업** | git: https://github.com/jojindragon/naver17privateproject <br>02/12 발표|
+| 02월 07일 | **Mini Project 작업** | git: https://github.com/jojindragon/naver17privateproject <br>02/10 발표|
 
 ### *Servlet & JSTL*
 #### 10주차
@@ -98,10 +98,13 @@
 | 02월 13일 | reboard.data, reboard.servlet<br>board, kakao | 답변형 게시판 완성<br>- 페이징 처리, 게시글 삭제, 게시글 수정 |
 
 ### *Spring Boot*
-#### 10주차
+#### 10~11주차
 ##### + springwork
 |날짜|디렉토리|설명|
 |:---:|:---:|:---|
 | 02월 14일 | springMVC | spring Boot 기본 구조<br>annotation 공부<br>Controller와 jsp 연결 |
+| 02월 17일 | springMVC2 | 14일 복습<br>url 값 가져오기, properties 파일 값 가져오기<br>폼 데이터 읽기 |
+| 02월 일 |  |  |
+| 02월 일 |  |  |
 | 02월 일 |  |  |
 | 02월 일 |  |  |
