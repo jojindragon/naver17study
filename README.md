@@ -100,11 +100,11 @@
 ### *Spring Boot*
 #### 10~11주차
 ##### + springwork
-|날짜|디렉토리|설명|
+|날짜|프로젝트|설명|
 |:---:|:---:|:---|
 | 02월 14일 | springMVC | spring Boot 기본 구조<br>annotation 공부<br>Controller와 jsp 연결 |
 | 02월 17일 | springMVC2 | 14일 복습<br>url 값 가져오기, properties 파일 값 가져오기<br>폼 데이터 읽기 |
-| 02월 일 |  |  |
+| 02월 18일 | springMVC2 | local에 사진 업로드<br>1. form단위로 전송<br>2. ajax를 이용하기 |
 | 02월 일 |  |  |
 | 02월 일 |  |  |
 | 02월 일 |  |  |

@@ -57,5 +57,25 @@ body *{
 <h6>
 	<a href="./form3">POST 방식 - map으로 폼 데이터 읽기</a>
 </h6>
+<hr>
+<h6>
+	<a href="./uploadform">사진 업로드 폼</a>
+</h6>
+<h6>
+	<a href="./multiform">복수의 사진 업로드 폼</a>
+</h6>
+<h6>
+	<a href="./ajaxupload">Ajax로 사진 업로드</a>
+</h6>
+<h6>
+	<a href="./multiajaxupload">Ajax로 복수 사진 업로드</a>
+</h6>
+<hr>
+<h6>
+	<a href="./munjeupload1">Ajax로 제목&사진 업로드</a>
+</h6>
+<h6>
+	<a href="./munjeupload2">폼 단위 전송 - 사진 추가&삭제</a>
+</h6>
 </body>
 </html>
