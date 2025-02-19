@@ -1,0 +1,21 @@
+server:
+  port: 8090
+  
+#jsp setting
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  #mysql setting
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://[public domain]:3306/[DB]?serverTimezone=Asia/Seoul
+    username: User
+    password: PWD
+
+#mybatis setting
+mybatis:
+  type-aliases-package: data.dto
+  mapper-locations:
+  - /mapper/**/*.xml
