@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 body *{
 	font-family: 'Jua';
@@ -35,7 +36,171 @@ body *{
 	height: 400px;
 	border: 3px solid black;
 }
-</style>     
+#photoupload {
+	display: none;
+}
+.addphoto {
+	font-size: 1.5em;
+	cursor: pointer;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.replelist {
+	margin: 10px 10px;
+}
+
+.repleimg {
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	margin: 5px;
+}
+.msg {
+	margin: 5px;
+}
+.date {
+	font-size: 0.8em;
+	color: gray;
+	margin: 5px;
+}
+.likes {
+	color: hotpink;
+	margin-top: 5px;
+	margin-left: 10px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.del {
+	float: right;
+	color: red;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+$(function() {
+	replelist(); // 처음 로딩 시 댓글 출력
+	
+	// 카메라 아이콘 이벤트
+	$(".addphoto").click(function() {
+		$("#photoupload").trigger("click");
+	});
+	// 파일 업로드 이벤트
+	let file;
+	$("#photoupload").change(function(e) {
+		file = e.target.files[0];
+		console.log(file);
+	});
+	
+	// 댓글 등록버튼 이벤트
+	$("#btnaddreple").click(function() {
+		let msg = $("#message").val();
+		if(msg.trim() == "") {
+			alert("댓글을 입력해라.");
+			return;
+		}
+		
+		if(file == null) {
+			alert("사진을 선택해주세요.");
+			return;
+		}
+		
+		let form = new FormData();
+		form.append("upload", file);
+		form.append("message", msg);
+		form.append("num", ${dto.num});
+		
+		$.ajax({
+			type: "post",
+			dataType: "text",
+			url: "./addreple",
+			data: form,
+			processData: false,
+			contentType: false,
+			success: function() {
+				$("#message").val("");
+				file = null;
+				replelist();
+			}
+		});
+		
+	});
+	
+	// 댓글 삭제 이벤트
+	$(document).on("click", ".del", function() {
+		let pname = $(this).attr("pname");
+		let idx = $(this).attr("idx");
+		//alert(pname+" "+idx);
+		
+		$.ajax({
+			type: "post",
+			dataType: "text",
+			url: "./repledelete",
+			data: {"idx":idx, "pname":pname},
+			success: function() {
+				replelist();
+			}
+		});
+	});
+	
+	// 추천 증가 이벤트
+	$(document).on("click", ".likes", function() {
+		//alert("추천!"+$(this).attr("idx"));
+		let idx = $(this).attr("idx");
+		$.ajax({
+			type: "post",
+			dataType: "text",
+			url: "./pluslikes",
+			data: {"idx":idx},
+			success: function() {
+				replelist();
+			}
+		});
+	});
+	
+	// modal 이벤트
+	$(document).on("click", ".repleimg", function() {
+		$("#modalimg").attr("src", $(this).attr("src"));
+	});
+	
+});
+
+/* 출력 */
+function replelist() {
+	$.ajax({
+		type: "get",
+		dataType: "json",
+		url: "./replelist",
+		data: {"num":${dto.num}},
+		success: function(res) {
+			let s="";
+			
+			if(res.length == 0) {
+				s+= "댓글이 없습니다.";
+			} else {
+				$.each(res, function(idx, ele) {
+					s+=`
+					<hr>
+					<div class="input-group">
+						<img src="../../save/\${ele.photo}"
+						 class="repleimg"
+				 		 data-bs-toggle="modal"
+					 	 data-bs-target="#photoModal"/>
+						<p class="msg">\${ele.message}</p>
+						<span class="date">\${ele.writetime}</span>
+						<i class="bi bi-heart likes" idx="\${ele.idx}">추천&nbsp;\${ele.likes}</i>
+						<i class="bi bi-x del" idx="\${ele.idx}"
+						 pname="\${ele.photo}"></i>
+					</div>
+					`;
+				});
+			}
+			
+			$(".replelist").html(s);
+		}
+	});
+}
+</script>  
 </head>
 <body>
 <div style="margin: 20px;width: 500px;">
@@ -47,7 +212,8 @@ body *{
 			</c:forTokens>
 			</td>
 			<td>
-				<img src="../../save/${dto.mainPhoto}" id="mainimg"/>
+				<img src="../../save/${dto.mainPhoto}" id="mainimg"
+				 onerror="this.src='../../save/noimage.png'"/>
 			</td>
 		</tr>
 		<tr>
@@ -62,6 +228,20 @@ body *{
 					입고일: ${dto.ipgoday}<br>
 					등록일: <fmt:formatDate value="${dto.writeday}" pattern="yyyy-MM-dd HH:mm"/> 
 				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="repleform input-group" style="width: 600px;">
+					<input type="text" id="message" class="form-control"
+					 style="width: 400px;" placeholder="댓글 입력"/>
+
+					<input type="file" id="photoupload"/>
+					<i class="bi bi-camera-fill addphoto"></i>
+					<button type="button" class="btn btn-sm btn-info"
+					 id="btnaddreple">등록</button>
+				</div>
+				<div class="replelist">123</div>
 			</td>
 		</tr>
 		<tr>
@@ -80,7 +260,11 @@ body *{
 
 				<button type="button" class="btn btn-sm btn-outline-secondary"
 				 style="width: 90px"
-				 onclick="">삭제</button>
+				 onclick="sangdel(${dto.num})">삭제</button>
+				 
+				<button type="button" class="btn btn-sm btn-outline-secondary"
+				 style="width: 90px"
+				 onclick="location.href='./photos?num=${dto.num}'">사진수정</button>
 			</td>
 		</tr>
 	</table>
@@ -91,6 +275,39 @@ $(".selimg").click(function() {
 	let img = $(this).attr("src");
 	$("#mainimg").attr("src", img);
 });
+
+function sangdel(num) {
+	let ans = confirm("해당 게시물을 삭제하려면 [확인]을 눌러주세요");
+	if(ans) {
+		location.href="./delete?num="+num;
+	}
+}
 </script>
+<!-- 댓글 사진 모달 -->
+<div class="modal" id="photoModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">댓글 아이콘</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="text-align: center">
+       	<img src="../../save/noimage.png" width="200" id="modalimg"/>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" 
+        data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- 모달 끝 -->
 </body>
 </html>

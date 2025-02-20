@@ -1,6 +1,8 @@
 package data.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -31,5 +33,16 @@ public class ShopService {
 	
 	public void updateShop(ShopDto dto) {
 		shopMapper.updateShop(dto);
+	}
+	
+	public void deleteShop(int num) {
+		shopMapper.deleteShop(num);
+	}
+	
+	public void updatePhoto(int num, String sphoto) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("num", num);
+		map.put("sphoto", sphoto);
+		shopMapper.updatePhoto(map);
 	}
 }

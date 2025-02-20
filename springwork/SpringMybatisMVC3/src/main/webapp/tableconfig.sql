@@ -9,3 +9,14 @@ create table bootshop (
     ipgoday varchar(30),
     writeday datetime
 );
+
+# 02월 20일
+create table bootshopreple(
+	idx smallint auto_increment primary key,
+    num smallint,
+    photo varchar(50),
+    message varchar(300),
+    likes smallint default 0,
+    writetime datetime default now(),
+    foreign key(num) references bootshop(num) on delete cascade
+);
