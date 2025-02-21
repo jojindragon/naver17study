@@ -2,7 +2,9 @@ package shop.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,21 +56,29 @@ public class ShopRepleController {
 	}
 	
 	// 댓글 삭제
-	@PostMapping("/shop/repledelete")
-	public void deleteReple(HttpServletRequest request,
-			@RequestParam int idx, @RequestParam String pname) {
+	@GetMapping("/shop/repledel")
+	public void repleDelete(@RequestParam int idx, HttpServletRequest request) {
 		String path = request.getSession().getServletContext().getRealPath("/save");
-		File file = new File(path+"/"+pname);
+		// 삭제할 사진명
+		String photo = shopRepleService.getPhoto(idx);
+		// 사진 삭제
+		File file = new File(path+"/"+photo);
 		if(file.exists()) {
 			file.delete();
 		}
-		
 		shopRepleService.deleteShopReple(idx);
 	}
 	
 	// 추천 수 증가
-	@PostMapping("/shop/pluslikes")
-	public void plusRepleLikes(@RequestParam int idx) {
-		shopRepleService.plusRepleLikes(idx);
+	@GetMapping("/shop/likes")
+	public Map<String, Integer> getLikes(@RequestParam int idx) {
+		// likes 1 증가
+		shopRepleService.updateLikes(idx);
+		// 최종 likes 받기
+		int likes = shopRepleService.getLikes(idx);
+		//Map 처리
+		Map<String, Integer> map = new HashMap<>();
+		map.put("likes", likes);
+		return map;
 	}
 }

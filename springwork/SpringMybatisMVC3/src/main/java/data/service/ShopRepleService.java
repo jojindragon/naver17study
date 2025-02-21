@@ -25,7 +25,17 @@ public class ShopRepleService {
 		return shopRepleMapper.getRepleByNum(num);
 	}
 	
-	public void plusRepleLikes(int idx) {
-		shopRepleMapper.plusRepleLikes(idx);
+	public String getPhoto(int idx)
+	{
+		return shopRepleMapper.getPhoto(idx);
+	}
+	
+	public void updateLikes(int idx)
+	{
+		shopRepleMapper.updateLikes(idx);
+	}
+	public int getLikes(int idx)
+	{
+		return shopRepleMapper.getLikes(idx);
 	}
 }

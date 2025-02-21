@@ -128,15 +128,13 @@ $(function() {
 	
 	// 댓글 삭제 이벤트
 	$(document).on("click", ".del", function() {
-		let pname = $(this).attr("pname");
 		let idx = $(this).attr("idx");
-		//alert(pname+" "+idx);
 		
 		$.ajax({
-			type: "post",
+			type: "get",
 			dataType: "text",
-			url: "./repledelete",
-			data: {"idx":idx, "pname":pname},
+			url: "./repledel",
+			data: {"idx":idx},
 			success: function() {
 				replelist();
 			}
@@ -147,13 +145,14 @@ $(function() {
 	$(document).on("click", ".likes", function() {
 		//alert("추천!"+$(this).attr("idx"));
 		let idx = $(this).attr("idx");
+		let icon = $(this);
 		$.ajax({
-			type: "post",
-			dataType: "text",
-			url: "./pluslikes",
+			type: "get",
+			dataType: "json",
+			url: "./likes",
 			data: {"idx":idx},
-			success: function() {
-				replelist();
+			success: function(res) {
+				icon.text("추천 "+res.likes);
 			}
 		});
 	});
@@ -189,7 +188,7 @@ function replelist() {
 						<p class="msg">\${ele.message}</p>
 						<span class="date">\${ele.writetime}</span>
 						<i class="bi bi-heart likes" idx="\${ele.idx}">추천&nbsp;\${ele.likes}</i>
-						<i class="bi bi-x del" idx="\${ele.idx}"
+						<i class="bi bi-x-lg del" idx="\${ele.idx}"
 						 pname="\${ele.photo}"></i>
 					</div>
 					`;
@@ -203,6 +202,7 @@ function replelist() {
 </script>  
 </head>
 <body>
+<jsp:include page="../../layout/title.jsp"/>
 <div style="margin: 20px;width: 500px;">
 	<table>
 		<tr>
@@ -285,18 +285,18 @@ function sangdel(num) {
 </script>
 <!-- 댓글 사진 모달 -->
 <div class="modal" id="photoModal">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">댓글 아이콘</h4>
+        <h4 class="modal-title">원본사진</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body" style="text-align: center">
-       	<img src="../../save/noimage.png" width="200" id="modalimg"/>
+       	<img src="../../save/noimage.png" width="100%" id="modalimg"/>
       </div>
 
       <!-- Modal footer -->

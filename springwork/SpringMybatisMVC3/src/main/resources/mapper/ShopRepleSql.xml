@@ -16,8 +16,15 @@
 		order by idx desc
 	</select>
 	
-	<update id="plusRepleLikes" parameterType="int">
-		update bootshopreple set likes=likes+1
-		where idx=#{idx}
+	<select id="getPhoto" parameterType="int" resultType="String">
+		select photo from bootshopreple where idx=#{idx}
+	</select>
+	
+	<update id="updateLikes" parameterType="int">
+		update bootshopreple set likes=likes+1 where idx=#{idx}
 	</update>
+	
+	<select id="getLikes" parameterType="int" resultType="int">
+		select likes from bootshopreple where idx=#{idx}
+	</select>
 </mapper>

@@ -39,6 +39,8 @@ body *{
 </style>
 </head>
 <body>
+<jsp:include page="../../layout/title.jsp"/>
+
 <div style="margin: 20px;width: 500px;">
 	<h5 class="alert alert-danger">
 		총 ${totalCount}개의 상품
