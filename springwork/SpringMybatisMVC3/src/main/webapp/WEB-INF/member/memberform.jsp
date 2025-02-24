@@ -32,7 +32,7 @@ let jungbok = false; // 중복 상태 점검
 $(function() {
 	// 중복버튼 이벤트
 	$("#btnIdCheck").click(function() {
-		let myid = $("myid").val();
+		let myid = $("#myid").val();
 		
 		$.ajax({
 			type: "get",

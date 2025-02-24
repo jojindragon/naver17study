@@ -108,9 +108,8 @@
 | 02월 19일 | SpringMybatisMVC3 | 클라우드 DB 연결<br>1. Mybatis 설정<br>2. Shop 테이블 출력&입력&수정&상세보기 |
 | 02월 20일 | SpringMybatisMVC3 | 상품 수정&삭제 기능 완성<br>상품에 댓글 기능 추가 - RestControll<br>- 입력&출력&삭제&추천 |
 | 02월 21일 | SpringMybatisMVC3 | 댓글 기능 로직 변경<br>메인메뉴 및 타이틀 추가<br>회원가입 폼 디자인: 아이디 유효성 검사&비밀번호 확인 |
-
-| 02월 24일 |  |  |
-| 02월 25일 |  |  |
+| 02월 24일 | SpringMybatisMVC3 | 회원가입 기능 완성(insert)<br> 회원목록 출력, 관리자 기능(회원삭제) <br>마이페이지 |
+| 02월 25일 | SpringMybatisMVC3 |  |
 | 02월 26일 |  |  |
 | 02월 27일 |  |  |
 | 02월 28일 |  |  |
