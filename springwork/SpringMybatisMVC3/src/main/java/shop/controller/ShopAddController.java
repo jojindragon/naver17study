@@ -1,10 +1,6 @@
 package shop.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
-import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +12,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import data.dto.ShopDto;
 import data.service.ShopService;
-import jakarta.servlet.http.HttpServletRequest;
+import naver.storage.NcpObjectStorageService;
 
 @Controller
 public class ShopAddController {
-	
 	@Autowired
 	ShopService shopService;
+	
+	private String bucketName = "bitcamp-bucket-139";
+	
+	@Autowired
+	NcpObjectStorageService storageService;
 	
 	@GetMapping("/shop/addform")
 	public String addForm() {
@@ -30,30 +30,16 @@ public class ShopAddController {
 	}
 	
 	@PostMapping("/shop/insert")
-	public String insert(HttpServletRequest request,
-			@ModelAttribute ShopDto dto,
+	public String insert(@ModelAttribute ShopDto dto,
 			@RequestParam("upload") List<MultipartFile> uploadList) {
-		// 업로드할 save 경로 구하기
-		String savePath = request.getSession().getServletContext().getRealPath("/save");
-
-		List<MultipartFile> list = new Vector<>();
-		
 		// dto에 저장할 변수
 		String sphoto="";
 		
 		for(MultipartFile mf : uploadList ) {
-			// 파일명 변경
-			String extName = mf.getOriginalFilename().split("\\.")[1];
-			String uploadFileName = UUID.randomUUID() + "." + extName;
-			
+			// 스토리지에 파일 업로드
+			String uploadFileName = storageService.uploadFile(bucketName, "shop", mf);
+			// DB sphoto 작업
 			sphoto += uploadFileName + ",";
-			
-			try {
-				mf.transferTo(new File(savePath+"/"+uploadFileName));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-	
 		}
 		
 		// 마지막 콤마 제거 후 dto 넣기

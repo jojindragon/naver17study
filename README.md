@@ -109,7 +109,7 @@
 | 02월 20일 | SpringMybatisMVC3 | 상품 수정&삭제 기능 완성<br>상품에 댓글 기능 추가 - RestControll<br>- 입력&출력&삭제&추천 |
 | 02월 21일 | SpringMybatisMVC3 | 댓글 기능 로직 변경<br>메인메뉴 및 타이틀 추가<br>회원가입 폼 디자인: 아이디 유효성 검사&비밀번호 확인 |
 | 02월 24일 | SpringMybatisMVC3 | 회원가입 기능 완성(insert)<br> 회원목록 출력, 관리자 기능(회원삭제) <br>마이페이지 |
-| 02월 25일 | SpringMybatisMVC3 |  |
+| 02월 25일 | SpringMybatisMVC3 | 마이페이지 수정 기능<br>**네이버 스토리지 연결**<br>- 사진 저장&삭제&출력<br>- Image Optimizer 사용 <br> - 기존 페이지에 모두 적용(shop, member 등)<br> *네이버 Papago API* 사용: Papago 구현 |
 | 02월 26일 |  |  |
 | 02월 27일 |  |  |
 | 02월 28일 |  |  |

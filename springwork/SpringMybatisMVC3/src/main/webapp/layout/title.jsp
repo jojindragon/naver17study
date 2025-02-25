@@ -121,7 +121,8 @@ img.profilephoto {
 		</a>
 		<span style="margin-left: 350px;font-size: 15px;">
 			<c:if test="${sessionScope.loginstatus != null}">
-				<img src="${root}/save/${sessionScope.loginphoto}"
+				<c:set var="naverurl" value="https://kr.object.ncloudstorage.com/bitcamp-bucket-139"/>
+				<img src="${naverurl}/member/${sessionScope.loginphoto}"
 				 class="profilephoto" onerror="this.src='${root}/save/noimage.png'"/>
 				<b>${sessionScope.loginid}</b> 님이 로그인 중입니다.
 				
@@ -136,6 +137,9 @@ img.profilephoto {
 	<ul class="mymenu">
 		<li>
 			<a href="${root}/">Home</a>
+		</li>
+		<li>
+			<a href="${root}/naver/papago">Papago</a>
 		</li>
 		<li>
 			<a href="${root}/shop/list">상품목록</a>

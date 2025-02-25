@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 body *{
 	font-family: 'Jua';
@@ -26,16 +27,19 @@ body *{
 	position: relative;
 	cursor: pointer;
 	font-size: 1.5em;
-	left: -30px;
-	top: 50px;
+	left: -25px;
+	top: -100px;
 }
 </style>
 </head>
 <body>
 <jsp:include page="../../layout/title.jsp"/>
 <div style="margin: 30px 100px;">
-	<img src="../save/${dto.mphoto}" class="profilelargephoto"
-	 onerror="this.src='../save/noimage.png'">
+	<%-- <img src="../save/${dto.mphoto}" class="profilelargephoto"
+	 onerror="this.src='../save/noimage.png'" style="float: left;"> --%>
+	 <!-- naver storage에 있는 사진으로 출력 -->
+	<img src="${naverurl}/member/${dto.mphoto}" class="profilelargephoto"
+	 onerror="this.src='../save/noimage.png'" style="float: left;">
 	<input type="file" id="fileupload" style="display: none;"/>
 	<i class="bi bi-camera-fill changecamera"></i>
 	<script type="text/javascript">
@@ -61,7 +65,7 @@ body *{
 			});
 		});
 	</script>
-	<div style="margin: 20px 50px;display: inline-block;">
+	<div style="display: inline-block;margin: 20px 50px;">
 		<h6>회원명: ${dto.mname}</h6>
 		<h6>아이디: ${dto.myid}</h6>
 		<h6>핸드폰: ${dto.mhp}</h6>
@@ -95,32 +99,53 @@ body *{
 		 	수정 후 reload 할 것이므로 @ResponseBody로 메서드 구현
 		 -->
 		<button type="button" class="btn btn-sm btn-success"
-		 data-bs-toggle="modal" data-bs-target="#myModal">회원정보수정</button>
+		 data-bs-toggle="modal" data-bs-target="#myUpdateModal">회원정보수정</button>
 	</div>
 </div>
 <!-- Update Modal -->
-<div class="modal" id="myModal">
+<div class="modal" id="myUpdateModal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">회원 수정</h4>
+        <h4 class="modal-title">회원 정보 수정</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-       <form id="">
-       	<input type="hidden" name="num" value="${dto.num}"/>
-       </form>
+      	<h6>회원명 수정</h6>
+       	<input type="text" id="mname" class="form-control"
+       	 value="${dto.mname}"/><br>
+      	<h6>핸드폰 수정</h6>
+       	<input type="text" id="mhp" class="form-control"
+       	 value="${dto.mhp}"/><br>
+      	<h6>주소 수정</h6>
+       	<input type="text" id="maddr" class="form-control"
+       	 value="${dto.maddr}"/><br>
+       	<button type="button" class="btn btn-sm btn-success"
+       	 id="btnupdate">수정</button>
       </div>
-
+	  <script type="text/javascript">
+	  $("#btnupdate").click(function() {
+		 $.ajax({
+			type: "post",
+			dataType: "text",
+			data: {"mname":$("#mname").val(), "mhp":$("#mhp").val(),
+					"maddr":$("#maddr").val(), "num":${dto.num}},
+			url: "./update",
+			success: function() {
+				location.reload();
+			}
+		 });
+	  });
+	  </script>
+	
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
-
     </div>
   </div>
 </div>

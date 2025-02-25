@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 body *{
 	font-family: 'Jua';
@@ -51,19 +52,23 @@ body *{
 </div>
 <div style="margin: 20px;" class="shopbox">
 	<c:forEach var="dto" items="${list}">
-		<figure>
-			<a href="./detail?num=${dto.num}">
-				<img src="../../save/${dto.mainPhoto}"
+		<a href="./detail?num=${dto.num}">
+			<figure>
+				<img src="${fronturl}/${dto.mainPhoto}${backurl}"
 				 onerror="this.src='../../save/noimage.png'"/>
-			</a>
-			<figcaption>
-				<h6>${dto.sangpum}</h6>
-				<h6>
-					<fmt:formatNumber value="${dto.sprice}"
-					 type="number"/>원
-				</h6>
-			</figcaption>
-		</figure>
+			
+				<figcaption>
+					<h6>
+					<c:if test="${dto.replecnt>0}">
+						<span class="badge bg-danger">${dto.replecnt}</span>
+					</c:if>${dto.sangpum}</h6>
+					<h6>
+						<fmt:formatNumber value="${dto.sprice}"
+					 	 type="number"/>원
+					</h6>
+				</figcaption>
+			</figure>
+		</a>
 	</c:forEach>
 </div>
 </body>

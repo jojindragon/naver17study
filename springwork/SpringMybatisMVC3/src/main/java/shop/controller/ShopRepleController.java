@@ -1,11 +1,8 @@
 package shop.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,27 +14,26 @@ import org.springframework.web.multipart.MultipartFile;
 import data.dto.ShopRepleDto;
 import data.service.ShopRepleService;
 import jakarta.servlet.http.HttpServletRequest;
+import naver.storage.NcpObjectStorageService;
 
 @RestController
 public class ShopRepleController {
 	@Autowired
 	ShopRepleService shopRepleService;
 	
+	private String bucketName = "bitcamp-bucket-139";
+	
+	@Autowired
+	NcpObjectStorageService storageService;
+	
 	@PostMapping("/shop/addreple")
 	public void insertReple(HttpServletRequest request,
 			@RequestParam int num,
 			@RequestParam String message,
 			@RequestParam("upload") MultipartFile upload) {
-		// save의 실제 경로 구하기
-		String path = request.getSession().getServletContext().getRealPath("/save");
-		// 업로드할 파일명(랜덤문자열.확장자)
-		String file = UUID.randomUUID()+"."+upload.getOriginalFilename().split("\\.")[1];
-		// 사진 업로드
-		try {
-			upload.transferTo(new File(path+"/"+file));
-		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		}
+		// 스토리지 업로드
+		String file = storageService.uploadFile(bucketName, "shop", upload);
+
 		// dto 생성
 		ShopRepleDto dto = new ShopRepleDto();
 		dto.setNum(num);
@@ -57,15 +53,11 @@ public class ShopRepleController {
 	
 	// 댓글 삭제
 	@GetMapping("/shop/repledel")
-	public void repleDelete(@RequestParam int idx, HttpServletRequest request) {
-		String path = request.getSession().getServletContext().getRealPath("/save");
+	public void repleDelete(@RequestParam int idx) {
 		// 삭제할 사진명
 		String photo = shopRepleService.getPhoto(idx);
 		// 사진 삭제
-		File file = new File(path+"/"+photo);
-		if(file.exists()) {
-			file.delete();
-		}
+		storageService.deleteFile(bucketName, "shop", photo);
 		shopRepleService.deleteShopReple(idx);
 	}
 	

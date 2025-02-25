@@ -181,7 +181,7 @@ function replelist() {
 					s+=`
 					<hr>
 					<div class="input-group">
-						<img src="../../save/\${ele.photo}"
+						<img src="${shopurl}/\${ele.photo}"
 						 class="repleimg"
 				 		 data-bs-toggle="modal"
 					 	 data-bs-target="#photoModal"/>
@@ -208,11 +208,11 @@ function replelist() {
 		<tr>
 			<td width="120">
 			<c:forTokens items="${dto.sphoto}" delims="," var="photos">
-				<img src="../../save/${photos}" class="selimg"/>
+				<img src="${shopurl}/${photos}" class="selimg"/>
 			</c:forTokens>
 			</td>
 			<td>
-				<img src="../../save/${dto.mainPhoto}" id="mainimg"
+				<img src="${shopurl}/${dto.mainPhoto}" id="mainimg"
 				 onerror="this.src='../../save/noimage.png'"/>
 			</td>
 		</tr>

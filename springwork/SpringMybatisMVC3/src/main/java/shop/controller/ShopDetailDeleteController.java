@@ -1,9 +1,6 @@
 package shop.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +13,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import data.dto.ShopDto;
 import data.service.ShopService;
-import jakarta.servlet.http.HttpServletRequest;
+import naver.storage.NcpObjectStorageService;
 
 @Controller
 public class ShopDetailDeleteController {
-	
 	@Autowired
 	ShopService shopService;
+
+	private String bucketName = "bitcamp-bucket-139";
+	
+	@Autowired
+	NcpObjectStorageService storageService;
+	
 	
 	@GetMapping("/shop/detail")
 	public String detail(Model model, @RequestParam int num) {
@@ -31,24 +33,19 @@ public class ShopDetailDeleteController {
 		dto.setMainPhoto(mainPhoto);
 		
 		model.addAttribute("dto", dto);
+		model.addAttribute("shopurl", "https://kr.object.ncloudstorage.com/bitcamp-bucket-139/shop");
 		return "shop/detail";
 	}
 	
 	@GetMapping("/shop/delete")
-	public String delete(HttpServletRequest request, @RequestParam int num) {
-		// 배포된 프로젝트의 save 위치 구하기
-		String path = request.getSession().getServletContext().getRealPath("/save");
-		
+	public String delete(@RequestParam int num) {
 		// 삭제 전 사진명 획득
 		String photos = shopService.getOneSangpum(num).getSphoto();
 		String[] photo = photos.split(",");
 		
 		// 실제 경로에서 파일 찾아 삭제
 		for(String f:photo) {
-			File file = new File(path+"/"+f);
-			if(file.exists()) {
-				file.delete();
-			}
+			storageService.deleteFile(bucketName, "shop", f);
 		}
 		
 		// DB 삭제
@@ -61,20 +58,18 @@ public class ShopDetailDeleteController {
 		String sphoto = shopService.getOneSangpum(num).getSphoto();
 		model.addAttribute("num", num);
 		model.addAttribute("sphoto", sphoto);
+		model.addAttribute("fronturl", "https://radbwaqf8739.edge.naverncp.com/DaFq6foQou/shop");
+		model.addAttribute("backurl", "?type=f&w=120&h=120&faceopt=true&ttype=jpg");
 		return "shop/photos";
 	}
 	
 	@GetMapping("/shop/delphoto")
 	@ResponseBody
-	public void deletePhoto(@RequestParam int num, @RequestParam String pname, HttpServletRequest request) {
+	public void deletePhoto(@RequestParam int num, @RequestParam String pname) {
 		// num에 해당하는 sphoto를 db에서 획득
 		String sphoto = shopService.getOneSangpum(num).getSphoto();
 		
-		String path = request.getSession().getServletContext().getRealPath("/save");
-		File file = new File(path+"/"+pname);
-		if(file.exists()) {
-			file.delete();
-		}
+		storageService.deleteFile(bucketName, "shop", pname);
 		
 		// sphoto에서 pname 부분을 삭제, 중간일 경우 뒤에 컴마도 삭제
 		String changePhoto = "";
@@ -91,21 +86,13 @@ public class ShopDetailDeleteController {
 	@PostMapping("/shop/addphoto")
 	@ResponseBody
 	public void addPhoto(@RequestParam int num,
-			@RequestParam("upload") List<MultipartFile> uploadList,
-			HttpServletRequest request) {
-		
-		// upload 경로
-		String path = request.getSession().getServletContext().getRealPath("/save");
+			@RequestParam("upload") List<MultipartFile> uploadList) {
 		// 새로 업로드할 파일명
 		String photos = "";
 		for(MultipartFile mf:uploadList) {
-			String uploadFile = UUID.randomUUID()+"."+mf.getOriginalFilename().split("\\.")[1];
+			// 스토리지 추가 후 파일명 받기
+			String uploadFile = storageService.uploadFile(bucketName, "shop", mf);
 			photos+=uploadFile+",";
-			try {
-				mf.transferTo(new File(path+"/"+uploadFile));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
 		}
 		photos = photos.substring(0, photos.length()-1);
 		String sphoto = shopService.getOneSangpum(num).getSphoto();

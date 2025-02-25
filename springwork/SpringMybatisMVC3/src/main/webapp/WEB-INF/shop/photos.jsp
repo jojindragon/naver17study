@@ -50,7 +50,7 @@ body *{
 	</h4>
 	<div class="photos">
 		<c:forTokens items="${sphoto}" delims="," var="photo">
-			<img src="../../save/${photo}"/>
+			<img src="${fronturl}/${photo}${backurl}"/>
 			<i class="bi bi-x-circle photodel" pname="${photo}"></i>
 		</c:forTokens>
 	</div>

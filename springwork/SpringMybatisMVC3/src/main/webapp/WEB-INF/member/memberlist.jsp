@@ -47,7 +47,13 @@ img.small {
 				<tr>
 					<td>
 						<input type="checkbox" class="numchk" num="${dto.num}" />
-						<img src="../../save/${dto.mphoto}" class="small"
+						<%-- <img src="../../save/${dto.mphoto}" class="small"
+						 onerror="this.src='../../save/noimage.png'"/> --%>
+						<!-- 원본 사진을 사이즈만 바꿔서 출력 -->
+						<%-- <img src="${naverurl}/member/${dto.mphoto}" class="small"
+						 onerror="this.src='../../save/noimage.png'"/> --%>
+						<!-- 원본 사진에서 30X30으로 자른 썸네일로 출력 -->
+						<img src="${fronturl}/member/${dto.mphoto}${backurl}" class="small"
 						 onerror="this.src='../../save/noimage.png'"/>
 						&nbsp;${dto.mname}
 					</td>
