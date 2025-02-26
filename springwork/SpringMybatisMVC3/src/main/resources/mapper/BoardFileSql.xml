@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.BoardFileMapper">
+	<!-- 게시판 사진 삽입 -->
+	<insert id="insertBoardFile" parameterType="BoardFileDto">
+		insert into boardfile (idx, filename)
+		values (#{idx}, #{filename})
+	</insert>
+	
+	<!-- 게시판 사진 얻기 -->
+	<select id="getFiles" parameterType="int" resultType="BoardFileDto">
+		select * from boardfile where idx=#{idx} order by num
+	</select>
+	
+	<!-- 파일 삭제 -->
+	<delete id="deleteFile" parameterType="int">
+		delete from boardfile where num=#{num}
+	</delete>
+	
+</mapper>

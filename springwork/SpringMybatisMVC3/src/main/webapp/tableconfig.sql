@@ -1,4 +1,4 @@
-# 02월 19일
+# 02월 19일 (수)
 create table bootshop (
 	num smallint auto_increment primary key,
     sangpum varchar(30),
@@ -10,7 +10,7 @@ create table bootshop (
     writeday datetime
 );
 
-# 02월 20일
+# 02월 20일 (목)
 create table bootshopreple(
 	idx smallint auto_increment primary key,
     num smallint,
@@ -21,7 +21,7 @@ create table bootshopreple(
     foreign key(num) references bootshop(num) on delete cascade
 );
 
-# 02월 21일
+# 02월 21일 (금)
 create table member (
     num smallint auto_increment primary key,
     mname varchar(20),
@@ -32,3 +32,25 @@ create table member (
     mphoto varchar(100),
     gaipday datetime
 );
+
+# 02월 26일 (수)
+create table board (
+	idx smallint auto_increment primary key,
+    myid varchar(30),
+    writer varchar(30),
+    subject varchar(300),
+    content varchar(2000),
+    readcount smallint default 0,
+    regroup smallint,
+    relevel smallint,
+    restep smallint,
+    writeday datetime default now()
+);
+
+create table boardfile(
+	num smallint auto_increment primary key,
+    idx smallint,
+    filename varchar(50),
+    foreign key(idx) references board(idx) on delete cascade
+);
+
