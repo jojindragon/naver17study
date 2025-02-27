@@ -28,4 +28,8 @@ public class BoardFileService {
 		fileMapper.deleteFile(num);
 	}
 	
+	public String getFileName(int num) {
+		return fileMapper.getFileName(num);
+	}
+	
 }

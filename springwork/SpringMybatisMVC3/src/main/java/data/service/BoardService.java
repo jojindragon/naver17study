@@ -74,4 +74,13 @@ public class BoardService {
 		return boardMapper.getSelectByMyid(myid);
 	}
 	
+	// 게시글 수정: 제목&내용
+	public void updateBoard(BoardDto dto) {
+		boardMapper.updateBoard(dto);
+	}
+	
+	// 게시글 삭제
+	public void deleteBoard(int idx) {
+		boardMapper.deleteBoard(idx);
+	}
 }

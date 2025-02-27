@@ -49,4 +49,14 @@
 		select * from board where myid=#{myid}
 	</select>
 	
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="BoardDto">
+		update board set subject=#{subject}, content=#{content}
+		where idx=#{idx}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		delete from board where idx=#{idx}
+	</delete>
 </mapper>

@@ -102,6 +102,48 @@ body *{
 		 data-bs-toggle="modal" data-bs-target="#myUpdateModal">회원정보수정</button>
 	</div>
 </div>
+<!-- 내가 쓴 글 목록 -->
+<div style="margin: 30px;width: 600px;clear: both;">
+	<h5>내가 쓴 게시글</h5>
+	<table class="table table-bordered tabmyboard">
+		<thead style="text-align: center;">
+			<tr>
+				<th width="50">번호</th>
+				<th width="400">제목</th>
+				<th width="100">작성일</th>
+				<th width="50">조회</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach var="dto" items="${list}" varStatus="i">
+			<tr>
+				<td align="center">${i.count}</td>
+				<td>
+					<a href="../board/detail?idx=${dto.idx}">
+					<c:if test="${dto.relevel!=0}">
+						<mark>[답글]</mark>
+					</c:if>
+					${dto.subject}
+					<c:if test="${dto.photoCount==1}">
+		 				<i class="bi bi-image picon"></i>
+		 			</c:if>
+		 			<c:if test="${dto.photoCount>1}">
+		 				<i class="bi bi-images picon"></i>
+		 			</c:if>
+					</a>
+				</td>
+				<td align="center">
+					<span style="font-size: 0.8em;color: gray;">
+					<fmt:formatDate value="${dto.writeday}" pattern="yyyy-MM-dd"/>
+					</span>
+				</td>
+				<td align="center">${dto.readcount}</td>
+			</tr>
+		</c:forEach>
+		</tbody>
+	</table>
+</div>
+
 <!-- Update Modal -->
 <div class="modal" id="myUpdateModal">
   <div class="modal-dialog modal-sm">

@@ -1,5 +1,8 @@
 package member.controller;
 
+import java.util.List;
+import java.util.Vector;
+
 /*import java.io.File;
 import java.io.IOException;
 import java.util.UUID;*/
@@ -15,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import data.dto.BoardDto;
 import data.dto.MemberDto;
+import data.service.BoardFileService;
+import data.service.BoardService;
 import data.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -36,7 +42,9 @@ public class MemberDelUpdateController {
 	
 //	@Autowired
 	final NcpObjectStorageService storageService;
-	
+	final BoardService boardService;
+	final BoardFileService fileService;
+
 	@GetMapping("/delete")
 	public String deleteMember(@RequestParam int num) {
 		memberService.deleteMember(num);
@@ -90,6 +98,16 @@ public class MemberDelUpdateController {
 		model.addAttribute("dto", dto);
 		// 네이버 스토리지 주소
 		model.addAttribute("naverurl", "https://kr.object.ncloudstorage.com/bitcamp-bucket-139");
+		
+		//쓴 게시글 가져오기
+		List<BoardDto> list = boardService.getSelectByMyid(myid);
+		for(BoardDto bdto:list) {
+			// 각 게시글 파일 갯수 저장
+			int cnt = fileService.getFiles(bdto.getIdx()).size();
+			bdto.setPhotoCount(cnt);
+		}
+		model.addAttribute("list", list);
+		
 		return "member/mypage";
 	}
 	

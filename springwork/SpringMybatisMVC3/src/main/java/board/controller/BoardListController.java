@@ -24,8 +24,8 @@ public class BoardListController {
 	public String list(Model model,
 			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 		// 페이징 처리
-		int perPage = 1; // 1페이지 당 출력할 글
-		int perBlock = 2; // 1블럭 당 출력할 페이지 갯수
+		int perPage = 5; // 1페이지 당 출력할 글
+		int perBlock = 5; // 1블럭 당 출력할 페이지 갯수
 
 		int totalCount = boardService.getTotalCount(); // 전체 게시글 갯수
 		int totalPage; // 총 페이지 수

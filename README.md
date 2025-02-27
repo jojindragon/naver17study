@@ -111,5 +111,5 @@
 | 02월 24일 | SpringMybatisMVC3 | 회원가입 기능 완성(insert)<br> 회원목록 출력, 관리자 기능(회원삭제) <br>마이페이지 |
 | 02월 25일 | SpringMybatisMVC3 | 마이페이지 수정 기능<br>**네이버 스토리지 연결**<br>- 사진 저장&삭제&출력<br>- Image Optimizer 사용 <br> - 기존 페이지에 모두 적용(shop, member 등)<br> *네이버 Papago API* 사용: Papago 구현 |
 | 02월 26일 | SpringMybatisMVC3 | 회원형 게시판 기능 추가<br> - 답글형 게시판 출력 및 입력 |
-| 02월 27일 |  |  |
+| 02월 27일 | SpringMybatisMVC3 | 회원형 게시판 <br> - 게시판 입력, 수정 기능<br> - 상세보기 페이지 쓴 글 목록 출력 |
 | 02월 28일 |  |  |

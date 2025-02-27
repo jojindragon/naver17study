@@ -17,4 +17,8 @@
 		delete from boardfile where num=#{num}
 	</delete>
 	
+	<select id="getFileName" parameterType="int" resultType="String">
+		select filename from boardfile where num=#{num}
+	</select>
+	
 </mapper>
