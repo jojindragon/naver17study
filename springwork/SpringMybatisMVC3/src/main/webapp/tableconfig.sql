@@ -54,3 +54,13 @@ create table boardfile(
     foreign key(idx) references board(idx) on delete cascade
 );
 
+# 02월 28일 (금)
+create table boardreple(
+	num smallint auto_increment primary key,
+    idx smallint,
+    myid varchar(30),
+    message varchar(1000),
+    photo varchar(50),
+    writeday datetime default now(),
+    foreign key(idx) references board(idx) on delete cascade
+);

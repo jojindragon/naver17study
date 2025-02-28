@@ -200,7 +200,8 @@ img.profilephoto {
 				dataType: "text",
 				url: "${root}/logout",
 				success: function() {
-					location.reload();
+					//location.reload();
+					location.href="${root}/";
 				}
 			});
 		});

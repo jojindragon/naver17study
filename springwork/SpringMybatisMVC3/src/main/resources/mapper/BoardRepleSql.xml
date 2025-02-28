@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.BoardRepleMapper">
+	<!-- 댓글 삽입 -->
+	<insert id="insertReple" parameterType="BoardRepleDto">
+		insert into boardreple(idx, myid, message, photo)
+		values(#{idx}, #{myid}, #{message}, #{photo})
+	</insert>
+	
+	<!-- 댓글 가져오기 -->
+	<select id="getAllReples" parameterType="int" resultType="BoardRepleDto">
+		select * from boardreple where idx=#{idx}
+		order by writeday desc
+	</select>
+	
+	<!-- 댓글 총 갯수 가져오기 -->
+	<select id="getRepleCount" parameterType="int">
+		select count(*) from boardreple where idx=#{idx}
+	</select>
+	
+</mapper>

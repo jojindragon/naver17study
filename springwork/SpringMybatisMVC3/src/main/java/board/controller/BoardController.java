@@ -90,7 +90,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/detail")
-	public String detail(@RequestParam int idx,
+	public String detail(HttpSession session, @RequestParam int idx,
 			@RequestParam(defaultValue = "1") int pageNum,
 			Model model) {
 		// 조회수 1 증가
@@ -120,6 +120,10 @@ public class BoardController {
 		model.addAttribute("wfronturl", "https://radbwaqf8739.edge.naverncp.com/DaFq6foQou");
 		model.addAttribute("wbackurl", "?type=f&w=50&h=50&faceopt=true&ttype=jpg");
 		model.addAttribute("naverurl", "https://kr.object.ncloudstorage.com/"+bucketName);
+		
+		String loginid = (String) session.getAttribute("loginid");
+		String writer = memberService.getSelectByMyid(loginid).getMname();
+		model.addAttribute("writer", writer);
 		
 		return "board/boarddetail";
 	}
@@ -183,8 +187,8 @@ public class BoardController {
 	
 	// 게시글 삭제
 	@GetMapping("/delete")
-	public String delete(@RequestParam int idx,
-			@RequestParam(defaultValue = "1") int pageNum) {
+	@ResponseBody
+	public void boardDelete(@RequestParam int idx) {
 		// 스토리지 관련 사진 삭제
 		List<BoardFileDto> list = fileService.getFiles(idx);
 		for(BoardFileDto dto:list) {
@@ -194,8 +198,6 @@ public class BoardController {
 		
 		// DB 삭제
 		boardService.deleteBoard(idx);
-		
-		return "redirect:./list?pageNum="+pageNum;
 	}
 	
 }
