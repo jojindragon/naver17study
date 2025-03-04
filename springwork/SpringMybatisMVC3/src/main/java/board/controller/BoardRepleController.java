@@ -26,6 +26,7 @@ public class BoardRepleController {
 
 	private String bucketName = "bitcamp-bucket-139";
 	private String uploadFilename;
+	private String updateFile;// 수정할 파일 작업
 	
 	// 댓글 사진 업로드
 	@PostMapping("/repleupload")
@@ -78,6 +79,61 @@ public class BoardRepleController {
 	@GetMapping("/replecnt")
 	public int getRepleCnt(@RequestParam int idx) {
 		return boardRepleService.getRepleCount(idx);
+	}
+	
+	// 댓글 삭제
+	@PostMapping("deleteReple")
+	public void deleteReple(@RequestParam int num) {
+		BoardRepleDto dto = boardRepleService.getOneReple(num);
+		// 스토리지 삭제
+		String photo = "";
+		if(dto.getPhoto() != null) {
+			photo = dto.getPhoto();
+			storageService.deleteFile(bucketName, "board", photo);
+		}
+		
+		// DB에서 삭제
+		boardRepleService.deleteReple(num);
+	}
+	
+	/* 수정 관련 작업 */
+	@PostMapping("/newPhotoUp")
+	public String newPhotoUp(@RequestParam("upload") MultipartFile upload) {
+		// 수정할 사진 업로드
+		if(updateFile!=null) {
+			storageService.deleteFile(bucketName, "board", updateFile);	
+		}
+		
+		updateFile = storageService.uploadFile(bucketName, "board", upload);
+		return updateFile;
+	}
+	
+	@GetMapping("/cancelUp")
+	public void cancelUp(@RequestParam String fname) {
+		// 업로드 취소 작업
+		storageService.deleteFile(bucketName, "board", fname);
+		updateFile=null;
+	}
+	
+	// 댓글 수정
+	@PostMapping("/updateReple")
+	public void updateReple(@RequestParam int num,
+			@RequestParam String message) {
+		// 기존 사진 정보 얻기
+		uploadFilename = boardRepleService.getOneReple(num).getPhoto();
+		// 기존 사진 삭제
+		if(uploadFilename != null) {
+			storageService.deleteFile(bucketName, "board", uploadFilename);
+			uploadFilename = null;
+		}
+		
+		BoardRepleDto dto = BoardRepleDto.builder()
+				.num(num).message(message)
+				.photo(updateFile).build();
+		
+		boardRepleService.updateReple(dto);
+		
+		updateFile = null;
 	}
 	
 }

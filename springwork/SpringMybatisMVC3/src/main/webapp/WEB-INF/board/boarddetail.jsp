@@ -28,12 +28,18 @@ body *{
 }
 
 /* 댓글 입력 디자인 */
-#message {
+.addrepleform {
+	margin-top: 30px;
+	width: 500px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding: 5px;
+}
+textarea {
 	width: 100%;
 	border: none;
-	resize: none;
 }
-#message:focus {
+textarea:focus {
 	outline: none;
 }
 
@@ -58,6 +64,11 @@ body *{
 /* 댓글 목록 디자인 */
 .replelist {
 	margin-top: 10px;
+}
+
+.comment {
+	width: 500px;
+	margin: 5px;
 }
 
 .replelist .day {
@@ -104,20 +115,213 @@ body *{
 	text-decoration: underline;
 }
 
+/* 수정 폼 관련 디자인 */
+.edit-form {
+ 	width: 500px;
+ 	padding: 5px;
+ 	border: 1px solid #ccc;
+ 	border-radius: 10px;
+ 	display: none;
+}
+.upcancel, .repleup {
+ 	color: #ccc;
+ 	margin-right: 10px;
+ 	cursor: pointer;
+ 	float: right;
+}
+
+.upcamera {
+	font-size: 1.4em;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.upphoto {
+ 	margin-bottom:10px;
+	padding-left: 10px;
+}
+.upphoto img {
+	width: 50px;
+	height: 50px;
+	border: 1px solid gray;
+	border-radius: 10px;
+}
+.upphotodel {
+	color: red;
+	cursor: pointer;
+	top: -10px;
+	left: -10px;
+}
 </style>
 <script type="text/javascript">
 $(function() {
 	replelist();
 	
+	// modal 이벤트
+	$(document).on("click", ".photo", function() {
+		$("#modalimg").attr("src", $(this).attr("src"));
+	});
+	
 	// 댓글 메뉴 이벤트
+	let menu = null;
 	$(document).on("click", ".toolbtn", function() {
-		//alert($(this).attr("num"));
-		$(this).next().toggle();
+		// alert($(this).parent().attr("id"));
+		const newMenu = $(this).parent();
+		
+		// 새 메뉴 및 다른 메뉴 검사
+		if(menu && menu.attr("id") != newMenu.attr("id")) {
+			menu.find(".replemenu").hide();
+		}
+		newMenu.find(".replemenu").toggle();
+		menu = newMenu;
 	});
 	
 	// 댓글 삭제 이벤트
+	$(document).on("click", ".repledel", function() {
+		//alert($(this).attr("num"));
+		let num = $(this).attr("num");
+		
+		$.ajax({
+			type: "post",
+			dataType: "text",
+			data: {"num":num},
+			url: "./deleteReple",
+			success: function() {
+				replelist();
+			}
+		});
+	});
+	
+	// 댓글 수정 폼 이벤트
+	let prevForm = null;
+	$(document).on("click", ".repleupform", function() {
+		// 현재 댓글의 폼
+		const form = $(this).parent().siblings(".edit-form");		
+		//alert(form.attr("class"));
+		
+		if(prevForm && prevForm.attr("id") != form.attr("id")) {
+			// 그 전 댓글 상태 원상복귀
+			prevForm.siblings().show();
+			prevForm.siblings(".replemenu").hide();
+			prevForm.hide();
+		}
+		form.siblings().hide();
+		form.show();
+		
+		prevForm = form;
+	});
+	
+	// 수정 폼 사진 띄우기
+	$(document).on("click", ".upcamera", function() {
+		$(this).prev().trigger("click");
+	});
+	
+	let fname = null;
+	$(document).on("change", ".photoUp", function(e) {
+		let form = new FormData();
+		form.append("upload", e.target.files[0]);
+		
+		/* 댓글 수정 사진 띄우기 - 기존 파일 클라우드 삭제 X */
+		// 원본 사진 감추기
+		const photolist = $(this).siblings(".upphoto"); 
+		photolist.children().hide();
+		
+		// 클라우드 추가
+		$.ajax({
+			type:"post",
+			dataType:"text",
+			data:form,
+			processData:false,
+			contentType:false,
+			url:"./newPhotoUp",
+			success: function(res) {
+				fname = res;
+				let s = `
+					<img src="${naverurl}/board/\${res}" class="up1"/>
+					<i class="bi bi-x-circle-fill upphotodel up1"
+					 fname="\${res}"></i>
+				`;
+				photolist.append(s);
+			}
+		});
+		
+		
+	});
+	
+	// 수정폼 사진 리스트 없애기 아이콘
+	$(document).on("click", ".upphotodel", function() {
+		let close = $(this);
+		
+		if(close.attr("fname") == null) {
+			// 기존 원래 사진
+			close.prev().hide();
+			close.hide();			 
+		} else {
+			// 이후 추가되는 사진 관련 작업
+			fname = close.attr("fname");
+			$.ajax({
+				type:"get",
+				dataType:"text",
+				data:{"fname":fname},
+				url:"./cancelUp",
+				success: function() {
+					//close.siblings().show();
+					close.prev().remove();
+					close.remove();
+				}
+			});
+		}
+	});
+	
+	// 댓글 수정 취소 이벤트
+	$(document).on("click", ".upcancel", function() {
+		let ans = confirm("수정을 취소하시겠습니까?");
+		if(ans) {
+			prevForm.siblings().show();
+			prevForm.siblings(".replemenu").hide();
+			// 원래 사진 다시 복구
+			// 수정하면서 추가한 클라우드 파일 삭제
+			if(fname != null) {
+				$.ajax({
+					type:"get",
+					dataType:"text",
+					data:{"fname":fname},
+					url:"./cancelUp",
+					success: function() {
+						$(".up1").remove();
+						fname = null;
+					}
+				});
+			}
+			
+			prevForm.children(".upphoto").children().show();
+			prevForm.hide();
+			
+			prevForm = null;
+		}
+	});
 	
 	// 댓글 수정 이벤트
+	$(document).on("click", ".repleup", function() {
+		let num = $(this).attr("num");
+		let msg = $(this).siblings(".messageUp").val();
+		
+		if(msg.trim() == "") {
+			alert("내용을 입력하세요!");
+			return;
+		}
+		
+		$.ajax({
+			type:"post",
+			dataType:"text",
+			data:{"num":num,"message":msg},
+			url:"./updateReple",
+			success: function() {
+				replelist();
+			}
+		});
+		
+	});
 	
 });
 
@@ -155,36 +359,58 @@ function replelist() {
 			`;
 			$.each(res, function(i, item) {
 				s+=`
-				<div style="width: 500px;margin: 5px;">
-				<img src="${naverurl}/member/\${item.profile}" class="profile"/>
+				<div id="reple\${item.num}" class="comment">
+					<img src="${naverurl}/member/\${item.profile}"
+				 	 class="profile"/>
 				`;
 				
 				if("${loginid}"==`\${item.myid}`) {
 					s+=`
 					<i class="bi bi-three-dots toolbtn" style="float: right"></i>
 					<div class="replemenu" style="float: right;display: none;">
-						<span class="repleup" num="\${item.num}">수정</span><br>
+						<span class="repleupform">수정</span><br>
 						<span class="repledel" num="\${item.num}">삭제</span>
 					</div>
 					`;
 				}
 				
-				s+=`
-				<div style="display: inline-block;">
-					<span>\${item.writer}</span><br>
-					<pre style="font-size: 15px;">\${item.message}</pre>
+				s+=`<div style="display: inline-block;">
+						<span>\${item.writer}</span><br>
+						<pre style="font-size: 15px;">\${item.message}</pre>
 				`;
 				
 				if(item.photo!=null) {
-					s+=`
-					<img src="${naverurl}/board/\${item.photo}" class="photo"/><br>
+					s+=`<img src="${naverurl}/board/\${item.photo}"
+						 class="photo"
+				 	 	 data-bs-toggle="modal"
+					 	 data-bs-target="#repleModal"/><br>
 					`;
 				}
-				s+=`
-					<span class="day">\${item.writeday}</span>
-				`;
+				
+					s+=`<span class="day">\${item.writeday}</span>
+					</div>`;
 					
-				s+="</div></div>";
+				// 각 댓글의 수정 폼
+				s+=`<div class="edit-form" id="edit\${item.num}">
+						<b>${writer}</b><br>
+						<textarea class="messageUp" placeholder="댓글을 남겨보세요."
+					 	 style="resize: none;">\${item.message}</textarea>
+						<div class="upphoto">`;
+				if(item.photo!=null) {
+					s+=`
+						<img src="${naverurl}/board/\${item.photo}">
+						<i class="bi bi-x-circle-fill upphotodel"></i>
+					`;
+				}
+						
+				s+=`</div>
+						<input type="file" class="photoUp" style="display: none;"/>
+						<i class="bi bi-camera upcamera"></i>
+						<span class="repleup" num="\${item.num}">수정</span>
+						<span class="upcancel">취소</span>
+					</div>`;
+				
+				s+="</div>";
 			});
 			$(".replelist").html(s);
 		}
@@ -270,13 +496,13 @@ function replelist() {
 	
 	<hr style="color: #ccc;">
 	<!-- 댓글: all ajax -->
-	<div style="margin-top: 30px;width: 500px;border: 1px solid gray;">
+	<div class="addrepleform">
 		<b>${writer}</b><br>
-		<textarea id="message" placeholder="댓글을 남겨보세요."></textarea>
+		<textarea id="message" placeholder="댓글을 남겨보세요." style="resize: none;"></textarea>
 		
 		<div class="replephoto" style="margin-bottom:10px;padding-left: 10px;"></div>
 		
-		<input type="file" id="fileupload" name="upload" style="display: none;"/>
+		<input type="file" id="fileupload" style="display: none;"/>
 		<i class="bi bi-camera replecamera"></i>
 		<span style="color: #ccc; margin-right: 10px; cursor: pointer;float: right;"
 			 id="replesave">등록</span>
@@ -307,7 +533,7 @@ function replelist() {
 						$(".replephoto").html(s);
 					}
 				});
-			})
+			});
 			
 			$(document).on("click", ".replephotodel", function() {
 				let close = $(this);
@@ -353,19 +579,19 @@ function replelist() {
 </div>
 
 <!-- 댓글 사진 Modal -->
-<div class="modal" id="Modal">
+<div class="modal" id="repleModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">원본사진</h4>
+        <h4 class="modal-title">Original Image</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body" style="text-align: center">
-       	<img src="../../save/noimage.png" width="100%" id="modalimg"/>
+       	<img src="../save/noimage.png" width="100%" id="modalimg"/>
       </div>
 
       <!-- Modal footer -->

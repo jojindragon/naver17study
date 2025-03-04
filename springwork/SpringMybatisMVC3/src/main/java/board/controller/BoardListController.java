@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import data.dto.BoardDto;
 import data.service.BoardFileService;
+import data.service.BoardRepleService;
 import data.service.BoardService;
 import data.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class BoardListController {
 	final BoardService boardService;
 	final BoardFileService fileService;
 	final MemberService memberService;
+	final BoardRepleService boardRepleService;
 
 	@GetMapping("/board/list")
 	public String list(Model model,
@@ -63,6 +65,10 @@ public class BoardListController {
 			BoardDto dto = list.get(i);
 			int count = fileService.getFiles(dto.getIdx()).size();
 			list.get(i).setPhotoCount(count);
+			
+			// 댓글 갯수
+			int repleCnt = boardRepleService.getRepleCount(dto.getIdx());
+			list.get(i).setRepleCount(repleCnt);
 		}
 		
 		// 각 페이지의 글 앞에 출력할 시작번호(예: 총 글이 20개, 1페이지는 20, 2페이지는 15...)

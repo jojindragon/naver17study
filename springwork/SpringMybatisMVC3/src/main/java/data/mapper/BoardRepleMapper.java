@@ -11,4 +11,7 @@ public interface BoardRepleMapper {
 	public void insertReple(BoardRepleDto dto);
 	public List<BoardRepleDto> getAllReples(int idx);
 	public int getRepleCount(int idx);
+	public void deleteReple(int num);
+	public BoardRepleDto getOneReple(int num);
+	public void updateReple(BoardRepleDto dto);
 }

@@ -79,6 +79,11 @@ body *{
 		 				<i class="bi bi-images picon"></i>
 		 			</c:if>
 		 			 </a>
+		 			 <!-- 게시판 댓글 갯수 출력 -->
+		 			 <c:if test="${dto.repleCount>0}">
+						<span class="badge bg-danger"
+						 style="float: right;">${dto.repleCount}</span>
+					</c:if>
 		 		</td>
 		 		<td align="center">${dto.writer}</td>
 		 		<td align="center">

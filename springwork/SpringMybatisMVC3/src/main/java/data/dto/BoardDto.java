@@ -22,4 +22,5 @@ public class BoardDto {
 	private Timestamp writeday;
 	private List<String> photos; // join으로 사진을 가져온다.
 	private int photoCount; // photos에 몇개가 들어가있느냐 계산
+	private int repleCount; // 댓글 갯수
 }
