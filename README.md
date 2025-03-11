@@ -98,7 +98,7 @@
 | 02월 13일 | reboard.data, reboard.servlet<br>board, kakao | 답변형 게시판 완성<br>- 페이징 처리, 게시글 삭제, 게시글 수정 |
 
 ### *Spring Boot*
-#### 10~12주차
+#### 10~14주차
 ##### + springwork
 |날짜|프로젝트|설명|
 |:---:|:---:|:---|
@@ -113,4 +113,8 @@
 | 02월 26일 | SpringMybatisMVC3 | 회원형 게시판 기능 추가<br> - 답글형 게시판 출력 및 입력 |
 | 02월 27일 | SpringMybatisMVC3 | 회원형 게시판 <br> - 게시판 입력, 수정 기능<br> - 상세보기 페이지 쓴 글 목록 출력 |
 | 02월 28일 | SpringMybatisMVC3 | 회원형 게시판 <br> - 게시판 삭제 <br> 댓글 기능: 입력, 출력 (사진 클라우드 별개 저장) |
-| 03월 03일 | SpringMybatisMVC3 | 댓글 기능: 수정&삭제 |
+| 03월 04일 | SpringMybatisMVC3 | 댓글 기능: 수정&삭제 |
+| 03월 05일 | 외부 배포 | **https://github.com/jojindragon/SpringMybatisBoard** |
+| 03월 05일 ~ 03월 10 | **MINI Project2** | 2인 프로젝트<br>git: https://github.com/jojindragon/car-estimate.git<br>발표: 03월 10일  |
+| 03월 11일 | SpringGradleThyme | ***Thymeleaf*** 기초 문법 <br> - 컨트롤러(session, dto, model) 값 전달<br> - Fragment |
+| 03월 11일 ~ 03월 14일 | SpringMybatisGradle | - Gradle-Groovy & Jar 배포 버전<br> git: https://github.com/jojindragon/SpringMybatisGradle |
