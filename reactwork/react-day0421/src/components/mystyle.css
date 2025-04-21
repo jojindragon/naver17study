@@ -1,0 +1,42 @@
+/* OneApp.js */
+img.photo1 {
+    width: 200px;
+    height: 200px;
+    border: 5px solid gold;
+    border-radius: 30px;
+}
+
+img.photo2 {
+    width: 150px;
+    border: 1px solid gray;
+    border-radius: 20px 60px 30px 80px;
+}
+
+/* TwoApp.js */
+h5.msg1 {
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: brown;
+    background-color: lightblue;
+    font-family: "Single Day";
+    font-size: 30px;
+}
+
+/* ThreeApp.js */
+.numstyle {
+    font-size: 50px;
+    color: red;
+    margin: 20px 100px;
+    text-shadow: 3px 3px 3px gray;
+}
+
+.btnstyle {
+    width: 100px;
+    background-color: powderblue;
+    color: blue;
+    margin-left: 30px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
