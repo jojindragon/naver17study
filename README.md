@@ -140,7 +140,7 @@
 >> |날짜|프로젝트|설명|
 >> |:---:|:---:|:---|
 >> | 04월 21일 | react-day0421 | React 생성 <br> React 기초: 시작 컴포넌트 바꾸기 & 전체 CSS 적용 & 이미지 출력, useState() |
->> | 04월 22일 |  |  |
+>> | 04월 22일 | react-day0422 | JSX style 적용 방법, Event,예제, require-이미지 가져오기<br>styled-components & MUI<br> useEffect(), map 반복문 |
 >> | 04월 23일 |  |  |
 >> | 04월 24|  |  |
 >> | 04월 25 |  |  |
