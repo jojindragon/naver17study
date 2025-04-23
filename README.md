@@ -141,6 +141,6 @@
 >> |:---:|:---:|:---|
 >> | 04월 21일 | react-day0421 | React 생성 <br> React 기초: 시작 컴포넌트 바꾸기 & 전체 CSS 적용 & 이미지 출력, useState() |
 >> | 04월 22일 | react-day0422 | JSX style 적용 방법, Event,예제, require-이미지 가져오기<br>styled-components & MUI<br> useEffect(), map 반복문 |
->> | 04월 23일 |  |  |
->> | 04월 24|  |  |
->> | 04월 25 |  |  |
+>> | 04월 23일 | react-day0423 | 배열 추가&삭제<br>useState와useRef 차이점<br>입력 값 하나의 객체에 넣기<br>컴포넌트 간 통신 기초 |
+>> | 04월 24| react-day0424 |  |
+>> | 04월 25 | react-day0425 |  |
