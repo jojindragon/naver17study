@@ -52,6 +52,9 @@ public class ReactShopController {
 //	@PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@PostMapping("/upload")
 	public String uploadPhoto(@RequestParam("upload") MultipartFile upload) {
+		System.out.println("업로드한 파일명 : "+upload.getOriginalFilename());
+		if(uploadFilename != null)
+			storageService.deleteFile(bucketName, folderName, uploadFilename); // 이전 업로드 사진 지우기
 		// 네이버 클라우드 업로드
 		uploadFilename = storageService.uploadFile(bucketName, folderName, upload);
 		return uploadFilename;

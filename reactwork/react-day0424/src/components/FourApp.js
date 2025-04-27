@@ -36,6 +36,14 @@ const FourApp = () => {
     axios.get("/react/shoplist")
       .then(res=>setShoplist(res.data));
   }
+
+  // 삭제 함수
+  const onDelete = (num) => {
+    let deleteurl = "/react/shopdelete?num="+num;
+    axios.delete(deleteurl)
+      .then(res=>list()); // 삭제 성공 후 목록 재출력
+  }
+
   // 처음 시작 시 딱 1번만 list 호출
   useEffect(() => {
     list();
@@ -44,7 +52,7 @@ const FourApp = () => {
   return (
     <div>
       <Alert severity='success'
-       style={{fontSize:'25px'}}>FourApp - axios 통신</Alert>
+       style={{fontSize:'25px'}}>FourApp - axios 통신(jpa shop db)</Alert>
       <FourWriteShop onSave={addShopEvent} />
       <hr />
       <h5>총 {shoplist.length} 개의 상품</h5>
@@ -55,7 +63,7 @@ const FourApp = () => {
             // 가끔 오류가 발생하는 현상
             shoplist &&
             shoplist.map((row, idx) =>
-              <FourRowItem key={idx} row={row} />)
+              <FourRowItem key={idx} row={row} onDelete={onDelete} />)
           }
         </tbody>
       </table>

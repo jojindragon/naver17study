@@ -2,8 +2,14 @@ import React from 'react';
 import noimage from '../image/noimage.png';
 import { DeleteForeverSharp } from '@mui/icons-material';
 
-const FourRowItem = ({ row }) => {
-  const shoppath = "https://kr.object.ncloudstorage.com/bitcamp-bucket-139/jpashop/";
+const FourRowItem = ({ row, onDelete }) => {
+  const shoppath = process.env.REACT_APP_PHTOT_URL;
+
+  // 삭제 함수
+  const shopDeleteEvent = (num) => {
+    if(window.confirm("해당 상품을 삭제할까요?"))
+      onDelete(num);
+  }
 
   return (
     <tr>
@@ -14,7 +20,8 @@ const FourRowItem = ({ row }) => {
       </td>
       <td style={{ marginLeft: '10px' }} valign='middle'>
         <h6>상품명 : {row.sangpum}
-          <DeleteForeverSharp style={{ float: 'right', cursor: 'pointer' }} />
+          <DeleteForeverSharp style={{ float: 'right', cursor: 'pointer' }}
+           onClick={()=>shopDeleteEvent(row.num)} />
         </h6>
         <h6 style={{ backgroundColor: row.color }}>색 상 : {row.color}</h6>
         <h6>단 가 : {row.price}원</h6>
