@@ -1,7 +1,7 @@
 import { Alert } from '@mui/material';
 import React, { useRef } from 'react';
 import cate from '../data/CateData.json';
-import posting from '../data/PostingData.json';
+// import posting from '../data/PostingData.json';
 import './mystyle.css';
 
 const TwoApp = () => {

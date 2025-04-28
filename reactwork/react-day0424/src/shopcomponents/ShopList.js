@@ -1,6 +1,7 @@
 import { Alert } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import noimage from '../image/noimage.png';
 import { useNavigate } from 'react-router-dom';
 
 const ShopList = () => {
@@ -9,12 +10,18 @@ const ShopList = () => {
 
   // 사진출력 url
   const photourl = process.env.REACT_APP_PHOTO_URL;
+  console.log(photourl);
 
   // 출력함수
   const list = () => {
     axios.get("/react/shoplist")
       .then(res => setShopList(res.data));
   }
+
+  // 첫 로딩 시 list 함수 호출
+  useEffect(()=> {
+    list();
+  }, []);
 
   return (
     <div>
@@ -35,7 +42,7 @@ const ShopList = () => {
               <tr key={idx}>
                 <td align='center'>{idx + 1}</td>
                 <td>
-                  <img alt='' src={row.photo ? photourl + row.photo : noimage}
+                  <img alt='' src={row.photo ? photourl+row.photo : noimage}
                     style={{ width: '30px', height: '30px', border: '1px solid black' }}
                   />
                   &nbsp;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../components/Menu';
+import Menu from './Menu';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../components/Home';
 import { EightApp, FiveApp, FourApp, OneApp, SevenApp, SixApp, ThreeApp, TwoApp } from '../components';

@@ -3,7 +3,7 @@ import noimage from '../image/noimage.png';
 import { DeleteForeverSharp } from '@mui/icons-material';
 
 const FourRowItem = ({ row, onDelete }) => {
-  const shoppath = process.env.REACT_APP_PHTOT_URL;
+  const shoppath = process.env.REACT_APP_PHOTO_URL;
 
   // 삭제 함수
   const shopDeleteEvent = (num) => {
