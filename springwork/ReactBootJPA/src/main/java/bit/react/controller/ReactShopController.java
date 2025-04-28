@@ -49,8 +49,8 @@ public class ReactShopController {
 	
 	// 사진 따로 업로드
 //	swagger 테스트용
-//	@PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	@PostMapping("/upload")
+	@PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//	@PostMapping("/upload")
 	public String uploadPhoto(@RequestParam("upload") MultipartFile upload) {
 		System.out.println("업로드한 파일명 : "+upload.getOriginalFilename());
 		if(uploadFilename != null)
@@ -81,5 +81,19 @@ public class ReactShopController {
 		return "delete ok!!";
 	}
 	
+	@PostMapping("/shopupdate")
+	public String updateShop(@RequestBody ShopDto dto) {
+		ShopEntity entity = ShopEntity.builder()
+				.sangpum(dto.getSangpum())
+				.color(dto.getColor())
+				.price(dto.getPrice())
+				.sangguip(dto.getSangguip())
+				.num(dto.getNum())
+				.photo(uploadFilename).build();
+		
+		shopDao.updateShop(entity);
+		uploadFilename = null;
+		return "update ok!";
+	}
 	
 }

@@ -10,7 +10,7 @@ const FourWriteShop = ({onSave}) => {
   // 업로드한 사진을 저장하기 위한 변수
   const [photo, setPhoto] = useState('');
   // 네이버 스토리지 url
-  const shoppath = process.env.REACT_APP_PHTOT_URL;
+  const shoppath = process.env.REACT_APP_PHOTO_URL;
 
   // 추가 버튼 이벤트
   const addShopEvent = () => {
