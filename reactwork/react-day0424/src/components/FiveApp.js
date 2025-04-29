@@ -1,7 +1,7 @@
 import { Alert } from '@mui/material';
 import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import { ShopDetail, ShopForm, ShopList } from '../shopcomponents';
+import { ShopDetail, ShopForm, ShopList, UpdateForm } from '../shopcomponents';
 
 const FiveApp = () => {
   const navi = useNavigate();
@@ -22,6 +22,7 @@ const FiveApp = () => {
           <Route path='list' element={<ShopList />} />
           <Route path='form' element={<ShopForm />} />
           <Route path='detail/:num' element={<ShopDetail />} />
+          <Route path='updateform/:num' element={<UpdateForm />} />
         </Routes>
       </div>
     </div>

@@ -135,12 +135,13 @@
 >> | 04월 17일 | BootJPASecurity | Spring Security에 대하여 |
 
 > ### React
-> #### 20주차 
+> #### 20~21주차 
 > ##### + reactwork
 >> |날짜|프로젝트|설명|
 >> |:---:|:---:|:---|
 >> | 04월 21일 | react-day0421 | React 생성 <br> React 기초: 시작 컴포넌트 바꾸기 & 전체 CSS 적용 & 이미지 출력, useState() |
 >> | 04월 22일 | react-day0422 | JSX style 적용 방법, Event,예제, require-이미지 가져오기<br>styled-components & MUI<br> useEffect(), map 반복문 |
 >> | 04월 23일 | react-day0423 | 배열 추가&삭제<br>useState와useRef 차이점<br>입력 값 하나의 객체에 넣기<br>컴포넌트 간 통신 기초 |
->> | 04월 24| react-day0424 | 자식컴포넌트 통신 복습<br>json 데이터 출력<br>axios 통신 기초 - DB에 값 집어넣고 가져오기 |
->> | 04월 25 | react-day0424 |  |
+>> | 04월 24일| react-day0424 | 자식컴포넌트 통신 복습<br>json 데이터 출력<br>axios 통신 기초 - DB에 값 집어넣고 가져오기 |
+>> | 04월 25일 | react-day0424, react-router |  |
+>> | 04월 28일 | react-day0424 |  |

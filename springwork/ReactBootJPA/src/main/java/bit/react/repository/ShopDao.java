@@ -13,33 +13,46 @@ import lombok.AllArgsConstructor;
 public class ShopDao {
 	private ShopRepository shopRepository;
 	
-	// 저장
-	public void insertShop(ShopEntity shopEntity) {
-		shopRepository.save(shopEntity); // num 값이 포함되어있지 않으면 추가
+	//저장
+	public void insertShop(ShopEntity shopEntity)
+	{
+		shopRepository.save(shopEntity);//num 값이 포함되어있지 않으면 추가
 	}
 	
-	// 전체 목록
-	public List<ShopEntity> getAllShops() {
-//		return shopRepository.findAll(); // 추가한 순서대로 반환
-		return shopRepository.findAll(Sort.by(Sort.Direction.DESC, "num"));
+	//전체 목록
+	public List<ShopEntity> getAllShops()
+	{
+		//return shopRepository.findAll();//추가한 순서대로 반환
+		return shopRepository.findAll(Sort.by(Sort.Direction.DESC,"num"));
 	}
 	
-	// 1개 데이터 반환
-	public ShopEntity getData(int num) {
+	//한개의 데이타 반환
+	public ShopEntity getData(int num)
+	{
 		return shopRepository.getReferenceById(num);
 	}
 	
-	// 삭제
-	public void deleteShop(int num) {
+	//삭제
+	public void deleteShop(int num)
+	{
 		shopRepository.deleteById(num);
 	}
 	
-	// 수정
-	public void updateShop(ShopEntity shopEntity) {
-		if(shopEntity.getPhoto() == null)
-			shopRepository.updateShopNoPhoto(shopEntity); // 사진 미포함
+	//수정
+	public void updateShop(ShopEntity shopEntity)
+	{
+		if(shopEntity.getPhoto()==null)
+			shopRepository.updateShopNoPhoto(shopEntity);//photo 수정에서 제외
 		else
-			shopRepository.save(shopEntity); // num이 포함되어있으므로 수정됨 - 사진 포함 수정
+			shopRepository.save(shopEntity);//num 이 포함되어있으므로 수정됨
 	}
 	
 }
+
+
+
+
+
+
+
+

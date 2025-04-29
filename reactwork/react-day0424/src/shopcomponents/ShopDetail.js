@@ -17,7 +17,9 @@ const ShopDetail = () => {
   // num에 해당하는 데이터 가져오기
   const getSelectData = () => {
     let geturl = "/react/detail?num=" + num;
-    axios.get(geturl).then(res => setSelectData(res.data));
+    axios.get(geturl).then(res => 
+      setSelectData(res.data)
+    );
   }
 
   // 첫 로딩 시 함수 호출
@@ -65,10 +67,10 @@ const ShopDetail = () => {
                    onClick={() => navi('/five/list')}>상품목록</button>
                   &nbsp;
                   <button type='button' className='btn btn-sm btn-secondary'
-                  >상품수정</button>
+                   onClick={() => navi(`/five/updateform/${num}`)}>상품수정</button>
                   &nbsp;
                   <button type='button' className='btn btn-sm btn-secondary'
-                    onClick={deleteEvent}>상품삭제</button>
+                   onClick={deleteEvent}>상품삭제</button>
                   &nbsp;
                 </td>
               </tr>
