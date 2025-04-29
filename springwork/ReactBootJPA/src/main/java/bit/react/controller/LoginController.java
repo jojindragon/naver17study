@@ -20,8 +20,7 @@ public class LoginController {
 	@GetMapping("/login")
 	public Map<String, String> login(
 			@RequestParam("username") String username,
-			@RequestParam("password") String password)
-	{
+			@RequestParam("password") String password) {
 		System.out.println("login:"+username+","+password);
 		String token = this.authService.login(username,password);
 		Map<String, String> map=new HashMap<>();

@@ -1,5 +1,8 @@
 package bit.react.repository;
 
+import java.util.List;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +18,8 @@ public class JoinService {
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	public void joinProcess(JoinDto dto) {
-		// TODO Auto-generated method stub
-		String username=dto.getUsername();
-		Boolean isExist=userRepository.existsByUsername(username);
-		if(isExist)
-		{
-			System.out.println("db 에 이미 존재함!! 가입 안됨!");
-			return;
-		}
 		UserEntity data=UserEntity.builder()
-				.username(username)
+				.username(dto.getUsername())
 				.password(bCryptPasswordEncoder.encode(dto.getPassword()))
 				.role(dto.getRole())
 				.address(dto.getAddress())
@@ -32,6 +27,14 @@ public class JoinService {
 		
 		//db 에 저장
 		userRepository.save(data);		
+	}
+	
+	public List<UserEntity> getAllMembers() {
+		return userRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+	}
+	
+	public void deleteMember(int id) {
+		userRepository.deleteById(id);
 	}
 	
 }
