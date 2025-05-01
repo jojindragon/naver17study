@@ -31,7 +31,7 @@ public class ReactShopController {
 	private String uploadFilename;
 	
 	//네이버 클라우드 버켓네임
-	private String bucketName="bitcamp-bucket-56";
+	private String bucketName="bitcamp-bucket-139";
 	//스토리지의 폴더명
 	private String folderName="jpashop";
 	

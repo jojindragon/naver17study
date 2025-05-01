@@ -27,12 +27,14 @@ const Menu = () => {
         <button type='button' className='btn btn-sm btn-success'
          onClick={() => navi("/member/login")}>로그인</button>
         :
-        <button type='button' className='btn btn-sm btn-success'
-         onClick={() => {
-          sessionStorage.removeItem("token");
-          window.location.reload(); // 새로고침
-         }}>로그아웃</button>
-        
+        <>
+          <b>{sessionStorage.username}님</b> &nbsp;
+          <button type='button' className='btn btn-sm btn-success'
+           onClick={() => {
+            sessionStorage.removeItem("token");
+            window.location.reload(); // 새로고침
+           }}>로그아웃</button>
+        </>
       }
     </div>
   );

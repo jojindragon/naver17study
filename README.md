@@ -146,5 +146,5 @@
 >> | 04월 25일 | react-day0424, react-router | axios 통신 연습 및 경로 만들기 <br>react-router-dom 라이브러리 <br> useParams() & useNavigate() |
 >> | 04월 28일 | react-day0424, ReactBootJPA | useMemo() & useCallback() & useReducer() <br> JWT 토큰 인증 설정 |
 >> | 04월 29일 | react-member, ReactBootJPA | 회원가입 및 JWT를 통한 로그인 |
->> | 04월 30일 | react-member, ReactBootJPA |  |
->> | 05월 01일 | react-member, ReactBootJPA |  |
+>> | 04월 30일 | react-member, ReactBootJPA | 회원형 게시판(작성,조회,삭제,수정 등) |
+>> | 05월 01일 |  |  |

@@ -16,7 +16,9 @@ const LoginForm = () => {
         alert("Invalid Data!");
       } else {
         sessionStorage.token = res.data.token;
-        navi("/member/list");
+        sessionStorage.username = res.data.username;
+        // navi("/member/list");
+        navi("/board/list");
       }
     })
   }

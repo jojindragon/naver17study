@@ -2,7 +2,7 @@ import React from 'react';
 import { Home, Menu } from '../components';
 import { Route, Routes } from 'react-router-dom';
 import { JoinForm, LoginForm, MemberList } from '../member';
-import { BoardList } from '../board';
+import { BoardDetail, BoardForm, BoardList, UpdateForm } from '../board';
 import errorimg from '../image/errorImg.jpg';
 
 const RouterMain = () => {
@@ -22,6 +22,9 @@ const RouterMain = () => {
 
           <Route path='/board'>
             <Route path='list' element={<BoardList />} />
+            <Route path='form' element={<BoardForm />} />
+            <Route path='detail/:num' element={<BoardDetail />} />
+            <Route path='updateform/:num' element={<UpdateForm />} />
           </Route>
 
           {/* 이외의 매핑주소 */}
