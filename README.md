@@ -147,4 +147,13 @@
 >> | 04월 28일 | react-day0424, ReactBootJPA | useMemo() & useCallback() & useReducer() <br> JWT 토큰 인증 설정 |
 >> | 04월 29일 | react-member, ReactBootJPA | 회원가입 및 JWT를 통한 로그인 |
 >> | 04월 30일 | react-member, ReactBootJPA | 회원형 게시판(작성,조회,삭제,수정 등) |
->> | 05월 01일 |  |  |
+
+> ### Docker & Kubernates
+> #### 21주차 ~ 22주차
+
+> ### MSA 이론 및 연습
+> #### 22주차
+> ##### springwork
+>> |날짜|프로젝트|설명|
+>> |:---:|:---:|:---|
+>> | 05월 09일 | EurekaServer & MSAConfigServer & EurekaMSA1~3 | MSA 기초 지식 및 Eureka 모니터링 |
